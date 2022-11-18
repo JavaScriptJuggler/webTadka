@@ -1,0 +1,133 @@
+.our-serices-image-box {
+    max-height: 100px;
+    max-width: 100px;
+    min-height: 100px;
+    min-width: 100px;
+    border-radius: 20px
+}
+
+.cta-btn-warning {
+    color: var(--color-dark);
+    font-weight: 500;
+    font-size: 16px;
+    display: inline-block;
+    padding: 12px 40px;
+    border-radius: 5px;
+    transition: 0.5s;
+    margin-top: 10px;
+    background: rgba(var(--color-yellow-rgb), 0.9);
+}
+
+.cta-btn-warning:hover {
+    background: var(--color-yellow);
+    color: var(--color-dark);
+}
+
+.custom-button {
+    color: var(--color-white);
+    font-weight: 500;
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 5px;
+    transition: 0.5s;
+    margin-top: 10px;
+    border-style: none;
+    background: rgba(var(--color-primary-dark-rgb), 0.9);
+}
+
+.custom-button-warning {
+    color: var(--color-dark);
+    font-weight: 500;
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 5px;
+    transition: 0.5s;
+    margin-top: 10px;
+    border-color: transparent;
+    background: rgba(var(--color-yellow-rgb), 0.9);
+}
+
+
+#services {}
+
+.services-list .service-block {
+    margin-bottom: 25px;
+}
+
+.services-list .service-block .ico {
+    font-size: 38px;
+    float: left;
+}
+
+.services-list .service-block .text-block {
+    margin-left: 58px;
+}
+
+.services-list .service-block .text-block .name {
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.highlight {
+    color: #2ac5ed;
+    font-weight: bold;
+}
+
+.hero-benifits {
+    transition: all ease-in-out 0.4s;
+}
+
+.hero-benifits:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 0 60px 0 rgba(var(--color-secondary-rgb), 0.1);
+}
+
+.engagement_sec {
+    padding-top: 100px !important;
+    padding-bottom: 70px;
+    background: rgb(245, 245, 245);
+    text-align: center;
+}
+
+.model_box {
+    background: #fff;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.engagement_sec .model_box .black_bar {
+    background: #000;
+    padding: 24px 30px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+    text-align: left;
+}
+
+.engagement_sec .model_box .black_bar {
+    font-size: 20px;
+    color: #fff;
+    margin: 0;
+    font-weight: bold;
+}
+
+.engagement_sec .model_box .white_bg {
+    background: #fff;
+    padding: 30px 25px;
+    text-align: left;
+    min-height: 300px;
+    border-radius: 0 0 5px 5px;
+}
+
+.engagement_sec .model_box .white_bg {
+    min-height: auto;
+}
+
+.engagement_sec .model_box .black_bar img {
+    margin-right: 25px;
+}
+
