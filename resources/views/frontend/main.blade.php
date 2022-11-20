@@ -11,7 +11,10 @@
         <!-- End Hero Section -->
 
         <!-- ======= SEO & Digital Marketing Agency ======= -->
-        @include('frontend.seo_and_digital_marketing_agency')
+        @include('frontend.seo_and_digital_marketing_agency', [
+            'header' => $seo_heading,
+            'description' => $seo_description,
+        ])
         <!-- End SEO & Digital Marketing Agency -->
 
         <!-- ======= Call To Action Section ======= -->

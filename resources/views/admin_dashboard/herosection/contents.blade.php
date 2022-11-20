@@ -96,7 +96,7 @@
         <div class="modal-dialog .modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Services</h5>
                 </div>
                 <form id="modalForm" name="modalForm" class="customForm2">
                     <input type="hidden" name="action" value="downpart">
@@ -118,14 +118,8 @@
             </div>
         </div>
     </div>
-
-    <script src="{{ asset('assets/js/repeater.js') }}"></script>
     <script src="{{ asset('assets/js/toastr.js') }}"></script>
     <script>
-        $("#repeater").createRepeater({
-            showFirstItemToDefault: true,
-        });
-
         $('.customForm1').submit(function(e) {
             e.preventDefault();
             $.ajaxSetup({
@@ -147,7 +141,7 @@
                             location.reload()
                         }, 2000);
                     } else {
-                        // toastr.danger('Something Went Wrong. Please Contact With Developer!')
+                        toastr.danger('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
             });
