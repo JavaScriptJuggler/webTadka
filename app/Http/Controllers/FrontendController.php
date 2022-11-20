@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Heros;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -10,6 +11,7 @@ class FrontendController extends Controller
     {
         /* get hero image */
         $fileLocation = '';
+        $heroContents = Heros::first();
         foreach (glob(public_path('/heroimage_storage') . '/*') as $file) {
             if (is_file($file)) {
                 $fileArray = explode('/', $file);
@@ -18,6 +20,9 @@ class FrontendController extends Controller
         }
         view()->share([
             'heroImage' => '/heroimage_storage/' . $fileLocation,
+            'heroheader' => $heroContents->header_text,
+            'heroDescription' => $heroContents->description,
+            'heroContents' => $heroContents->contents,
         ]);
         return view('frontend.main');
     }

@@ -2,7 +2,12 @@
 @section('body')
     <main id="main">
         <!-- ======= Hero Section ======= -->
-        @include('frontend.hero', ['heroimage' => $heroImage])
+        @include('frontend.hero', [
+            'heroimage' => $heroImage,
+            'header' => $heroheader,
+            'description' => $heroDescription,
+            'contents' => $heroContents,
+        ])
         <!-- End Hero Section -->
 
         <!-- ======= SEO & Digital Marketing Agency ======= -->

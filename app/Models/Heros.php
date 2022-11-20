@@ -12,5 +12,6 @@ class Heros extends Model
     protected $fillable = [
         'contents',
         'header_text',
+        'description',
     ];
 }

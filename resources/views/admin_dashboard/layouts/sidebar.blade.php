@@ -35,6 +35,11 @@
                     </li>
                 </ul>
             </div>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('seo-and-digital-marketing') }}"">
+                <span class="menu-title">Services</span>
+                <i class="mdi mdi-google-earth menu-icon"></i>
+            </a>
         </li>
     </ul>
 </nav>

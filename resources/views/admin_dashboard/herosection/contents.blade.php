@@ -15,8 +15,9 @@
             </ul>
         </nav>
     </div>
-    <form id="submitForm">
-        <div class="row">
+    <div class="row">
+        <form class="customForm1">
+            <input type="hidden" name="action" value="toppart">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -24,65 +25,100 @@
                         <p class="card-description"> Add the header text which will show on first of your site</p>
                         <div class="form-group">
                             <label>Header Text</label>
-                            <input type="text" name="header_text" class="form-control form-control-lg"
-                                placeholder="Header Text" aria-label="Header Text">
+                            <input type="text" value="{{ $header }}" required name="header_text"
+                                class="form-control form-control-lg" placeholder="Header Text" aria-label="Header Text">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea required name="description" class="form-control form-control-lg" placeholder="Description"
+                                aria-label="Description">{{ $description }}</textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <button class="btn btn-gradient-success btn-rounded" type="submit"
+                                style="float:right">Save</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
+    </div>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h4 class="card-title">Services</h4>
+                        <p class="card-description">Press Add Button to add services</code></p>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-gradient-primary btn-rounded" data-toggle="modal"
+                            data-target="#imageAndContent" onclick="$('#modalForm').trigger('reset');">Add</button>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> sl. </th>
+                            <th> Service Name </th>
+                            <th> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if ($repeater != '' && unserialize($repeater) > 0)
+                            @php
+                                $count = 0;
+                            @endphp
+                            @foreach (unserialize($repeater) as $item)
+                                <tr>
+                                    <td>{{ $count + 1 }}</td>
+                                    <td> {{ $item['text'] }} </td>
+                                    <td style="width: 40%;">
+                                        <button class="btn btn-gradient-warning btn-rounded" data-toggle="modal"
+                                            data-target="#imageAndContent" onclick="onClickEdit()">Edit</button>
+                                        <button class="btn btn-gradient-danger btn-rounded delete-service"
+                                            data-deletename="{{ $item['text'] }}">Delete</button>
+                                    </td>
+                                </tr>
+                                @php
+                                    $count += 1;
+                                @endphp
+                            @endforeach
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body overflow-y-auto">
-                        <h4 class="card-title">Contents</h4>
-                        <p class="card-description">Add contents here what will display like small boxes in hero</p>
-                        <div id="repeater">
-                            <!-- Repeater Heading -->
-                            <div class="repeater-heading">
-                                <h5 class="pull-left">Repeater</h5>
-                                <button type="button"
-                                    class="btn btn-gradient-primary pull-right repeater-add-btn btn-rounded"
-                                    style="float:right">
-                                    <i class="mdi mdi-plus-circle-outline"></i> Add
-                                </button>
-                            </div>
-                            <div class="clearfix"></div>
-                            <!-- Repeater Items -->
-                            <div class="items" data-group="dataset">
-                                <!-- Repeater Item Content -->
-                                <div class="item-content">
-                                    <div class="form-group">
-                                        <label>Text</label>
-                                        <input type="text" class="form-control form-control-lg"
-                                            placeholder="Write text here" aria-label="Write text here" data-name="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="mb-3">
-                                            <label for="formFile" class="form-label">Image</label>
-                                            <input class="form-control" type="file" id="formFile" data-name="file">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Repeater Remove Btn -->
-                                <div class="pull-right repeater-remove-btn">
-                                    <button type="button" class="btn btn-gradient-danger btn-rounded remove-btn">
-                                        <i class="mdi mdi-minus-circle-outline"></i> Remove
-                                    </button>
-                                </div>
-                                <div class="clearfix mb-3"></div>
-                            </div>
+    </div>
+
+    {{-- image and content submit modal --}}
+    <div class="modal fade" id="imageAndContent" tabindex="-1" role="dialog" aria-labelledby="imageAndContent"
+        aria-hidden="true">
+        <div class="modal-dialog .modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                </div>
+                <form id="modalForm" name="modalForm" class="customForm2">
+                    <input type="hidden" name="action" value="downpart">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="" class="form-label">Service Name</label>
+                            <input type="text" name="service_name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="form-label">Image</label>
+                            <input type="file" name='image' class="form-control">
                         </div>
                     </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-gradient-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" form="modalForm" class="btn btn-gradient-primary">Save changes</button>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-gradient-success">Save Changes</button>
-            </div>
-        </div>
-    </form>
+    </div>
+
     <script src="{{ asset('assets/js/repeater.js') }}"></script>
     <script src="{{ asset('assets/js/toastr.js') }}"></script>
     <script>
@@ -90,8 +126,7 @@
             showFirstItemToDefault: true,
         });
 
-        /* form submit */
-        $('#submitForm').submit(function(e) {
+        $('.customForm1').submit(function(e) {
             e.preventDefault();
             $.ajaxSetup({
                 headers: {
@@ -102,17 +137,110 @@
             $.ajax({
                 type: "POST",
                 url: "/save-hero-content",
-                data: new FormData($('#submitForm')[0]),
+                data: new FormData($('.customForm1')[0]),
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    if (response == 1) {
+                    if (response.status) {
                         toastr.success('Data Changed Successfully!')
-                    }else{
+                        setTimeout(() => {
+                            location.reload()
+                        }, 2000);
+                    } else {
+                        // toastr.danger('Something Went Wrong. Please Contact With Developer!')
+                    }
+                }
+            });
+        });
+
+        $('.customForm2').submit(function(e) {
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'accept': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            $.ajax({
+                type: "POST",
+                url: "/save-hero-content",
+                data: new FormData($('.customForm2')[0]),
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if (response.status) {
+                        toastr.success('Data Changed Successfully!')
+                        setTimeout(() => {
+                            location.reload()
+                        }, 2000);
+                    } else {
                         toastr.danger('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
             });
         });
+
+        /* delete */
+        $('.delete-service').click(function(e) {
+            const service_name = $(this).data('deletename');
+            // var formdata = = new FormData();
+            // formdata.append('service_name', service_name);
+            $.ajaxSetup({
+                headers: {
+                    'accept': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            $.ajax({
+                type: "post",
+                url: "/delete-hero-content",
+                data: {
+                    'service_name': service_name
+                },
+                success: function(response) {
+                    if (response.status) {
+                        toastr.success('Data Deleted Successfully!')
+                        setTimeout(() => {
+                            location.reload()
+                        }, 2000);
+                    } else {
+                        toastr.danger('Something Went Wrong. Please Contact With Developer!')
+                    }
+                }
+            });
+        });
+        /* function deleteCard(service_text) {
+            var formdata = = new FormData();
+            formdata.append('service_name', service_text);
+            console.log(formdata)
+            $.ajaxSetup({
+                headers: {
+                    'accept': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            $.ajax({
+                type: "post",
+                url: "/delete-hero-content",
+                data: formdata,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if (response.status) {
+                        toastr.success('Data Deleted Successfully!')
+                        setTimeout(() => {
+                            location.reload()
+                        }, 2000);
+                    } else {
+                        toastr.danger('Something Went Wrong. Please Contact With Developer!')
+                    }
+                }
+            });
+        } */
+
+        /* edit */
+        function onClickEdit() {
+            $('#modalForm').trigger('reset');
+        }
     </script>
 @endsection
