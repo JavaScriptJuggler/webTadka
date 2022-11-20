@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HeaderAndDescriptions;
+use App\Models\Services;
 use Illuminate\Http\Request;
 
 class seoAndDigitalMarketingController extends Controller
@@ -14,6 +15,7 @@ class seoAndDigitalMarketingController extends Controller
             'pageTitle' => 'Seo & Digital Marketing',
             'heading' => $headerAndDescription->heading != '' ? $headerAndDescription->heading : '',
             'description' => $headerAndDescription->description != '' ? $headerAndDescription->description : '',
+            'services' => Services::get(),
         ]);
         return view('admin_dashboard.seoAndDigitalMarketing.seoanddigital');
     }
@@ -42,6 +44,42 @@ class seoAndDigitalMarketingController extends Controller
                 else
                     return response()->json(['status' => false,]);
             }
+        }
+        if ($request->has('action') && $request->action == 'downpart') {
+            $is_found = Services::where('service_name', $request->service_name)->first();
+            if (!empty($is_found)) {
+                $is_found->service_name = $request->service_name;
+                $is_found->description = $request->description;
+                $success = $is_found->save();
+                if ($success)
+                    return response()->json(['status' => true,]);
+                else
+                    return response()->json(['status' => false,]);
+            } else {
+                $success = Services::create([
+                    'service_name' => $request->service_name,
+                    'description' => $request->description,
+                ])->save();
+                if ($success)
+                    return response()->json(['status' => true,]);
+                else
+                    return response()->json(['status' => false,]);
+            }
+        }
+    }
+
+    /* delete services */
+    public function deleteServices(Request $request)
+    {
+        $is_found = Services::find($request->id);
+        if (!empty($is_found)) {
+            $success = $is_found->delete();
+            if ($success)
+                return response()->json(['status' => true,]);
+            else
+                return response()->json(['status' => false,]);
+        } else {
+            return response()->json(['status' => false,]);
         }
     }
 }

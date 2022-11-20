@@ -14,6 +14,7 @@
         @include('frontend.seo_and_digital_marketing_agency', [
             'header' => $seo_heading,
             'description' => $seo_description,
+            'services' => $services,
         ])
         <!-- End SEO & Digital Marketing Agency -->
 

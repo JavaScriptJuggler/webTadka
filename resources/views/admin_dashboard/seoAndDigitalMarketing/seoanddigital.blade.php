@@ -29,7 +29,7 @@
                                 <textarea class="form-control" rows="5" id="description" placeholder="Description" name="description">{{ $description }}</textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                            <button type="submit" class="btn btn-gradient-primary me-2 btn-rounded">Submit</button>
                         </form>
                     </div>
                 </form>
@@ -39,7 +39,7 @@
     {{-- services --}}
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="overflow-x:auto">
                 <div class="row">
                     <div class="col-md-10">
                         <h4 class="card-title">Services</h4>
@@ -60,19 +60,30 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr>
-                            <td>1</td>
-                            <td> Service 1 </td>
-                            <td> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, dicta. </td>
-                            <td style="width: 40%;">
-                                <button class="btn btn-gradient-warning btn-rounded" data-toggle="modal"
-                                    data-target="#imageAndContent" onclick="onClickEdit()">Edit</button>
-                                <button class="btn btn-gradient-danger btn-rounded delete-service"
-                                    data-deletename="">Delete</button>
-                            </td>
-                        </tr>
-
+                        @if (count($services) > 0)
+                            @php
+                                $count = 0;
+                            @endphp
+                            @foreach ($services as $item)
+                                @php
+                                    $count += 1;
+                                @endphp
+                                <tr>
+                                    <td>{{ $count }}</td>
+                                    <td> {{ $item->service_name }} </td>
+                                    <td>
+                                        <span
+                                            style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:250px; display: block;">{{ $item->description }}</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-gradient-warning btn-rounded" data-toggle="modal"
+                                            data-target="#imageAndContent" onclick="onClickEdit()">Edit</button>
+                                        <button class="btn btn-gradient-danger btn-rounded delete-service"
+                                            data-deleteid="{{ $item->id }}">Delete</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -87,6 +98,7 @@
                 </div>
                 <form id="modalForm" name="modalForm" class="customForm2">
                     <input type="hidden" name="action" value="downpart">
+                    <input type="hidden" name="action" value="downpart">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="" class="form-label">Service Name</label>
@@ -100,7 +112,7 @@
                 </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-gradient-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" form="modalForm" class="btn btn-gradient-primary">Save changes</button>
+                    <button type="submit" form="modalForm" class="btn btn-gradient-primary">Save Changes</button>
                 </div>
             </div>
         </div>
@@ -123,6 +135,63 @@
                 data: formdata,
                 contentType: false,
                 processData: false,
+                success: function(response) {
+                    if (response.status) {
+                        toastr.success('Data Changed Successfully!')
+                        setTimeout(() => {
+                            location.reload()
+                        }, 2000);
+                    } else {
+                        toastr.danger('Something Went Wrong. Please Contact With Developer!')
+                    }
+                }
+            });
+        });
+
+        $('#modalForm').submit(function(e) {
+            e.preventDefault();
+            e.preventDefault();
+            let formdata = new FormData($('#modalForm')[0]);
+            $.ajaxSetup({
+                headers: {
+                    'accept': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            $.ajax({
+                type: "POST",
+                url: "/save-seo-and-services-content",
+                data: formdata,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if (response.status) {
+                        toastr.success('Data Changed Successfully!')
+                        setTimeout(() => {
+                            location.reload()
+                        }, 2000);
+                    } else {
+                        toastr.danger('Something Went Wrong. Please Contact With Developer!')
+                    }
+                }
+            });
+        });
+
+        $('.delete-service').click(function(e) {
+            e.preventDefault();
+            const service_id = $(this).data('deleteid');
+            $.ajaxSetup({
+                headers: {
+                    'accept': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            $.ajax({
+                type: "POST",
+                url: "/delete-services",
+                data: {
+                    'id': service_id
+                },
                 success: function(response) {
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')

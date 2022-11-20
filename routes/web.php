@@ -38,4 +38,5 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/delete-hero-content', [HeroController::class, 'deleteHeroContent'])->name('delete-hero-content');
     Route::get('/seo-and-digital-marketing', [seoAndDigitalMarketingController::class, 'goToSeoDigitalPage'])->name('seo-and-digital-marketing');
     Route::post('/save-seo-and-services-content', [seoAndDigitalMarketingController::class, 'seoAndServicesContents'])->name('save-seo-and-services-content');
+    Route::post('/delete-services', [seoAndDigitalMarketingController::class, 'deleteServices'])->name('delete-services');
 });

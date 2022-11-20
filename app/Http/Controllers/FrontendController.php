@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HeaderAndDescriptions;
 use App\Models\Heros;
+use App\Models\Services;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -26,6 +27,7 @@ class FrontendController extends Controller
             'heroContents' => $heroContents->contents,
             'seo_heading' => HeaderAndDescriptions::where('keyword', 'servicesanddigitalmarketing')->first()->heading,
             'seo_description' => HeaderAndDescriptions::where('keyword', 'servicesanddigitalmarketing')->first()->description,
+            'services' => Services::all(),
         ]);
         return view('frontend.main');
     }

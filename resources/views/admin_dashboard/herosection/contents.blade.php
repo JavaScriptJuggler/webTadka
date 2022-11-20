@@ -203,34 +203,6 @@
                 }
             });
         });
-        /* function deleteCard(service_text) {
-            var formdata = = new FormData();
-            formdata.append('service_name', service_text);
-            console.log(formdata)
-            $.ajaxSetup({
-                headers: {
-                    'accept': 'application/json',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            })
-            $.ajax({
-                type: "post",
-                url: "/delete-hero-content",
-                data: formdata,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    if (response.status) {
-                        toastr.success('Data Deleted Successfully!')
-                        setTimeout(() => {
-                            location.reload()
-                        }, 2000);
-                    } else {
-                        toastr.danger('Something Went Wrong. Please Contact With Developer!')
-                    }
-                }
-            });
-        } */
 
         /* edit */
         function onClickEdit() {
