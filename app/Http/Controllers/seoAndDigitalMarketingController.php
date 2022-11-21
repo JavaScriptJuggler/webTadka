@@ -46,15 +46,19 @@ class seoAndDigitalMarketingController extends Controller
             }
         }
         if ($request->has('action') && $request->action == 'downpart') {
-            $is_found = Services::where('service_name', $request->service_name)->first();
-            if (!empty($is_found)) {
-                $is_found->service_name = $request->service_name;
-                $is_found->description = $request->description;
-                $success = $is_found->save();
-                if ($success)
-                    return response()->json(['status' => true,]);
-                else
+            if ($request->service_id != '') {
+                $is_found = Services::find($request->service_id);
+                if (!empty($is_found)) {
+                    $is_found->service_name = $request->service_name;
+                    $is_found->description = $request->description;
+                    $success = $is_found->save();
+                    if ($success)
+                        return response()->json(['status' => true,]);
+                    else
+                        return response()->json(['status' => false,]);
+                } else {
                     return response()->json(['status' => false,]);
+                }
             } else {
                 $success = Services::create([
                     'service_name' => $request->service_name,

@@ -77,7 +77,9 @@
                                     </td>
                                     <td>
                                         <button class="btn btn-gradient-warning btn-rounded" data-toggle="modal"
-                                            data-target="#imageAndContent" onclick="onClickEdit()">Edit</button>
+                                            data-target="#imageAndContent" data-servicename="{{ $item->service_name }}"
+                                            data-description="{{ $item->description }}" data-serviceid={{ $item->id }}
+                                            onclick="onClickEdit(this)">Edit</button>
                                         <button class="btn btn-gradient-danger btn-rounded delete-service"
                                             data-deleteid="{{ $item->id }}">Delete</button>
                                     </td>
@@ -98,15 +100,15 @@
                 </div>
                 <form id="modalForm" name="modalForm" class="customForm2">
                     <input type="hidden" name="action" value="downpart">
-                    <input type="hidden" name="action" value="downpart">
+                    <input type="hidden" id="service_id" name="service_id" value="">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="" class="form-label">Service Name</label>
-                            <input type="text" name="service_name" class="form-control">
+                            <input type="text" id="service_name" name="service_name" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Description</label>
-                            <textarea name="description" rows="5" class="form-control"></textarea>
+                            <textarea name="description" id="service_description" rows="5" class="form-control"></textarea>
                         </div>
                     </div>
                 </form>
@@ -204,5 +206,12 @@
                 }
             });
         });
+
+        function onClickEdit(element) {
+            $('#modalForm').trigger('reset');
+            $('#service_name').val($(element).data('servicename'));
+            $('#service_description').val($(element).data('description'));
+            $('#service_id').val($(element).data('serviceid'));
+        }
     </script>
 @endsection
