@@ -19,7 +19,10 @@
         <!-- End SEO & Digital Marketing Agency -->
 
         <!-- ======= Call To Action Section ======= -->
-        @include('frontend.cta')
+        @include('frontend.cta', [
+            'header' => $cta_heading,
+            'description' => $cta_description,
+        ])
         <!-- End Call To Action Section -->
 
         <!-- ======= Why Choose SEO Discovery ======= -->

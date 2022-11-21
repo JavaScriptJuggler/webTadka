@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CtaController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HeadingDescriptionController;
 use App\Http\Controllers\HeroController;
@@ -39,4 +40,6 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/seo-and-digital-marketing', [seoAndDigitalMarketingController::class, 'goToSeoDigitalPage'])->name('seo-and-digital-marketing');
     Route::post('/save-seo-and-services-content', [seoAndDigitalMarketingController::class, 'seoAndServicesContents'])->name('save-seo-and-services-content');
     Route::post('/delete-services', [seoAndDigitalMarketingController::class, 'deleteServices'])->name('delete-services');
+    Route::get('/cta', [CtaController::class, 'showCtaPage'])->name('cta');
+    Route::post('/save-cta-header-description', [CtaController::class, 'saveCtaHeaderDescription'])->name('save-cta-header-description');
 });
