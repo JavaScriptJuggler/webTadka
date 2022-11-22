@@ -1,6 +1,6 @@
 <section id="featured" class="featured-services">
     <div class="section-header">
-        <h2>{{ $heading }}</h2>
+        <h2>{{ $header }}</h2>
         <p>{{ $description }}</p>
     </div>
     <div class="container bootstrap snippets bootdey">
