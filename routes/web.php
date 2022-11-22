@@ -8,6 +8,7 @@ use App\Http\Controllers\HeroController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\seoAndDigitalMarketingController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\whyChooseUsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,4 +43,6 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/delete-services', [seoAndDigitalMarketingController::class, 'deleteServices'])->name('delete-services');
     Route::get('/cta', [CtaController::class, 'showCtaPage'])->name('cta');
     Route::post('/save-cta-header-description', [CtaController::class, 'saveCtaHeaderDescription'])->name('save-cta-header-description');
+    Route::get('/why-choose-us', [whyChooseUsController::class, 'showWhyChooseUsPage'])->name('why-choose-us');
+    Route::post('/save-why-choose-us', [whyChooseUsController::class, 'saveWhyChooseUs'])->name('save-why-choose-us');
 });

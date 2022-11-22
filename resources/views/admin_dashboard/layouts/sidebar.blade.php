@@ -36,15 +36,21 @@
                 </ul>
             </div>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('seo-and-digital-marketing') }}"">
+            <a class="nav-link" href="{{ route('seo-and-digital-marketing') }}">
                 <span class="menu-title">Services</span>
                 <i class="mdi mdi-google-earth menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('cta') }}"">
+            <a class="nav-link" href="{{ route('cta') }}">
                 <span class="menu-title">CTA</span>
                 <i class="mdi mdi-access-point-network menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('why-choose-us') }}">
+                <span class="menu-title">Why Choose US</span>
+                <i class="mdi mdi-comment-question-outline menu-icon"></i>
             </a>
         </li>
     </ul>
