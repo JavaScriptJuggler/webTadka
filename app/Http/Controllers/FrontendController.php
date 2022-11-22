@@ -29,6 +29,8 @@ class FrontendController extends Controller
             'seo_description' => HeaderAndDescriptions::where('keyword', 'servicesanddigitalmarketing')->first()->description,
             'cta_heading' => HeaderAndDescriptions::where('keyword', 'ctaheadinganddescription')->first()->heading,
             'cta_description' => HeaderAndDescriptions::where('keyword', 'ctaheadinganddescription')->first()->description,
+            'why_choose_us_heading' => HeaderAndDescriptions::where('keyword', 'whychooseus')->first()->description,
+            'why_choose_us_description' => HeaderAndDescriptions::where('keyword', 'whychooseus')->first()->description,
             'services' => Services::all(),
         ]);
         return view('frontend.main');

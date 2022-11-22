@@ -26,7 +26,10 @@
         <!-- End Call To Action Section -->
 
         <!-- ======= Why Choose SEO Discovery ======= -->
-        @include('frontend.why_choose_seo')
+        @include('frontend.why_choose_seo', [
+            'header' => $why_choose_us_headimng,
+            'description' => $why_choose_us_description,
+        ])
         <!-- End Why Choose SEO Discovery -->
 
         <!-- ======= Our Happy Clients ======= -->
