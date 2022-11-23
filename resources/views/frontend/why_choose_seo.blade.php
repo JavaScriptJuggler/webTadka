@@ -11,31 +11,23 @@
                         <div class="col-md-offset-1 col-sm-12 col-md-12 col-md-10">
                             <div class="services-list">
                                 <div class="row">
-                                    @for ($i = 0; $i < 6; $i++)
-                                        <div class="col-sm-6 col-md-4">
-                                            <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 100%">
-                                                <div class="col-md-3">
-                                                    <div class="ico highlight">
-                                                        <img src="{{asset('images/high-signal.png')}}"
-                                                            style="max-height: 55px" alt="">
+                                    @if ($reasons != '' && count($reasons) > 0)
+                                        @foreach ($reasons as $item)
+                                            <div class="col-sm-6 col-md-4">
+                                                <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 100%">
+                                                    <div class="col-md-3">
+                                                        <div class="ico highlight">
+                                                            <img src="{{ $item->image }}" style="max-height: 55px"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p>{{ $item->reason }}</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-9">
-                                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                                                        delectus?</p>
-                                                </div>
                                             </div>
-                                            {{--  <div class="service-block" style="visibility: visible;">
-
-                                                <div class="text-block">
-                                                    <div class="name">Web Design</div>
-                                                    <div class="info">Beauty and function</div>
-                                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                        elit. </div>
-                                                </div>
-                                            </div> --}}
-                                        </div>
-                                    @endfor
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>

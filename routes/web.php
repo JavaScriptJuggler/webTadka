@@ -41,6 +41,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/seo-and-digital-marketing', [seoAndDigitalMarketingController::class, 'goToSeoDigitalPage'])->name('seo-and-digital-marketing');
     Route::post('/save-seo-and-services-content', [seoAndDigitalMarketingController::class, 'seoAndServicesContents'])->name('save-seo-and-services-content');
     Route::post('/delete-services', [seoAndDigitalMarketingController::class, 'deleteServices'])->name('delete-services');
+    Route::post('/delete-reasons', [whyChooseUsController::class, 'deleteReasons'])->name('delete-reasons');
     Route::get('/cta', [CtaController::class, 'showCtaPage'])->name('cta');
     Route::post('/save-cta-header-description', [CtaController::class, 'saveCtaHeaderDescription'])->name('save-cta-header-description');
     Route::get('/why-choose-us', [whyChooseUsController::class, 'showWhyChooseUsPage'])->name('why-choose-us');

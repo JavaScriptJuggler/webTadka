@@ -193,7 +193,7 @@
             })
             $.ajax({
                 type: "POST",
-                url: "/delete-services",
+                url: "/delete-reasons",
                 data: {
                     'id': service_id
                 },

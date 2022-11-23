@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HeaderAndDescriptions;
 use App\Models\Heros;
 use App\Models\Services;
+use App\Models\whyChooseUsModel;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -31,6 +32,7 @@ class FrontendController extends Controller
             'cta_description' => HeaderAndDescriptions::where('keyword', 'ctaheadinganddescription')->first()->description,
             'why_choose_us_heading' => HeaderAndDescriptions::where('keyword', 'whychooseus')->first()->heading,
             'why_choose_us_description' => HeaderAndDescriptions::where('keyword', 'whychooseus')->first()->description,
+            'why_choose_us_reasons' => whyChooseUsModel::all(),
             'services' => Services::all(),
         ]);
         return view('frontend.main');

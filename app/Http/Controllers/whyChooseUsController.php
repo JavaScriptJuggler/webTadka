@@ -92,4 +92,19 @@ class whyChooseUsController extends Controller
             }
         }
     }
+    /* delete reasons */
+    public function deleteReasons(Request $request)
+    {
+        $is_found = whyChooseUsModel::find($request->id);
+        if (!empty($is_found)) {
+            // unlink(public_path($is_found->image));
+            $success = $is_found->delete();
+            if ($success)
+                return response()->json(['status' => true,]);
+            else
+                return response()->json(['status' => false,]);
+        } else {
+            return response()->json(['status' => false,]);
+        }
+    }
 }
