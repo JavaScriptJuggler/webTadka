@@ -16,7 +16,7 @@
                                             <div class="row shadow p-3 mb-5 bg-white rounded" style="width: 100%">
                                                 <div class="col-md-3">
                                                     <div class="ico highlight">
-                                                        <img src="https://uxwing.com/wp-content/themes/uxwing/download/17-internet-network-technology/computer-internet-network.png"
+                                                        <img src="{{asset('images/high-signal.png')}}"
                                                             style="max-height: 55px" alt="">
                                                     </div>
                                                 </div>

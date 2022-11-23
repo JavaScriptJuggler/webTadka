@@ -5,7 +5,7 @@
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white me-2">
                 <i class="mdi mdi-home"></i>
-            </span> Seo And Digital Marketing Agency
+            </span> Why Choose Us
         </h3>
         <nav aria-label="breadcrumb">
         </nav>
@@ -37,13 +37,13 @@
         </div>
     </div>
     {{-- services --}}
-    {{-- <div class="col-lg-12 grid-margin stretch-card">
+    <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body" style="overflow-x:auto">
                 <div class="row">
                     <div class="col-md-10">
-                        <h4 class="card-title">Services</h4>
-                        <p class="card-description">Press Add Button to add services</code></p>
+                        <h4 class="card-title">Reasons to choose us</h4>
+                        <p class="card-description">Press Add Button to add reasons</code></p>
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-gradient-primary btn-rounded" data-toggle="modal"
@@ -54,8 +54,8 @@
                     <thead>
                         <tr>
                             <th> sl. </th>
-                            <th> Service Name </th>
-                            <th> Service Description </th>
+                            <th> Reason Name </th>
+                            <th> Reason Image </th>
                             <th> Action </th>
                         </tr>
                     </thead>
@@ -70,15 +70,18 @@
                                 @endphp
                                 <tr>
                                     <td>{{ $count }}</td>
-                                    <td> {{ $item->service_name }} </td>
                                     <td>
                                         <span
-                                            style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:250px; display: block;">{{ $item->description }}</span>
+                                            style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:300px; display: block;">
+                                            {{ $item->reason }}</span>
+                                    </td>
+                                    <td class="py-1">
+                                        <img src="{{ $item->image }}" alt="image">
                                     </td>
                                     <td>
                                         <button class="btn btn-gradient-warning btn-rounded" data-toggle="modal"
-                                            data-target="#imageAndContent" data-servicename="{{ $item->service_name }}"
-                                            data-description="{{ $item->description }}" data-serviceid={{ $item->id }}
+                                            data-target="#imageAndContent" data-servicename="{{ $item->reason }}"
+                                            data-serviceid={{ $item->id }}
                                             onclick="onClickEdit(this)">Edit</button>
                                         <button class="btn btn-gradient-danger btn-rounded delete-service"
                                             data-deleteid="{{ $item->id }}">Delete</button>
@@ -96,19 +99,19 @@
         <div class="modal-dialog .modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Services</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Reason</h5>
                 </div>
                 <form id="modalForm" name="modalForm" class="customForm2">
                     <input type="hidden" name="action" value="downpart">
                     <input type="hidden" id="service_id" name="service_id" value="">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="" class="form-label">Service Name</label>
-                            <input type="text" id="service_name" name="service_name" class="form-control">
+                            <label for="" class="form-label">Reason Name</label>
+                            <input type="text" id="service_name" required name="service_name" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="" class="form-label">Description</label>
-                            <textarea name="description" id="service_description" rows="5" class="form-control"></textarea>
+                            <label for="exampleInputUsername1">Icon</label>
+                            <input type="file" name="file_input" required id="file_input" class="form-control">
                         </div>
                     </div>
                 </form>
@@ -118,7 +121,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <script src="{{ asset('assets/js/toastr.js') }}"></script>
     <script>
         $('#toppartForm').submit(function(e) {
@@ -162,7 +165,7 @@
             })
             $.ajax({
                 type: "POST",
-                url: "/save-seo-and-services-content",
+                url: "/save-why-choose-us",
                 data: formdata,
                 contentType: false,
                 processData: false,
@@ -210,8 +213,9 @@
         function onClickEdit(element) {
             $('#modalForm').trigger('reset');
             $('#service_name').val($(element).data('servicename'));
-            $('#service_description').val($(element).data('description'));
             $('#service_id').val($(element).data('serviceid'));
+            $('.modal-title').html('Edit Reason')
+            $('#file_input').removeAttr('required');
         }
     </script>
 @endsection
