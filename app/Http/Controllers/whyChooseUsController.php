@@ -50,6 +50,7 @@ class whyChooseUsController extends Controller
                 $is_found = whyChooseUsModel::find($request->service_id);
                 if (!empty($is_found)) {
                     if ($request->file_input != '') {
+                        unlink(public_path($is_found->image));
                         $image = $request->file('file_input');
                         $input['imagename'] = time() . '_reasonImage.png';
                         $destinationPath = public_path('/document_bucket');
