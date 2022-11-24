@@ -49,4 +49,5 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/save-why-choose-us', [whyChooseUsController::class, 'saveWhyChooseUs'])->name('save-why-choose-us');
     Route::get('/testimonials', [testimonialsController::class, 'showTestimonialsPage'])->name('testimonials');
     Route::post('/save-testimonials', [testimonialsController::class, 'saveTestimonials'])->name('save-testimonials');
+    Route::post('/delete-testimonials', [testimonialsController::class, 'deleteTestimonials'])->name('delete-testimonials');
 });

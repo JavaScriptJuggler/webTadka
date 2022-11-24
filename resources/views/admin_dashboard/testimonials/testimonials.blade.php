@@ -196,7 +196,7 @@
 
         $('.delete-service').click(function(e) {
             e.preventDefault();
-            const service_id = $(this).data('deleteid');
+            const testimonials_id = $(this).data('deleteid');
             $.ajaxSetup({
                 headers: {
                     'accept': 'application/json',
@@ -205,9 +205,9 @@
             })
             $.ajax({
                 type: "POST",
-                url: "/delete-services",
+                url: "/delete-testimonials",
                 data: {
-                    'id': service_id
+                    'id': testimonials_id
                 },
                 success: function(response) {
                     if (response.status) {
