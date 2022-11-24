@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\HeaderAndDescriptions;
-use App\Models\whyChooseUsModel;
+use App\Models\testimonialsModel;
 use Illuminate\Http\Request;
 use ImageResizer;
 
-class whyChooseUsController extends Controller
+class testimonialsController extends Controller
 {
-    public function showWhyChooseUsPage()
+    public function showTestimonialsPage()
     {
-        $headerAndDescription = HeaderAndDescriptions::where('keyword', 'whychooseus')->first();
+        $headerAndDescription = HeaderAndDescriptions::where('keyword', 'testimonials')->first();
         view()->share([
-            'pageTitle' => 'Why Choose Us',
+            'pageTitle' => 'Testimonials',
             'heading' => $headerAndDescription->heading != '' ? $headerAndDescription->heading : '',
             'description' => $headerAndDescription->description != '' ? $headerAndDescription->description : '',
-            'services' => whyChooseUsModel::get(),
+            'testimonials' => testimonialsModel::get(),
         ]);
-        return view('admin_dashboard.why_choose_us.whyChooseUs');
+        return view('admin_dashboard.testimonials.testimonials');
     }
 
-    public function saveWhyChooseUs(Request $request)
+    public function saveTestimonials(Request $request)
     {
         if ($request->has('action') && $request->action == 'toppart') {
             $find = HeaderAndDescriptions::where('keyword', $request->keyword)->first();
@@ -46,22 +46,28 @@ class whyChooseUsController extends Controller
             }
         }
         if ($request->has('action') && $request->action == 'downpart') {
-            if ($request->service_id != '') {
-                $is_found = whyChooseUsModel::find($request->service_id);
+            if ($request->testimonial_id != '') {
+                $is_found = testimonialsModel::find($request->testimonial_id);
                 if (!empty($is_found)) {
-                    if ($request->file_input != '') {
+                    if ($request->image != '') {
                         unlink(public_path($is_found->image));
-                        $image = $request->file('file_input');
-                        $input['imagename'] = time() . '_reasonImage.png';
+                        $image = $request->file('image');
+                        $input['imagename'] = time() . '_testimonial.png';
                         $destinationPath = public_path('/document_bucket');
                         $img = ImageResizer::make($image->path());
-                        $img->resize(100, 100, function ($constraint) {
+                        $img->resize(400, 400, function ($constraint) {
                             $constraint->aspectRatio();
                         })->save($destinationPath . '/' . $input['imagename']);
                         $is_found->image = '/document_bucket/' . $input['imagename'];
                     }
-                    if ($request->service_name != '') {
-                        $is_found->reason = $request->service_name;
+                    if ($request->name != '') {
+                        $is_found->name = $request->name;
+                    }
+                    if ($request->comment != '') {
+                        $is_found->comment = $request->comment;
+                    }
+                    if ($request->profession != '') {
+                        $is_found->profession = $request->profession;
                     }
                     $success = $is_found->save();
 
@@ -73,16 +79,18 @@ class whyChooseUsController extends Controller
                     return response()->json(['status' => false,]);
                 }
             } else {
-                $image = $request->file('file_input');
-                $input['imagename'] = time() . '_reasonImage.png';
+                $image = $request->file('image');
+                $input['imagename'] = time() . '_testimonial.png';
                 $destinationPath = public_path('/document_bucket');
                 $img = ImageResizer::make($image->path());
-                $img->resize(55, 55, function ($constraint) {
+                $img->resize(400, 400, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $input['imagename']);
 
-                $success = whyChooseUsModel::create([
-                    'reason' => $request->service_name,
+                $success = testimonialsModel::create([
+                    'name' => $request->name,
+                    'comment' => $request->comment,
+                    'profession' => $request->profession,
                     'image' => '/document_bucket/' . $input['imagename'],
                 ])->save();
                 if ($success)
@@ -90,21 +98,6 @@ class whyChooseUsController extends Controller
                 else
                     return response()->json(['status' => false,]);
             }
-        }
-    }
-    /* delete reasons */
-    public function deleteReasons(Request $request)
-    {
-        $is_found = whyChooseUsModel::find($request->id);
-        if (!empty($is_found)) {
-            unlink(public_path($is_found->image));
-            $success = $is_found->delete();
-            if ($success)
-                return response()->json(['status' => true,]);
-            else
-                return response()->json(['status' => false,]);
-        } else {
-            return response()->json(['status' => false,]);
         }
     }
 }

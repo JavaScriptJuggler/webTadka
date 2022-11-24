@@ -53,5 +53,11 @@
                 <i class="mdi mdi-comment-question-outline menu-icon"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('testimonials') }}">
+                <span class="menu-title">Testimonials</span>
+                <i class="mdi mdi-comment-question-outline menu-icon"></i>
+            </a>
+        </li>
     </ul>
 </nav>

@@ -34,7 +34,11 @@
         <!-- End Why Choose SEO Discovery -->
 
         <!-- ======= Our Happy Clients ======= -->
-        @include('frontend.testimonials')
+        @include('frontend.testimonials', [
+            'header' => $testimonials_heading,
+            'description' => $testimonials_description,
+            'testimonials' => $testimonials,
+        ])
         <!-- End Our Happy Clients Section -->
 
         <!-- ======= brands Section ======= -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HeaderAndDescriptions;
 use App\Models\Heros;
 use App\Models\Services;
+use App\Models\testimonialsModel;
 use App\Models\whyChooseUsModel;
 use Illuminate\Http\Request;
 
@@ -33,6 +34,9 @@ class FrontendController extends Controller
             'why_choose_us_heading' => HeaderAndDescriptions::where('keyword', 'whychooseus')->first()->heading,
             'why_choose_us_description' => HeaderAndDescriptions::where('keyword', 'whychooseus')->first()->description,
             'why_choose_us_reasons' => whyChooseUsModel::all(),
+            'testimonials_heading' => HeaderAndDescriptions::where('keyword', 'testimonials')->first()->heading,
+            'testimonials_description' => HeaderAndDescriptions::where('keyword', 'testimonials')->first()->description,
+            'testimonials' => testimonialsModel::all(),
             'services' => Services::all(),
         ]);
         return view('frontend.main');
