@@ -16,6 +16,12 @@ export default defineConfig({
                         path: '*',
                     });
                 }
+                if (file.endsWith('.php')) {
+                    server.ws.send({
+                        type: 'full-reload',
+                        path: '*',
+                    });
+                }
             },
         }
     ],

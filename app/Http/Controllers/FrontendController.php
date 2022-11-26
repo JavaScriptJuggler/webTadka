@@ -7,6 +7,7 @@ use App\Models\HeaderAndDescriptions;
 use App\Models\Heros;
 use App\Models\Services;
 use App\Models\testimonialsModel;
+use App\Models\toolsTechnologiesModel;
 use App\Models\whyChooseUsModel;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,9 @@ class FrontendController extends Controller
             'testimonials' => testimonialsModel::all(),
             'brands_heading' => HeaderAndDescriptions::where('keyword', 'brandheadinganddescription')->first()->heading,
             'brands_description' => HeaderAndDescriptions::where('keyword', 'brandheadinganddescription')->first()->description,
+            'tools_heading' => HeaderAndDescriptions::where('keyword', 'toolsheadinganddescription')->first()->heading,
+            'tools_description' => HeaderAndDescriptions::where('keyword', 'toolsheadinganddescription')->first()->description,
+            'tools' => toolsTechnologiesModel::all(),
             'brands' => brandModel::all(),
             'services' => Services::all(),
         ]);

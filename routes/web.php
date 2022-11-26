@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\seoAndDigitalMarketingController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\testimonialsController;
+use App\Http\Controllers\toolsTechnologiesController;
 use App\Http\Controllers\whyChooseUsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -54,4 +55,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/brand-that-trust', [brandController::class, 'showBrandPage'])->name('brand-that-trust');
     Route::post('/save-brand', [brandController::class, 'saveBrand'])->name('save-brand');
     Route::post('/delete-brand', [brandController::class, 'deleteBrand'])->name('delete-brand');
+    Route::get('/tools-technologies', [toolsTechnologiesController::class, 'showToolPage'])->name('tools-technologies');
+    Route::post('/save-tools-technologies', [toolsTechnologiesController::class, 'saveTools'])->name('save-tools-technologies');
+    Route::post('/delete-tools-technologies', [toolsTechnologiesController::class, 'deleteTools'])->name('delete-tools-technologies');
 });

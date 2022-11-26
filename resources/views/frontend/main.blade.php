@@ -50,7 +50,11 @@
         <!-- End brands Section -->
 
         <!-- ======= Tools Section ======= -->
-        @include('frontend.tools_we_use')
+        @include('frontend.tools_we_use', [
+            'header' => $tools_heading,
+            'description' => $tools_description,
+            'tools' => $tools,
+        ])
         <!-- End Tools Section -->
 
         <!-- ======= About Section ======= -->
