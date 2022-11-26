@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\brandController;
 use App\Http\Controllers\CtaController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HeadingDescriptionController;
@@ -50,4 +51,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/testimonials', [testimonialsController::class, 'showTestimonialsPage'])->name('testimonials');
     Route::post('/save-testimonials', [testimonialsController::class, 'saveTestimonials'])->name('save-testimonials');
     Route::post('/delete-testimonials', [testimonialsController::class, 'deleteTestimonials'])->name('delete-testimonials');
+    Route::get('/brand-that-trust', [brandController::class, 'showBrandPage'])->name('brand-that-trust');
+    Route::post('/save-brand', [brandController::class, 'saveBrand'])->name('save-brand');
+    Route::post('/delete-brand', [brandController::class, 'deleteBrand'])->name('delete-brand');
 });

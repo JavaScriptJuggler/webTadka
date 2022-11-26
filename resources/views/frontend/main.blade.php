@@ -42,7 +42,11 @@
         <!-- End Our Happy Clients Section -->
 
         <!-- ======= brands Section ======= -->
-        @include('frontend.brands')
+        @include('frontend.brands', [
+            'header' => $brands_heading,
+            'description' => $brands_description,
+            'brands' => $brands,
+        ])
         <!-- End brands Section -->
 
         <!-- ======= Tools Section ======= -->
