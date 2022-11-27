@@ -76,7 +76,7 @@
         }
 
         $(function() {
-            $('#upload').on('change', function() {
+            $('#upload').unbind().on('change', function() {
                 readURL(input);
             });
         });
