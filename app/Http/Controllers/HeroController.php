@@ -15,13 +15,11 @@ class HeroController extends Controller
     public function goToHeroPage()
     {
         view()->share(['pageTitle' => 'Hero Image']);
-        $fileLocation = '';
-        foreach (glob(public_path('/heroimage_storage') . '/*') as $file) {
-            if (is_file($file)) {
-                $fileArray = explode('/', $file);
-                $fileLocation = $fileArray[count($fileArray) - 1];
-            }
-        }
+        $getHeroImage = Heros::where('hero_key', 'frontendForm')->first();
+        if (empty($getHeroImage)) {
+            $fileLocation = '';
+        } else
+            $fileLocation = $getHeroImage->heroimage;
         return view('admin_dashboard.herosection.hero', compact('fileLocation'));
     }
 

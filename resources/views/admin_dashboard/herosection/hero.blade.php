@@ -22,7 +22,7 @@
             <p class="lead mb-0">By selecting image it will uploaded to server and started look on your site.</p>
             <!-- Uploaded image area-->
             <div class="image-area mt-4"><img id="imageResult"
-                    src={{ $fileLocation != '' ? 'heroimage_storage/' . $fileLocation : '' }} alt=""
+                    src={{ $fileLocation != '' ? $fileLocation : '' }} alt=""
                     class="img-fluid rounded shadow-sm mx-auto d-block w-50"></div>
         </header>
 
