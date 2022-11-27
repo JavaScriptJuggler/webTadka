@@ -16,7 +16,6 @@ class FrontendController extends Controller
     public function index()
     {
         /* get hero image */
-        $fileLocation = '';
         $heroContents = Heros::where('hero_key', 'frontendForm')->first();
 
         view()->share([
