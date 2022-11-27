@@ -28,12 +28,12 @@ class HeroController extends Controller
     {
         $data = Heros::where('hero_key', $request->key)->first();
         /* upload image */
-        $image = $request->file('file');
-        $input['imagename'] = time() . 'heroImage.png';
-        $destinationPath = public_path('/heroimage_storage');
-        $image->move($destinationPath, $input['imagename']);
 
         if (empty($data)) {
+            $image = $request->file('file');
+            $input['imagename'] = time() . 'heroImage.png';
+            $destinationPath = public_path('/heroimage_storage');
+            $image->move($destinationPath, $input['imagename']);
             Heros::create([
                 'hero_key' => $request->key,
                 'heroimage' => '/heroimage_storage/' . $input['imagename']
@@ -41,6 +41,10 @@ class HeroController extends Controller
         } else {
             if ($data->heroimage != '')
                 unlink(public_path($data->heroimage));
+            $image = $request->file('file');
+            $input['imagename'] = time() . 'heroImage.png';
+            $destinationPath = public_path('/heroimage_storage');
+            $image->move($destinationPath, $input['imagename']);
             $data->heroimage = '/heroimage_storage/' . $input['imagename'];
             $data->save();
         }
