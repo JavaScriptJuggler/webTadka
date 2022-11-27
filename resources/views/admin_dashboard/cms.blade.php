@@ -15,7 +15,7 @@
                     class="btn btn-gradient-danger btn-lg mb-2 w-100" style="height:70px">Hero </button></a>
         </div>
         <div class="col-md-2">
-            <a href="{{ route('service-details') }}"><button type="button"
+            <a href="{{ route('seo-and-digital-marketing') }}"><button type="button"
                     class="btn btn-gradient-danger btn-lg mb-2 w-100" style="height:70px">Services
                 </button></a>
         </div>
