@@ -21,41 +21,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                aria-controls="ui-basic">
-                <span class="menu-title">Hero</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-anchor menu-icon"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('change-hero-image') }}">Change Image</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('hero-content-page') }}">Contents</a>
-                    </li>
-                </ul>
-            </div>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('seo-and-digital-marketing') }}">
-                <span class="menu-title">Services</span>
-                <i class="mdi mdi-google-earth menu-icon"></i>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('cta') }}">
-                <span class="menu-title">CTA</span>
-                <i class="mdi mdi-access-point-network menu-icon"></i>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('why-choose-us') }}">
-                <span class="menu-title">Why Choose US</span>
-                <i class="mdi mdi-comment-question-outline menu-icon"></i>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('testimonials') }}">
-                <span class="menu-title">Testimonials</span>
+            <a class="nav-link" href="{{ route('cms') }}">
+                <span class="menu-title">CMS</span>
                 <i class="mdi mdi-comment-question-outline menu-icon"></i>
             </a>
         </li>

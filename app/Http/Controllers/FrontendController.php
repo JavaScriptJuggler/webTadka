@@ -17,15 +17,10 @@ class FrontendController extends Controller
     {
         /* get hero image */
         $fileLocation = '';
-        $heroContents = Heros::first();
-        foreach (glob(public_path('/heroimage_storage') . '/*') as $file) {
-            if (is_file($file)) {
-                $fileArray = explode('/', $file);
-                $fileLocation = $fileArray[count($fileArray) - 1];
-            }
-        }
+        $heroContents = Heros::where('hero_key', 'frontendForm')->first();
+
         view()->share([
-            'heroImage' => '/heroimage_storage/' . $fileLocation,
+            'heroImage' => $heroContents->heroimage,
             'heroheader' => $heroContents->header_text,
             'heroDescription' => $heroContents->description,
             'heroContents' => $heroContents->contents,

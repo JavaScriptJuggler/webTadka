@@ -13,5 +13,7 @@ class Heros extends Model
         'contents',
         'header_text',
         'description',
+        'hero_key',
+        'heroimage',
     ];
 }

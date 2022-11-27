@@ -9,6 +9,10 @@ use ImageResizer;
 
 class toolsTechnologiesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function showToolPage()
     {
         $headerAndDescription = HeaderAndDescriptions::where('keyword', 'toolsheadinganddescription')->first();

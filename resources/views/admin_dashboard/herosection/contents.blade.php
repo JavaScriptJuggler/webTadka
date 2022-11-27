@@ -10,13 +10,15 @@
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                    <a href="{{ route('change-hero-image') }}" style="text-decoration: none;"> <span></span>Change Hero
+                        Image <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i></a>
                 </li>
             </ul>
         </nav>
     </div>
     <div class="row">
         <form class="customForm1">
+            <input type="hidden" name="key" value="frontendForm">
             <input type="hidden" name="action" value="toppart">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
@@ -100,6 +102,7 @@
                 </div>
                 <form id="modalForm" name="modalForm" class="customForm2">
                     <input type="hidden" name="action" value="downpart">
+                    <input type="hidden" name="key" value="frontendForm">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="" class="form-label">Service Name</label>

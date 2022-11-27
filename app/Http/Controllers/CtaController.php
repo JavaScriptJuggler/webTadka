@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class CtaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function showCtaPage()
     {
         $headerAndDescription = HeaderAndDescriptions::where('keyword', 'ctaheadinganddescription')->first();

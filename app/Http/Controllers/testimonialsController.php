@@ -9,6 +9,10 @@ use ImageResizer;
 
 class testimonialsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function showTestimonialsPage()
     {
         $headerAndDescription = HeaderAndDescriptions::where('keyword', 'testimonials')->first();

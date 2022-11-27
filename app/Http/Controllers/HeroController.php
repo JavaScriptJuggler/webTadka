@@ -8,6 +8,10 @@ use ImageResizer;
 
 class HeroController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function goToHeroPage()
     {
         view()->share(['pageTitle' => 'Hero Image']);
@@ -24,27 +28,44 @@ class HeroController extends Controller
     /* upload hero image */
     public function uploadHeroImage(Request $request)
     {
-        foreach (glob(public_path('/heroimage_storage') . '/*') as $file) {
-            if (is_file($file)) {
-                unlink($file);
-            }
-        }
+        $data = Heros::where('hero_key', $request->key)->first();
         /* upload image */
         $image = $request->file('file');
-        $input['imagename'] = 'heroImage.png';
+        $input['imagename'] = time() . 'heroImage.png';
         $destinationPath = public_path('/heroimage_storage');
         $image->move($destinationPath, $input['imagename']);
+
+        if (empty($data)) {
+            Heros::create([
+                'hero_key' => $request->key,
+                'heroimage' => '/heroimage_storage/' . $input['imagename']
+            ]);
+        } else {
+            if ($data->heroimage != '')
+                unlink(public_path($data->heroimage));
+            $data->heroimage = '/heroimage_storage/' . $input['imagename'];
+            $data->save();
+        }
     }
 
     /* show hero cotent page */
     public function showHeroContentPage()
     {
-        $data = Heros::find(1);
+        $data = Heros::where('hero_key', 'frontendForm')->first();
+        if (empty($data)) {
+            $header = '';
+            $description = '';
+            $repeater = '';
+        } else {
+            $header = $data->header_text;
+            $description = $data->description;
+            $repeater = $data->contents;
+        }
         view()->share([
             'pageTitle' => 'Hero Contets',
-            'header' => $data->header_text,
-            'description' => $data->description,
-            'repeater' => $data->contents,
+            'header' => $header,
+            'description' => $description,
+            'repeater' => $repeater,
         ]);
         return view('admin_dashboard.herosection.contents');
     }
@@ -53,10 +74,11 @@ class HeroController extends Controller
     public function saveHeroContent(Request $request)
     {
         if ($request->has('action') && $request->action == 'toppart') {
-            $is_found = Heros::find(1);
+            $is_found = Heros::where('hero_key', $request->key)->first();
             if (!empty($is_found)) {
                 $is_found->header_text = $request->header_text;
                 $is_found->description = $request->description;
+                $is_found->hero_key = $request->key;
                 $success = $is_found->save();
                 if ($success)
                     return response()->json(['status' => true,]);
@@ -66,6 +88,7 @@ class HeroController extends Controller
                 $success = Heros::create([
                     'header_text' => $request->header_text,
                     'description' => $request->description,
+                    'hero_key' => $request->key,
                 ])->save();
                 if ($success)
                     return response()->json(['status' => true,]);
@@ -83,7 +106,7 @@ class HeroController extends Controller
                 $constraint->aspectRatio();
             })->save($destinationPath . '/' . $input['imagename']);
 
-            $is_found = Heros::find(1);
+            $is_found = Heros::where('hero_key', $request->key)->first();
             if (!empty($is_found)) {
                 if ($is_found->contents != '') {
                     if (count(unserialize($is_found->contents)) > 0) {
@@ -128,7 +151,7 @@ class HeroController extends Controller
     /* delete */
     public function deleteHeroContent(Request $request)
     {
-        $is_found = Heros::find(1);
+        $is_found = Heros::where('hero_key', 'frontendForm')->first();
         if (!empty($is_found)) {
             $getContentData = $is_found->contents;
             if ($getContentData != '') {

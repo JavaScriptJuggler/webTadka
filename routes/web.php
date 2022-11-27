@@ -36,6 +36,12 @@ Route::get('service-details', [ServiceController::class, 'index'])->name('servic
 Route::group(['middleware' => 'prevent-back-history'], function () {
     Auth::routes(['register' => false]);
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/cms', function () {
+        view()->share([
+            'pageTitle' => 'Content Management System',
+        ]);
+        return view('admin_dashboard.cms');
+    })->name('cms')->middleware(['auth']);;
     Route::get('/change-hero-image', [HeroController::class, 'goToHeroPage'])->name('change-hero-image');
     Route::post('/upload-hero-image', [HeroController::class, 'uploadHeroImage'])->name('upload-hero-image');
     Route::get('/hero-content-page', [HeroController::class, 'showHeroContentPage'])->name('hero-content-page');

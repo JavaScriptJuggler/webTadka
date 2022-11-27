@@ -62,6 +62,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            formdata.append('key', 'frontendForm');
             $.ajax({
                 type: "POST",
                 url: "/upload-hero-image",

@@ -9,6 +9,10 @@ use ImageResizer;
 
 class whyChooseUsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function showWhyChooseUsPage()
     {
         $headerAndDescription = HeaderAndDescriptions::where('keyword', 'whychooseus')->first();
