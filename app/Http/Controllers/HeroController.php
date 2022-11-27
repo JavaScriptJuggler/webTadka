@@ -39,8 +39,8 @@ class HeroController extends Controller
                 'heroimage' => '/heroimage_storage/' . $input['imagename']
             ]);
         } else {
-            // if ($data->heroimage != '')
-            //     unlink(public_path($data->heroimage));
+            if ($data->heroimage != '')
+                unlink(public_path($data->heroimage));
             $image = $request->file('file');
             $input['imagename'] = time() . 'heroImage.png';
             $destinationPath = public_path('/heroimage_storage');
