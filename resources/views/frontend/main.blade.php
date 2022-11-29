@@ -58,7 +58,11 @@
         <!-- End Tools Section -->
 
         <!-- ======= About Section ======= -->
-        @include('frontend.about')
+        @include('frontend.about', [
+            'header' => $about_us_header,
+            'description' => $about_us_description,
+            'brands' => $aboutus,
+        ])
         <!-- End About Section -->
 
         <!-- ======= Portfolio Section ======= -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\aboutUsModel;
 use App\Models\brandModel;
 use App\Models\HeaderAndDescriptions;
 use App\Models\Heros;
@@ -38,6 +39,9 @@ class FrontendController extends Controller
             'tools_heading' => HeaderAndDescriptions::where('keyword', 'toolsheadinganddescription')->first()->heading,
             'tools_description' => HeaderAndDescriptions::where('keyword', 'toolsheadinganddescription')->first()->description,
             'tools' => toolsTechnologiesModel::all(),
+            'about_us_header' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->heading,
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+            'aboutus' => aboutUsModel::find(1)->about,
             'brands' => brandModel::all(),
             'services' => Services::all(),
         ]);

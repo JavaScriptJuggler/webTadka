@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\aboutUsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\brandController;
 use App\Http\Controllers\CtaController;
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('landing');
-Route::get('/about-us', [FrontendController::class, 'about_us'])->name('about-us');
+// Route::get('/about-us', [FrontendController::class, 'about_us'])->name('about-us');
 Route::get('/blogs', [FrontendController::class, 'blogs'])->name('blogs');
 Route::get('/blog-details/{blogid}', [FrontendController::class, 'blog_details'])->name('blog-details');
 Route::get('service-details', [ServiceController::class, 'index'])->name('service-details');
@@ -64,4 +65,6 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/tools-technologies', [toolsTechnologiesController::class, 'showToolPage'])->name('tools-technologies');
     Route::post('/save-tools-technologies', [toolsTechnologiesController::class, 'saveTools'])->name('save-tools-technologies');
     Route::post('/delete-tools-technologies', [toolsTechnologiesController::class, 'deleteTools'])->name('delete-tools-technologies');
+    Route::get('/about-us', [aboutUsController::class, 'showAboutUsPAge'])->name('about-us');
+    Route::post('/about-us-save', [aboutUsController::class, 'saveAboutUsPAge'])->name('about-us-save');
 });
