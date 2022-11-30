@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\aboutUsModel;
 use App\Models\brandModel;
+use App\Models\faqModel;
 use App\Models\HeaderAndDescriptions;
 use App\Models\Heros;
 use App\Models\Services;
@@ -30,18 +31,21 @@ class FrontendController extends Controller
             'cta_description' => HeaderAndDescriptions::where('keyword', 'ctaheadinganddescription')->first()->description,
             'why_choose_us_heading' => HeaderAndDescriptions::where('keyword', 'whychooseus')->first()->heading,
             'why_choose_us_description' => HeaderAndDescriptions::where('keyword', 'whychooseus')->first()->description,
-            'why_choose_us_reasons' => whyChooseUsModel::all(),
             'testimonials_heading' => HeaderAndDescriptions::where('keyword', 'testimonials')->first()->heading,
             'testimonials_description' => HeaderAndDescriptions::where('keyword', 'testimonials')->first()->description,
-            'testimonials' => testimonialsModel::all(),
             'brands_heading' => HeaderAndDescriptions::where('keyword', 'brandheadinganddescription')->first()->heading,
             'brands_description' => HeaderAndDescriptions::where('keyword', 'brandheadinganddescription')->first()->description,
             'tools_heading' => HeaderAndDescriptions::where('keyword', 'toolsheadinganddescription')->first()->heading,
             'tools_description' => HeaderAndDescriptions::where('keyword', 'toolsheadinganddescription')->first()->description,
-            'tools' => toolsTechnologiesModel::all(),
             'about_us_header' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->heading,
             'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+            'faq_header' => HeaderAndDescriptions::where('keyword', 'faq')->first()->heading,
+            'faq_description' => HeaderAndDescriptions::where('keyword', 'faq')->first()->description,
+            'faqs' => faqModel::all(),
             'aboutus' => aboutUsModel::find(1)->about,
+            'why_choose_us_reasons' => whyChooseUsModel::all(),
+            'testimonials' => testimonialsModel::all(),
+            'tools' => toolsTechnologiesModel::all(),
             'brands' => brandModel::all(),
             'services' => Services::all(),
         ]);

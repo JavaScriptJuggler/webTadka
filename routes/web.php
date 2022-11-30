@@ -4,6 +4,7 @@ use App\Http\Controllers\aboutUsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\brandController;
 use App\Http\Controllers\CtaController;
+use App\Http\Controllers\faqController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HeadingDescriptionController;
 use App\Http\Controllers\HeroController;
@@ -67,4 +68,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/delete-tools-technologies', [toolsTechnologiesController::class, 'deleteTools'])->name('delete-tools-technologies');
     Route::get('/about-us', [aboutUsController::class, 'showAboutUsPAge'])->name('about-us');
     Route::post('/about-us-save', [aboutUsController::class, 'saveAboutUsPAge'])->name('about-us-save');
+    Route::get('/faq', [faqController::class, 'showfaq'])->name('faq');
+    Route::post('/faq-save', [faqController::class, 'saveFaq'])->name('faq-save');
+    Route::post('/faq-delete', [faqController::class, 'deleteFaq'])->name('faq-delete');
 });
