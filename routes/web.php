@@ -11,8 +11,10 @@ use App\Http\Controllers\HeroController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\seoAndDigitalMarketingController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\testController;
 use App\Http\Controllers\testimonialsController;
 use App\Http\Controllers\toolsTechnologiesController;
+use App\Http\Controllers\viewMailcontroller;
 use App\Http\Controllers\whyChooseUsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -71,4 +73,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/faq', [faqController::class, 'showfaq'])->name('faq');
     Route::post('/faq-save', [faqController::class, 'saveFaq'])->name('faq-save');
     Route::post('/faq-delete', [faqController::class, 'deleteFaq'])->name('faq-delete');
+    Route::get('/view-mails', [viewMailcontroller::class, 'index'])->name('view-mails');
 });
+
+// Route::get('/get-mails', [testController::class, 'index']);

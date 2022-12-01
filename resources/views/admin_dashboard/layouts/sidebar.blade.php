@@ -26,5 +26,11 @@
                 <i class="mdi mdi-comment-question-outline menu-icon"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('view-mails') }}">
+                <span class="menu-title">Mails</span>
+                <i class="mdi mdi mdi-email-open menu-icon"></i>
+            </a>
+        </li>
     </ul>
 </nav>
