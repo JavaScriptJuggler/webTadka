@@ -25,6 +25,9 @@ class testController extends Controller
             /** @var \Webklex\PHPIMAP\Message $message */
             foreach ($messages as $message) {
                 echo $folder->path;
+                echo $message->getFlags(). '<br />';
+                echo $message->getDate(). '<br />';
+                echo $message->getFrom(). '<br />';
                 echo $message->getSubject() . '<br />';
                 echo $message->getHTMLBody(true);
                 echo 'Attachments: ' . $message->getAttachments() . '<br />';

@@ -76,4 +76,4 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/view-mails', [viewMailcontroller::class, 'index'])->name('view-mails');
 });
 
-// Route::get('/get-mails', [testController::class, 'index']);
+Route::get('/get-mails', [testController::class, 'index']);
