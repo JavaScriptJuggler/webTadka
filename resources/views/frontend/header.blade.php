@@ -27,6 +27,6 @@
             </ul>
             <i class="bi bi-list mobile-nav-toggle d-none"></i>
         </nav><!-- .navbar -->
-        <a class="btn-getstarted scrollto" href="#javascript:;">Lets Talk</a>
+        <a class="btn-getstarted scrollto" href="#javascript:;" data-toggle="modal" data-target="#exampleModal">Lets Talk</a>
     </div>
 </header>

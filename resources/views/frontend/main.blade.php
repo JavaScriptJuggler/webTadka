@@ -70,7 +70,7 @@
         <!-- End Portfolio Section -->
 
         <!-- ======= F.A.Q Section ======= -->
-        @include('frontend.faq',[
+        @include('frontend.faq', [
             'header' => $faq_header,
             'description' => $faq_description,
             'faq' => $faqs,
@@ -86,6 +86,62 @@
         <!-- End Contact Section -->
 
     </main><!-- End #main -->
+    {{-- modal --}}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Your Name"></input>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="Enter Your Email"></input>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Phone</label>
+                                <input type="phone" class="form-control" placeholder="Enter Phone Number"></input>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Business Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Your Business Name"></input>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Country</label>
+                                <input type="text" class="form-control" placeholder="Enter Your Country Name"></input>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Your Name"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger mt-2" data-dismiss="modal">Close</button>
+                    <button type="button" class="custom-button">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('go-to-top')
