@@ -78,4 +78,4 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/save-lets-talk', [LetsTalkController::class, 'index'])->name('save-lets-talk');
 });
 
-// Route::get('/get-mails', [testController::class, 'index']);
+Route::get('/get-mails', [testController::class, 'index']);
