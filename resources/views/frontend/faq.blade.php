@@ -13,19 +13,25 @@
                 <div class="accordion accordion-flush px-xl-5" id="faqlist">
 
                     @if (count($faqs) > 0)
+                        @php
+                            $count = 0;
+                        @endphp
                         @foreach ($faqs as $item)
                             <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
                                 <h3 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faq-content-1">
+                                        data-bs-target="#faq-content-{{$count}}">
                                         <i class="bi bi-question-circle question-icon"></i>
                                         {{ $item->question }}
                                     </button>
                                 </h3>
-                                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                <div id="faq-content-{{$count}}" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                     <div class="accordion-body">{{ $item->answer }}</div>
                                 </div>
                             </div><!-- # Faq item-->
+                            @php
+                                $count += 1;
+                            @endphp
                         @endforeach
                     @endif
 
