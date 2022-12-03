@@ -31,6 +31,7 @@ class ComposerStaticInit9ce20f4f8b9dcf68d4874569aed884ae
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '5f2edeb18ca19ebd9ee6da72dc9f4292' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/helpers.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
@@ -167,6 +168,7 @@ class ComposerStaticInit9ce20f4f8b9dcf68d4874569aed884ae
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'Biscolab\\ReCaptcha\\' => 19,
         ),
         'A' => 
         array (
@@ -510,6 +512,10 @@ class ComposerStaticInit9ce20f4f8b9dcf68d4874569aed884ae
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'Biscolab\\ReCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -578,6 +584,14 @@ class ComposerStaticInit9ce20f4f8b9dcf68d4874569aed884ae
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Biscolab\\ReCaptcha\\Controllers\\ReCaptchaController' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/Controllers/ReCaptchaController.php',
+        'Biscolab\\ReCaptcha\\Exceptions\\InvalidConfigurationException' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/Exceptions/InvalidConfigurationException.php',
+        'Biscolab\\ReCaptcha\\Facades\\ReCaptcha' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/Facades/ReCaptcha.php',
+        'Biscolab\\ReCaptcha\\ReCaptchaBuilder' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilder.php',
+        'Biscolab\\ReCaptcha\\ReCaptchaBuilderInvisible' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilderInvisible.php',
+        'Biscolab\\ReCaptcha\\ReCaptchaBuilderV2' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilderV2.php',
+        'Biscolab\\ReCaptcha\\ReCaptchaBuilderV3' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilderV3.php',
+        'Biscolab\\ReCaptcha\\ReCaptchaServiceProvider' => __DIR__ . '/..' . '/biscolab/laravel-recaptcha/src/ReCaptchaServiceProvider.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',

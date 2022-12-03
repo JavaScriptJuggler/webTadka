@@ -87,61 +87,144 @@
 
     </main><!-- End #main -->
     {{-- modal --}}
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal fade" style="font-family: var(---font-secondary)" id="letstalk_modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    </button>
+                <div class="modal-header" style="background-color: rgba(var(--color-primary-dark-rgb), 0.9); color:white">
+                    <h5 class="modal-title" id="exampleModalLabel">Let's Talk About Your Project Idea</h5>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="" class="form-label">Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Your Name"></input>
+                    <form id="letstalk" name="letstalk">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Name</label>
+                                    <input required type="text" name="name" class="form-control"
+                                        placeholder="Enter Your Name"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Email</label>
+                                    <input required type="email" name="email" class="form-control"
+                                        placeholder="Enter Your Email"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Phone</label>
+                                    <input required type="phone" name="phone" class="form-control"
+                                        placeholder="Enter Phone Number"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Business Name</label>
+                                    <input required type="text" name="businessname" class="form-control"
+                                        placeholder="Enter Your Business Name"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Country</label>
+                                    <input required type="text" class="form-control"
+                                        placeholder="Enter Your Country Name" name="country" value="India"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">State</label>
+                                    <input required type="text" name="state" class="form-control"
+                                        placeholder="Enter Your State Name"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Address</label>
+                                    <input required type="text" name="address" class="form-control"
+                                        placeholder="Enter Your Address"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-13 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Project Details</label>
+                                    <textarea required class="form-control" name="projectdetails" rows="5"
+                                        placeholder="Enter Your Project Details..."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-13 mb-3">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault"
+                                            name="subscribe">
+                                        <input class="form-check-input" type="hidden" value="0" name="subscribe">
+                                        <label class="form-check-label" style="font-weight:bold" for="flexCheckDefault">
+                                            Yes, I’d Like to Receive Updates and Tips on Digital Marketing for My Business
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div class="form-group">
+                                    {!! htmlFormSnippet() !!}
+                                </div>
+                                <p class="text-danger d-none captcha-error">Please Fill Captcha or wait some time to resubmit the form</p>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div class="form-group">
+                                    <div class="alert lets-talk-success alert-success d-none alert-dismissible fade show"
+                                        role="alert">
+                                        <button type="button" class="close d-none close-alert" data-dismiss="alert"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        Thank You for response !. We will contact to you as soon as possible .
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="" class="form-label">Email</label>
-                                <input type="email" class="form-control" placeholder="Enter Your Email"></input>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="" class="form-label">Phone</label>
-                                <input type="phone" class="form-control" placeholder="Enter Phone Number"></input>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="" class="form-label">Business Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Your Business Name"></input>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="" class="form-label">Country</label>
-                                <input type="text" class="form-control" placeholder="Enter Your Country Name"></input>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="" class="form-label">Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Your Name"></input>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger mt-2" data-dismiss="modal">Close</button>
-                    <button type="button" class="custom-button">Save changes</button>
+                    <button type="button" class="btn btn-danger mt-2 close-btn" data-dismiss="modal">Close</button>
+                    <button type="submit" form="letstalk" class="custom-button">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $('#letstalk').submit(function(e) {
+            e.preventDefault();
+            let formdata = new FormData($('#letstalk')[0]);
+            if (formdata.get('g-recaptcha-response') != '') {
+                $.ajaxSetup({
+                    headers: {
+                        'accept': 'application/json',
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+                $.ajax({
+                    type: "POST",
+                    url: "/save-lets-talk",
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response == 1) {
+                            $('.lets-talk-success').removeClass('d-none');
+                            setTimeout(() => {
+                                $('.close-btn').click();
+                                $('.close-alert').click();
+                            }, 2000);
+                        }
+                    }
+                });
+            } else {
+                $('.captcha-error').removeClass('d-none');
+            }
+        });
+    </script>
 @endsection
 
 @section('go-to-top')

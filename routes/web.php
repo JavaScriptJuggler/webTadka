@@ -9,6 +9,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HeadingDescriptionController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LetsTalkController;
 use App\Http\Controllers\seoAndDigitalMarketingController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\testController;
@@ -74,6 +75,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/faq-save', [faqController::class, 'saveFaq'])->name('faq-save');
     Route::post('/faq-delete', [faqController::class, 'deleteFaq'])->name('faq-delete');
     Route::get('/view-mails', [viewMailcontroller::class, 'index'])->name('view-mails');
+    Route::post('/save-lets-talk', [LetsTalkController::class, 'index'])->name('save-lets-talk');
 });
 
 // Route::get('/get-mails', [testController::class, 'index']);
