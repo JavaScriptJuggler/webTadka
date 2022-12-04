@@ -20,6 +20,10 @@ class LetsTalkController extends Controller
             'project_details' => $request->projectdetails,
             'subscribed' => $request->subscribe,
         ])->save();
+        $message = '
+            Message From <strong>' . $request->name . '</strong>, <br>
+            I want to talk to you about my project.<br> My Business name is <strong>' . $request->businessname . '</strong><br>My addredd is <strong>' . $request->address . ',' . $request->state . ',' . $request->country . '</strong><br> Email: <strong>' . $request->email . '</strong><br>Phone: <strong>' . $request->phone . '</strong>. My Project Details is as follows :<br><br>' . $request->projectdetails;
+        sendMail('team@webtadka.com', "New Client want's to tak about project", $message, $request->name);
         return $is_success;
     }
 }
