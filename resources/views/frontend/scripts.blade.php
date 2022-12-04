@@ -7,12 +7,53 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
-<script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('assets/vendor/aos/aos.js')}}"></script>
-<script src="{{asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-<script src="{{asset('assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-<script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-<script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
+<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+<script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script> --}}
 
 <!-- Template Main JS File -->
-<script src="{{asset('assets/js/main.js')}}"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
+<script>
+    $('#contactform').submit(function(e) {
+        e.preventDefault();
+        let formdata = new FormData($('#contactform')[0]);
+        if (formdata.get('g-recaptcha-response') != '') {
+            $('.loading').removeClass('d-none');
+            $.ajaxSetup({
+                headers: {
+                    'accept': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            $.ajax({
+                type: "POST",
+                url: "/save-lets-talk",
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    $('.captcha-error').addClass('d-none');
+                    $('.loading').addClass('d-none');
+                    if (response == 1) {
+                        $('.sent-message').removeClass('d-none');
+                        $('.error-message').addClass('d-none');
+                        setTimeout(() => {
+                            $('.sent-message').addClass('d-none')
+                        }, 3000);
+                    } else {
+                        $('.error-message').removeClass('d-none');
+                        $('.sent-message').addClass('d-none');
+                        setTimeout(() => {
+                            $('.error-message').addClass('d-none')
+                        }, 3000);
+                    }
+                }
+            });
+        } else {
+            $('.captcha-error').removeClass('d-none');
+        }
+    });
+</script>

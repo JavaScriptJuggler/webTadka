@@ -95,7 +95,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Let's Talk About Your Project Idea</h5>
                 </div>
                 <div class="modal-body">
-                    <form id="letstalk" name="letstalk">
+                    <form id="letstalk" class="php-email-form" name="letstalk">
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <div class="form-group">

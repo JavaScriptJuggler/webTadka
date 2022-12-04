@@ -2396,7 +2396,6 @@ section {
 }
 
 .contact .php-email-form .error-message {
-    display: none;
     color: var(--color-white);
     background: var(--color-red);
     text-align: left;
@@ -2409,7 +2408,6 @@ section {
 }
 
 .contact .php-email-form .sent-message {
-    display: none;
     color: var(--color-white);
     background: var(--color-green);
     text-align: center;
@@ -2418,7 +2416,6 @@ section {
 }
 
 .contact .php-email-form .loading {
-    display: none;
     background: var(--color-white);
     text-align: center;
     padding: 15px;
