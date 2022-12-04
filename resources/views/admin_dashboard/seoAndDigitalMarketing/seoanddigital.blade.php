@@ -82,6 +82,8 @@
                                             onclick="onClickEdit(this)">Edit</button>
                                         <button class="btn btn-gradient-danger btn-rounded delete-service"
                                             data-deleteid="{{ $item->id }}">Delete</button>
+                                        <button class="btn btn-gradient-success btn-rounded"
+                                            data-deleteid="{{ $item->id }}">Add Sub Services</button>
                                     </td>
                                 </tr>
                             @endforeach
