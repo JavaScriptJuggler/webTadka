@@ -35,6 +35,7 @@ class ComposerStaticInit9ce20f4f8b9dcf68d4874569aed884ae
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
+        'd21d43db5f6e840ee7b10744ec7fdf66' => __DIR__ . '/../..' . '/app/Helpers/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -546,6 +547,7 @@ class ComposerStaticInit9ce20f4f8b9dcf68d4874569aed884ae
         'App\\Http\\Controllers\\FrontendController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontendController.php',
         'App\\Http\\Controllers\\HeroController' => __DIR__ . '/../..' . '/app/Http/Controllers/HeroController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\LetsTalkController' => __DIR__ . '/../..' . '/app/Http/Controllers/LetsTalkController.php',
         'App\\Http\\Controllers\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServiceController.php',
         'App\\Http\\Controllers\\ServicesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServicesController.php',
         'App\\Http\\Controllers\\aboutUsController' => __DIR__ . '/../..' . '/app/Http/Controllers/aboutUsController.php',
@@ -570,6 +572,7 @@ class ComposerStaticInit9ce20f4f8b9dcf68d4874569aed884ae
         'App\\Models\\CtaModal' => __DIR__ . '/../..' . '/app/Models/CtaModal.php',
         'App\\Models\\HeaderAndDescriptions' => __DIR__ . '/../..' . '/app/Models/HeaderAndDescriptions.php',
         'App\\Models\\Heros' => __DIR__ . '/../..' . '/app/Models/Heros.php',
+        'App\\Models\\LetsTalkModel' => __DIR__ . '/../..' . '/app/Models/LetsTalkModel.php',
         'App\\Models\\Services' => __DIR__ . '/../..' . '/app/Models/Services.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\aboutUsModel' => __DIR__ . '/../..' . '/app/Models/aboutUsModel.php',
