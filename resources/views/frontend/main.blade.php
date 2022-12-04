@@ -129,7 +129,7 @@
                                 <div class="form-group">
                                     <label for="" class="form-label">Country</label>
                                     <input required type="text" class="form-control"
-                                        placeholder="Enter Your Country Name" name="country" value="India"></input>
+                                        placeholder="Enter Your Country Name" name="country"></input>
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">

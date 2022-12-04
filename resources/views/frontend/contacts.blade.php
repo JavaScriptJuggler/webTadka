@@ -71,20 +71,20 @@
                             <input type="text" class="form-control" name="services"
                                 placeholder="Your Requested Service" required>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6 form-group">
                             <input required type="text" class="form-control" placeholder="Enter Your Country Name"
-                                name="country" value="India"></input>
+                                name="country"></input>
                         </div>
                         <div class="col-md-6 form-group">
                             <input required type="text" name="state" class="form-control"
                                 placeholder="Enter Your State Name"></input>
                         </div>
+                        <div class="col-md-6 form-group">
+                            <input required type="text" name="address" class="form-control"
+                                placeholder="Enter Your Address"></input>
+                        </div>
                     </div>
                     <div class="col-md-12 mt-3">
-                        <input required type="text" name="address" class="form-control"
-                            placeholder="Enter Your Address"></input>
                         <div class="form-group mt-3">
                             <textarea class="form-control" name="projectdetails" placeholder="Project Details" required></textarea>
                         </div>
