@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\brandModel;
+use App\Models\faqModel;
 use App\Models\HeaderAndDescriptions;
 use App\Models\Heros;
 use App\Models\Services;
@@ -38,6 +39,9 @@ class ServiceController extends Controller
             'brands_description' => HeaderAndDescriptions::where('keyword', 'brandheadinganddescription')->first()->description,
             'tools_heading' => HeaderAndDescriptions::where('keyword', 'toolsheadinganddescription')->first()->heading,
             'tools_description' => HeaderAndDescriptions::where('keyword', 'toolsheadinganddescription')->first()->description,
+            'faq_header' => HeaderAndDescriptions::where('keyword', 'faq')->first()->heading,
+            'faq_description' => HeaderAndDescriptions::where('keyword', 'faq')->first()->description,
+            'faqs' => faqModel::all(),
             'tools' => toolsTechnologiesModel::all(),
             'brands' => brandModel::all(),
             'services' => Services::all(),

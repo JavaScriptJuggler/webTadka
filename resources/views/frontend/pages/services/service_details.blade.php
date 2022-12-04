@@ -56,7 +56,11 @@
         <!-- End Portfolio Section -->
 
         <!-- ======= F.A.Q Section ======= -->
-        @include('frontend.faq')
+        @include('frontend.faq', [
+            'header' => $faq_header,
+            'description' => $faq_description,
+            'faq' => $faqs,
+        ])
         <!-- End F.A.Q Section -->
 
         <!-- ======= Contact Section ======= -->
