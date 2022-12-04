@@ -139,14 +139,14 @@
                                         placeholder="Enter Your State Name"></input>
                                 </div>
                             </div>
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label for="" class="form-label">Address</label>
                                     <input required type="text" name="address" class="form-control"
                                         placeholder="Enter Your Address"></input>
                                 </div>
                             </div>
-                            <div class="col-md-13 mb-3">
+                            <div class="col-md-12 mb-3">
                                 <div class="form-group">
                                     <label for="" class="form-label">Project Details</label>
                                     <textarea required class="form-control" name="projectdetails" rows="5"
@@ -166,10 +166,17 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mt-3">
-                                <div class="form-group">
-                                    {!! htmlFormSnippet() !!}
+                                <div class="col-md-12 d-flex">
+                                    <div class="divGenerateRandomValues" style="float:right;margin-right:5px"></div>
+                                    <button type="button" onclick="refreshChaptcha()" class="btn btn-transparent"
+                                        style="margin-right:5px"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    <input type="text" class="form-control textInputModal"
+                                        placeholder="Enter The Captcha Here" style="margin-right:5px" />
                                 </div>
-                                <p class="text-danger d-none captcha-error">Please Fill Captcha or wait some time to resubmit the form</p>
+                                <div class="col-md-12">
+                                    <p class="text-danger d-none captcha-error">Wrong Captcha. Please Re-Enter</p>
+                                </div>
+                                {{-- {!! htmlFormSnippet() !!} --}}
                             </div>
                             <div class="col-md-12 mt-3">
                                 <div class="form-group">
@@ -193,11 +200,16 @@
             </div>
         </div>
     </div>
+
     <script>
         $('#letstalk').submit(function(e) {
             e.preventDefault();
-            let formdata = new FormData($('#letstalk')[0]);
-            if (formdata.get('g-recaptcha-response') != '') {
+            if ($(".textInputModal").val() != iNumber) {
+                refreshChaptcha();
+                $('.captcha-error').removeClass('d-none');
+            } else {
+                $('.captcha-error').addClass('d-none');
+                let formdata = new FormData($('#letstalk')[0]);
                 $.ajaxSetup({
                     headers: {
                         'accept': 'application/json',
@@ -212,16 +224,17 @@
                     contentType: false,
                     success: function(response) {
                         if (response == 1) {
+                            $('.captcha-error').addClass('d-none');
                             $('.lets-talk-success').removeClass('d-none');
                             setTimeout(() => {
                                 $('.close-btn').click();
                                 $('.close-alert').click();
+                                $('#letstalk').trigger('reset');
+                                refreshChaptcha();
                             }, 2000);
                         }
                     }
                 });
-            } else {
-                $('.captcha-error').removeClass('d-none');
             }
         });
     </script>

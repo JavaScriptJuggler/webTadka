@@ -89,10 +89,19 @@
                             <textarea class="form-control" name="projectdetails" placeholder="Project Details" required></textarea>
                         </div>
                         <div class="form-group">
-                            {!! htmlFormSnippet() !!}
+                            <div class="row">
+                                <div class="col-md-12 d-flex">
+                                    <div class="divGenerateRandomValues" style="float:right;margin-right:5px"></div>
+                                    <button type="button" onclick="refreshChaptcha()" class="btn btn-transparent"
+                                        style="margin-right:5px"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    <input type="text" class="form-control textInput"
+                                        placeholder="Enter The Captcha Here" style="margin-right:5px" />
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="text-danger d-none captcha-error">Wrong Captcha. Please Re-Enter</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-danger d-none captcha-error">Please Fill Captcha or wait some time to resubmit
-                            the form</p>
                     </div>
                     <div class="my-3">
                         <div class="loading d-none">Loading</div>

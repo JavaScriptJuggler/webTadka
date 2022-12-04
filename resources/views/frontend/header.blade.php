@@ -27,7 +27,8 @@
             </ul>
             <i class="bi bi-list mobile-nav-toggle d-none"></i>
         </nav><!-- .navbar -->
-        <a class="btn-getstarted scrollto" href="#javascript:;" onclick="$('#letstalk').trigger('reset')"
-            data-toggle="modal" data-target="#letstalk_modal">Lets Talk</a>
+        <a class="btn-getstarted scrollto" href="#javascript:;"
+            onclick="$('#letstalk').trigger('reset');refreshChaptcha()" data-toggle="modal"
+            data-target="#letstalk_modal">Lets Talk</a>
     </div>
 </header>

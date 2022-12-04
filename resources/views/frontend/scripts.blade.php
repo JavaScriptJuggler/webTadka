@@ -17,10 +17,43 @@
 <!-- Template Main JS File -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
 <script>
+    var iNumber = '';
+    $(document).ready(function() {
+        refreshChaptcha();
+    });
+
+    function refreshChaptcha() {
+        iNumber = Math.floor(Math.random() * 10000);
+        $(".divGenerateRandomValues").css({
+            "background-image": 'url({{ asset('images/bg6.png') }})',
+            'width': '200px',
+            'height': '50px',
+        });
+        $(".divGenerateRandomValues").html("<input type='text' class='txtNewInput'></input>");
+        $(".txtNewInput").css({
+            'background': 'transparent',
+            'font-family': 'Arial',
+            'font-style': 'bold',
+            'font-size': '40px'
+        });
+        $(".txtNewInput").css({
+            'width': '200px',
+            'border': 'none',
+            'color': 'black'
+        });
+        $(".txtNewInput").val(iNumber);
+        $(".txtNewInput").addClass('unselectable');
+        $(".txtNewInput").prop('disabled', true);
+    }
+
     $('#contactform').submit(function(e) {
         e.preventDefault();
-        let formdata = new FormData($('#contactform')[0]);
-        if (formdata.get('g-recaptcha-response') != '') {
+        if ($(".textInput").val() != iNumber) {
+            refreshChaptcha();
+            $('.captcha-error').removeClass('d-none');
+        } else {
+            $('.captcha-error').addClass('d-none');
+            let formdata = new FormData($('#contactform')[0]);
             $('.loading').removeClass('d-none');
             $.ajaxSetup({
                 headers: {
@@ -42,6 +75,8 @@
                         $('.error-message').addClass('d-none');
                         setTimeout(() => {
                             $('.sent-message').addClass('d-none')
+                            $('#contactform').trigger('reset');
+                            refreshChaptcha();
                         }, 3000);
                     } else {
                         $('.error-message').removeClass('d-none');
@@ -52,8 +87,6 @@
                     }
                 }
             });
-        } else {
-            $('.captcha-error').removeClass('d-none');
         }
     });
 </script>
