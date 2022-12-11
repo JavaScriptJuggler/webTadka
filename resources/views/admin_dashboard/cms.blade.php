@@ -52,5 +52,9 @@
             <a href="{{ route('faq') }}"><button type="button"
                     class="btn btn-gradient-danger btn-lg mb-2 w-100" style="height:70px">FAQs </button></a>
         </div>
+        <div class="col-md-2">
+            <a href="{{ route('show-portfolio-page') }}"><button type="button"
+                    class="btn btn-gradient-danger btn-lg mb-2 w-100" style="height:70px">Portfolios </button></a>
+        </div>
     </div>
 @endsection
