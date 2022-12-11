@@ -12,8 +12,14 @@ class PortfolioModel extends Model
     protected $fillable = [
         'portfolio_name',
         'potrfolio_description',
+        'short_description',
         'images',
         'links',
-        'catregory',
+        'category_id',
     ];
+
+    public function category()
+    {
+        return $this->hasOne(PortfolioCategoryModel::class, 'id', 'category_id');
+    }
 }

@@ -63,7 +63,10 @@
                         <tr>
                             <th> sl. </th>
                             <th> Portfolio Name </th>
-                            <th> Portfolio Description </th>
+                            <th> Portfolio Long Description </th>
+                            <th> Portfolio Short Description </th>
+                            <th> Portfolio Category </th>
+                            <th> Portfolio Link </th>
                             <th> Action </th>
                         </tr>
                     </thead>
@@ -78,20 +81,26 @@
                                 @endphp
                                 <tr>
                                     <td>{{ $count }}</td>
-                                    <td> {{ $item->service_name }} </td>
+                                    <td> {{ $item->portfolio_name }} </td>
                                     <td>
                                         <span
-                                            style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:250px; display: block;">{{ $item->description }}</span>
+                                            style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:250px; display: block;">{{ $item->potrfolio_description }}</span>
                                     </td>
+                                    <td> <span
+                                            style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:250px; display: block;">{{ $item->short_description }}</span>
+                                    </td>
+                                    <td> {{ $item->category->category_name }} </td>
+                                    <td> {{ $item->links }} </td>
                                     <td>
                                         <button class="btn btn-gradient-warning btn-rounded" data-toggle="modal"
-                                            data-target="#imageAndContent" data-servicename="{{ $item->service_name }}"
-                                            data-description="{{ $item->description }}" data-serviceid={{ $item->id }}
+                                            data-target="#imageAndContent" data-portfolioid="{{ $item->id }}"
+                                            data-portfolioname="{{ $item->portfolio_name }}"
+                                            data-longdescription="{{ $item->potrfolio_description }}"
+                                            data-shortdescription="{{ $item->short_description }}"
+                                            data-categoryid="{{ $item->category_id }}" data-links="{{ $item->links }}"
                                             onclick="onClickEdit(this)">Edit</button>
                                         <button class="btn btn-gradient-danger btn-rounded delete-service"
                                             data-deleteid="{{ $item->id }}">Delete</button>
-                                        <button class="btn btn-gradient-success btn-rounded"
-                                            data-deleteid="{{ $item->id }}">Add Sub Services</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -135,12 +144,16 @@
                     <input type="hidden" id="portfolio_id" name="portfolio_id" value="">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="" class="form-label">Service Name</label>
+                            <label for="" class="form-label">Portfolio Name</label>
                             <input type="text" id="portfolio_name" name="portfolio_name" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="" class="form-label">Description</label>
-                            <textarea name="portfolio_description" id="portfolio_description" rows="5" class="form-control"></textarea>
+                            <label for="" class="form-label">Short Description</label>
+                            <textarea name="portfolio_short_description" id="portfolio_short_description" rows="5" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="form-label">Long Description</label>
+                            <textarea name="portfolio_long_description" id="portfolio_long_description" rows="5" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Images</label>
@@ -242,7 +255,7 @@
             })
             $.ajax({
                 type: "POST",
-                url: "/delete-services",
+                url: "/delete-portfolio",
                 data: {
                     'id': service_id
                 },
@@ -261,9 +274,12 @@
 
         function onClickEdit(element) {
             $('#modalForm').trigger('reset');
-            $('#service_name').val($(element).data('servicename'));
-            $('#service_description').val($(element).data('description'));
-            $('#service_id').val($(element).data('serviceid'));
+            $('#portfolio_id').val($(element).data('portfolioid'));
+            $('#portfolio_name').val($(element).data('portfolioname'));
+            $('#portfolio_short_description').val($(element).data('shortdescription'));
+            $('#portfolio_long_description').val($(element).data('longdescription'));
+            $('#portfolio_link').val($(element).data('links'));
+            $('#category').val($(element).data('categoryid'));
         }
 
         $('#categortAdderForm').submit(function(e) {

@@ -80,6 +80,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/show-portfolio-page', [portfolioController::class, 'index'])->name('show-portfolio-page');
     Route::post('/save-portfolio', [portfolioController::class, 'savePortfolio'])->name('save-portfolio');
     Route::post('/save-portfolio-category', [portfolioController::class, 'savePortfolioCategory'])->name('save-portfolio-category');
+    Route::post('/delete-portfolio', [portfolioController::class, 'deletePortfolio'])->name('delete-portfolio');
 });
 
 Route::get('/get-mails', [testController::class, 'index']);

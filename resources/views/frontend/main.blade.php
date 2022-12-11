@@ -66,7 +66,12 @@
         <!-- End About Section -->
 
         <!-- ======= Portfolio Section ======= -->
-        @include('frontend.portfolio')
+        @include('frontend.portfolio', [
+            'header' => $portfolio_header,
+            'description' => $portfolio_description,
+            'portfolio_category' => $portfolio_category,
+            'portfolio_details' => $portfolio_details,
+        ])
         <!-- End Portfolio Section -->
 
         <!-- ======= F.A.Q Section ======= -->

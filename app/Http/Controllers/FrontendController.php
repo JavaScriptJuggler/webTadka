@@ -7,6 +7,8 @@ use App\Models\brandModel;
 use App\Models\faqModel;
 use App\Models\HeaderAndDescriptions;
 use App\Models\Heros;
+use App\Models\PortfolioCategoryModel;
+use App\Models\PortfolioModel;
 use App\Models\Services;
 use App\Models\testimonialsModel;
 use App\Models\toolsTechnologiesModel;
@@ -43,6 +45,10 @@ class FrontendController extends Controller
             'faq_description' => HeaderAndDescriptions::where('keyword', 'faq')->first()->description,
             'faqs' => faqModel::all(),
             'aboutus' => aboutUsModel::find(1)->about,
+            'portfolio_header' => HeaderAndDescriptions::where('keyword', 'portfolio')->first()->heading,
+            'portfolio_description' => HeaderAndDescriptions::where('keyword', 'portfolio')->first()->description,
+            'portfolio_category' => PortfolioCategoryModel::all(),
+            'portfolio_details' => PortfolioModel::all(),
             'why_choose_us_reasons' => whyChooseUsModel::all(),
             'testimonials' => testimonialsModel::all(),
             'tools' => toolsTechnologiesModel::all(),
