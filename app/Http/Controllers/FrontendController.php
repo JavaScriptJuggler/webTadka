@@ -14,6 +14,7 @@ use App\Models\testimonialsModel;
 use App\Models\toolsTechnologiesModel;
 use App\Models\whyChooseUsModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class FrontendController extends Controller
 {
@@ -74,5 +75,13 @@ class FrontendController extends Controller
     public function blog_details($blogid)
     {
         return view('frontend.pages.blog_details');
+    }
+
+    /* portfolio details */
+    public function gotoPortfolioDetails($portfolioid)
+    {
+        $portfolio_id = Crypt::decryptString($portfolioid);
+        $portfolio_details = PortfolioModel::find($portfolio_id);
+        return view('frontend.portfolio_details', compact('portfolio_details'));
     }
 }

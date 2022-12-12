@@ -35,9 +35,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'index'])->name('landing');
 // Route::get('/about-us', [FrontendController::class, 'about_us'])->name('about-us');
 Route::get('/blogs', [FrontendController::class, 'blogs'])->name('blogs');
+Route::get('/portfolio-details/{portfolioid}', [FrontendController::class, 'gotoPortfolioDetails'])->name('portfolio-details');
 Route::get('/blog-details/{blogid}', [FrontendController::class, 'blog_details'])->name('blog-details');
-Route::get('service-details', [ServiceController::class, 'index'])->name('service-details');
-
+Route::get('/service-details', [ServiceController::class, 'index'])->name('service-details');
 /* prevent back afetr logout */
 Route::group(['middleware' => 'prevent-back-history'], function () {
     Auth::routes(['register' => false]);

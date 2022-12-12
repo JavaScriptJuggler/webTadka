@@ -31,8 +31,10 @@
                             </figure>
 
                             <div class="portfolio-info">
-                                <h4><a href="portfolio-details.html">{{$item->portfolio_name}}</a></h4>
-                                <p>{{$item->short_description}}</p>
+                                <h4><a
+                                        href="{{ route('portfolio-details', ['portfolioid' => Crypt::encryptString($item->id)]) }}">{{ $item->portfolio_name }}</a>
+                                </h4>
+                                <p>{{ $item->short_description }}</p>
                             </div>
                         </div>
                     </div>
