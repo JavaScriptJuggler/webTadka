@@ -5,45 +5,20 @@
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white me-2">
                 <i class="mdi mdi-home"></i>
-            </span> Seo And Digital Marketing Agency
+            </span> Sub Services Of <strong>{{ $getServiceDetails->service_name }}</strong>
         </h3>
         <nav aria-label="breadcrumb">
         </nav>
     </div>
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <form id="toppartForm">
-                    <input type="hidden" name="action" value="toppart">
-                    <div class="card-body">
-                        <h4 class="card-title">Seo & Digital Merketing Agency</h4>
-                        <p class="card-description">Details here will show on services section</p>
-                        <form class="forms-sample">
-                            <div class="form-group">
-                                <label for="exampleInputUsername1">Heading</label>
-                                <input type="text" name="heading" class="form-control" id="heading"
-                                    placeholder="Heading" name="heading" value="{{ $heading }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputUsername1">Description</label>
-                                <textarea class="form-control" rows="5" id="description" placeholder="Description" name="description">{{ $description }}</textarea>
-                            </div>
 
-                            <button type="submit" class="btn btn-gradient-primary me-2 btn-rounded">Submit</button>
-                        </form>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     {{-- services --}}
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body" style="overflow-x:auto">
                 <div class="row">
                     <div class="col-md-10">
-                        <h4 class="card-title">Services</h4>
-                        <p class="card-description">Press Add Button to add services</code></p>
+                        <h4 class="card-title">Sub Services List</h4>
+                        <p class="card-description">Press Add Button to add sub services</code></p>
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-gradient-primary btn-rounded" data-toggle="modal"
@@ -54,35 +29,38 @@
                     <thead>
                         <tr>
                             <th> sl. </th>
-                            <th> Service Name </th>
-                            <th> Service Description </th>
+                            <th>Name </th>
+                            <th> Description </th>
+                            <th> Image </th>
+                            <th> Features </th>
                             <th> Action </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($services) > 0)
+                        @if (count($subservices) > 0)
                             @php
                                 $count = 0;
                             @endphp
-                            @foreach ($services as $item)
+                            @foreach ($subservices as $item)
                                 @php
                                     $count += 1;
                                 @endphp
                                 <tr>
                                     <td>{{ $count }}</td>
-                                    <td> {{ $item->service_name }} </td>
+                                    <td> {{ $item->name }} </td>
                                     <td>
                                         <span
                                             style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:250px; display: block;">{{ $item->description }}</span>
                                     </td>
+                                    <td> <img src="{{ $item->image }}" alt=""></td>
+                                    <td>{!! $item->features !!}</td>
                                     <td>
                                         <button class="btn btn-gradient-warning btn-rounded" data-toggle="modal"
-                                            data-target="#imageAndContent" data-servicename="{{ $item->service_name }}"
-                                            data-description="{{ $item->description }}" data-serviceid={{ $item->id }}
-                                            onclick="onClickEdit(this)">Edit</button>
+                                            data-target="#imageAndContent" data-name="{{ $item->name }}"
+                                            data-description="{{ $item->description }}" data-id={{ $item->id }}
+                                            data-features="{{ $item->features }}" onclick="onClickEdit(this)">Edit</button>
                                         <button class="btn btn-gradient-danger btn-rounded delete-service"
                                             data-deleteid="{{ $item->id }}">Delete</button>
-                                        <a href="{{ route('sub-services', ['servicedetails' => Crypt::encryptString($item->id)]) }}" class="btn btn-gradient-success btn-rounded">Sub Services</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -94,22 +72,32 @@
     </div>
     <div class="modal fade" id="imageAndContent" tabindex="-1" role="dialog" aria-labelledby="imageAndContent"
         aria-hidden="true">
-        <div class="modal-dialog .modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Services</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Sub Services</h5>
                 </div>
                 <form id="modalForm" name="modalForm" class="customForm2">
                     <input type="hidden" name="action" value="downpart">
-                    <input type="hidden" id="service_id" name="service_id" value="">
+                    <input type="hidden" id="service_sub_id" name="service_sub_id" value="">
+                    <input type="hidden" id="service_id" name="service_id" value="{{ $getServiceDetails->id }}">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="" class="form-label">Service Name</label>
-                            <input type="text" id="service_name" name="service_name" class="form-control">
+                            <label for="" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Description</label>
-                            <textarea name="description" id="service_description" rows="5" class="form-control"></textarea>
+                            <textarea name="description" id="description" rows="5" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="form-label">Icon</label>
+                            <input type="file" name="icon" class="form-control" id="icon" required>
+                            <p class="text-muted">Image size 77 X 77</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="form-label">Features</label>
+                            <textarea name="features" id="features" rows="5" class="form-control" required></textarea>
                         </div>
                     </div>
                 </form>
@@ -122,39 +110,14 @@
     </div>
     <script src="{{ asset('assets/js/toastr.js') }}"></script>
     <script>
-        $('#toppartForm').submit(function(e) {
-            e.preventDefault();
-            let formdata = new FormData($('#toppartForm')[0]);
-            formdata.append('keyword', 'servicesanddigitalmarketing')
-            $.ajaxSetup({
-                headers: {
-                    'accept': 'application/json',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            })
-            $.ajax({
-                type: "POST",
-                url: "/save-seo-and-services-content",
-                data: formdata,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    if (response.status) {
-                        toastr.success('Data Changed Successfully!')
-                        setTimeout(() => {
-                            location.reload()
-                        }, 2000);
-                    } else {
-                        toastr.error('Something Went Wrong. Please Contact With Developer!')
-                    }
-                }
-            });
+        $(document).ready(function() {
+            CKEDITOR.replace('features');
         });
 
         $('#modalForm').submit(function(e) {
             e.preventDefault();
-            e.preventDefault();
             let formdata = new FormData($('#modalForm')[0]);
+            formdata.append('features',CKEDITOR.instances.features.getData())
             $.ajaxSetup({
                 headers: {
                     'accept': 'application/json',
@@ -163,13 +126,13 @@
             })
             $.ajax({
                 type: "POST",
-                url: "/save-seo-and-services-content",
+                url: "/add-edit-subservices",
                 data: formdata,
                 contentType: false,
                 processData: false,
                 success: function(response) {
                     if (response.status) {
-                        toastr.success('Data Changed Successfully!')
+                        toastr.success(response.message)
                         setTimeout(() => {
                             location.reload()
                         }, 2000);
@@ -191,13 +154,13 @@
             })
             $.ajax({
                 type: "POST",
-                url: "/delete-services",
+                url: "/delete-subservices",
                 data: {
                     'id': service_id
                 },
                 success: function(response) {
                     if (response.status) {
-                        toastr.success('Data Changed Successfully!')
+                        toastr.success(response.message)
                         setTimeout(() => {
                             location.reload()
                         }, 2000);
@@ -210,9 +173,11 @@
 
         function onClickEdit(element) {
             $('#modalForm').trigger('reset');
-            $('#service_name').val($(element).data('servicename'));
-            $('#service_description').val($(element).data('description'));
-            $('#service_id').val($(element).data('serviceid'));
+            $('#name').val($(element).data('name'));
+            $('#description').val($(element).data('description'));
+            $('#service_sub_id').val($(element).data('id'));
+            $('#icon').removeAttr('required');
+            CKEDITOR.instances['features'].setData($(element).data('features'));
         }
     </script>
 @endsection

@@ -134,7 +134,7 @@
                             location.reload()
                         }, 2000);
                     } else {
-                        toastr.danger('Something Went Wrong. Please Contact With Developer!')
+                        toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
             });
@@ -163,7 +163,7 @@
                             location.reload()
                         }, 2000);
                     } else {
-                        toastr.danger('Something Went Wrong. Please Contact With Developer!')
+                        toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
             });
@@ -191,7 +191,7 @@
                             location.reload()
                         }, 2000);
                     } else {
-                        toastr.danger('Something Went Wrong. Please Contact With Developer!')
+                        toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
             });
