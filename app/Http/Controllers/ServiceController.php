@@ -17,8 +17,12 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
 
-    public function index($service_code = '')
+    public function index($servicename)
     {
+        $getServicedetails = '';
+        if ($servicename != '') {
+            $getServicedetails = Services::where('service_name', $servicename)->with('subservices')->first();
+        }
         /* get hero image */
         $heroContents = Heros::where('hero_key', 'frontendForm')->first();
 
@@ -51,6 +55,7 @@ class ServiceController extends Controller
             'portfolio_description' => HeaderAndDescriptions::where('keyword', 'portfolio')->first()->description,
             'portfolio_category' => PortfolioCategoryModel::all(),
             'portfolio_details' => PortfolioModel::all(),
+            'serviceDetails' => $getServicedetails,
         ]);
         return view('frontend.pages.services.service_details');
     }

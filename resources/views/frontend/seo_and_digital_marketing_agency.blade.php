@@ -15,7 +15,7 @@
                                     <img src="{{asset('images/white_index_results_icon.png')}}"
                                         alt="" style="max-height: 30px">
                                 </div>
-                                <a href="{{ route('service-details') }}" class="stretched-link">
+                                <a href="{{ route('service-details', ['servicename' => str_replace(' ', '-', $item->service_name)]) }}" class="stretched-link">
                                     <h3>{{ $item->service_name }}</h3>
                                 </a>
                                 <p>{{ $item->description }}</p>

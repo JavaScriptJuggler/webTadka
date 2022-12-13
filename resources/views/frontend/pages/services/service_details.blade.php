@@ -9,7 +9,9 @@
         ])
 
         <!-- ======= Engagement Model ======= -->
-        @include('frontend.pages.services.engagement_model')
+        @include('frontend.pages.services.engagement_model', [
+            'serviceDetails' => $serviceDetails,
+        ])
         <!-- Engagement Model -->
 
         <!-- ======= Call To Action Section ======= -->
