@@ -21,7 +21,7 @@ class ServiceController extends Controller
     {
         $getServicedetails = '';
         if ($servicename != '') {
-            $getServicedetails = Services::where('service_name', $servicename)->with('subservices')->first();
+            $getServicedetails = Services::where('service_name', str_replace('-', ' ', $servicename))->with('subservices')->first();
         }
         /* get hero image */
         $heroContents = Heros::where('hero_key', 'frontendForm')->first();
