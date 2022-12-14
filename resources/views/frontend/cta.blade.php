@@ -9,7 +9,7 @@
                 <p> {{ $cta_description }}</p>
                 <div class="text-center">
                     <a class="cta-btn align-self-start" href="javascript:void(0);"
-                        onclick="$('#letstalk').trigger('reset')" data-toggle="modal" data-target="#letstalk_modal">GET
+                        onclick="$('#letstalk').trigger('reset');refreshChaptcha()" data-toggle="modal" data-target="#letstalk_modal">GET
                         FREE PROPOSAL</a>
                     <a class="cta-btn-warning align-self-start" href="#">CLIENT SUPPORT</a>
                     <a class="cta-btn align-self-start" href="https://wa.me/+917450892149" target="_blank">CHAT ON WHATSAPP</a>
