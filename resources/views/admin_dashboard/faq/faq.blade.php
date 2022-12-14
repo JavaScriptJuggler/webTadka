@@ -77,7 +77,8 @@
                                     </td>
                                     <td>
                                         <button class="btn btn-gradient-warning btn-rounded" data-toggle="modal"
-                                            data-target="#imageAndContent" data-question='{{ $item->question }}' data-answer='{{ $item->answer }}'  data-serviceid={{ $item->id }}
+                                            data-target="#imageAndContent" data-question='{{ $item->question }}'
+                                            data-answer='{{ $item->answer }}' data-serviceid={{ $item->id }}
                                             onclick="onClickEdit(this)">Edit</button>
                                         <button class="btn btn-gradient-danger btn-rounded delete-service"
                                             data-deleteid="{{ $item->id }}">Delete</button>
@@ -122,6 +123,7 @@
     <script>
         $('#toppartForm').submit(function(e) {
             e.preventDefault();
+            holdOn();
             let formdata = new FormData($('#toppartForm')[0]);
             formdata.append('keyword', 'faq')
             $.ajaxSetup({
@@ -140,6 +142,7 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
@@ -151,7 +154,7 @@
 
         $('#modalForm').submit(function(e) {
             e.preventDefault();
-            e.preventDefault();
+            holdOn();
             let formdata = new FormData($('#modalForm')[0]);
             $.ajaxSetup({
                 headers: {
@@ -169,9 +172,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
@@ -180,6 +185,7 @@
 
         $('.delete-service').click(function(e) {
             e.preventDefault();
+            holdOn();
             const service_id = $(this).data('deleteid');
             $.ajaxSetup({
                 headers: {
@@ -197,9 +203,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }

@@ -45,6 +45,7 @@
     <script>
         $('#toppartForm').submit(function(e) {
             e.preventDefault();
+            holdOn();
             let formdata = new FormData($('#toppartForm')[0]);
             formdata.append('keyword', 'aboutusheadinganddescription')
             $.ajaxSetup({
@@ -63,9 +64,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }

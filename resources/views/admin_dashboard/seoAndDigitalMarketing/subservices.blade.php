@@ -116,6 +116,7 @@
 
         $('#modalForm').submit(function(e) {
             e.preventDefault();
+            holdOn();
             let formdata = new FormData($('#modalForm')[0]);
             formdata.append('features',CKEDITOR.instances.features.getData())
             $.ajaxSetup({
@@ -134,9 +135,11 @@
                     if (response.status) {
                         toastr.success(response.message)
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
@@ -145,6 +148,7 @@
 
         $('.delete-service').click(function(e) {
             e.preventDefault();
+            holdOn();
             const service_id = $(this).data('deleteid');
             $.ajaxSetup({
                 headers: {
@@ -162,9 +166,11 @@
                     if (response.status) {
                         toastr.success(response.message)
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }

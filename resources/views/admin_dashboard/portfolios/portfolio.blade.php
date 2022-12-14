@@ -188,6 +188,7 @@
     <script>
         $('#toppartForm').submit(function(e) {
             e.preventDefault();
+            holdOn();
             let formdata = new FormData($('#toppartForm')[0]);
             formdata.append('keyword', 'portfolio')
             $.ajaxSetup({
@@ -206,9 +207,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
@@ -217,7 +220,7 @@
 
         $('#modalForm').submit(function(e) {
             e.preventDefault();
-            e.preventDefault();
+            holdOn();
             let formdata = new FormData($('#modalForm')[0]);
             $.ajaxSetup({
                 headers: {
@@ -235,9 +238,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
@@ -246,6 +251,7 @@
 
         $('.delete-service').click(function(e) {
             e.preventDefault();
+            holdOn();
             const service_id = $(this).data('deleteid');
             $.ajaxSetup({
                 headers: {
@@ -263,9 +269,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
@@ -284,6 +292,7 @@
 
         $('#categortAdderForm').submit(function(e) {
             e.preventDefault();
+            holdOn();
             $.ajaxSetup({
                 headers: {
                     'accept': 'application/json',
@@ -300,9 +309,11 @@
                     if (response.status) {
                         toastr.success(response.message)
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error(response.message)
                     }
                 }

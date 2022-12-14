@@ -124,6 +124,7 @@
     <script src="{{ asset('assets/js/toastr.js') }}"></script>
     <script>
         $('.customForm1').submit(function(e) {
+            holdOn();
             e.preventDefault();
             $.ajaxSetup({
                 headers: {
@@ -141,9 +142,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
@@ -152,6 +155,7 @@
 
         $('.customForm2').submit(function(e) {
             e.preventDefault();
+            holdOn();
             $.ajaxSetup({
                 headers: {
                     'accept': 'application/json',
@@ -168,9 +172,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
@@ -179,6 +185,7 @@
 
         /* delete */
         $('.delete-service').click(function(e) {
+            holdOn();
             const service_name = $(this).data('deletename');
             // var formdata = = new FormData();
             // formdata.append('service_name', service_name);
@@ -198,9 +205,11 @@
                     if (response.status) {
                         toastr.success('Data Deleted Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }

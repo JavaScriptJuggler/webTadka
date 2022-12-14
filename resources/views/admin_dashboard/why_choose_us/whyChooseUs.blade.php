@@ -126,6 +126,7 @@
     <script>
         $('#toppartForm').submit(function(e) {
             e.preventDefault();
+            holdOn();
             let formdata = new FormData($('#toppartForm')[0]);
             formdata.append('keyword', 'whychooseus')
             $.ajaxSetup({
@@ -144,9 +145,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
@@ -155,7 +158,7 @@
 
         $('#modalForm').submit(function(e) {
             e.preventDefault();
-            e.preventDefault();
+            holdOn();
             let formdata = new FormData($('#modalForm')[0]);
             $.ajaxSetup({
                 headers: {
@@ -173,9 +176,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn()
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }
@@ -184,6 +189,7 @@
 
         $('.delete-service').click(function(e) {
             e.preventDefault();
+            holdOn();
             const service_id = $(this).data('deleteid');
             $.ajaxSetup({
                 headers: {
@@ -201,9 +207,11 @@
                     if (response.status) {
                         toastr.success('Data Changed Successfully!')
                         setTimeout(() => {
+                            closeHoldOn();
                             location.reload()
                         }, 2000);
                     } else {
+                        closeHoldOn();
                         toastr.error('Something Went Wrong. Please Contact With Developer!')
                     }
                 }

@@ -45,6 +45,7 @@
     </div>
     <script>
         function readURL(input) {
+            holdOn();
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
@@ -70,7 +71,7 @@
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    console.log(response)
+                    closeHoldOn();
                 }
             });
         }

@@ -3308,3 +3308,9 @@ section {
     -ms-user-select: none;
     user-select: none;
 }
+
+.white_bg ul {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}

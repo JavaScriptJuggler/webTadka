@@ -20,4 +20,17 @@
     integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
 </script>
 <script src="//cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
+<script src="{{ asset('assets/js/HoldOn.min.js') }}"></script>
+<script>
+    function holdOn() {
+        HoldOn.open({
+            theme: "sk-circle",
+            message: 'We are doing our work, It will take some times. Thanks for your patience ',
+        });
+    }
+
+    function closeHoldOn() {
+        HoldOn.close();
+    }
+</script>
 <!-- End custom js for this page -->

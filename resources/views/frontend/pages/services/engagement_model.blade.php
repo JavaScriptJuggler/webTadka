@@ -11,19 +11,14 @@
             @if (count($serviceDetails->subservices) > 0)
                 @foreach ($serviceDetails->subservices as $item)
                     <div class="col-lg-4 col-md-12 mb-30">
-                        <div class="model_box">
+                        <div class="model_box d-flex" style="flex-direction:column">
                             <div class="black_bar"><img src="{{ $item->image }}">{{ $item->name }}
                             </div>
                             <div class="white_bg">
                                 <p>{{ $item->description }}
                                     what you need. Here, expect the following:</p>
                                 {!! $item->features !!}
-                                {{-- <ul>
-                                    <li>Monthly billing</li>
-                                    <li>160 hours both part and full-time</li>
-                                    <li>No hidden charges</li>
-                                    <li>No hidden charges</li>
-                                </ul> --}}
+                                <button class="btn btn-dark mt-auto">Book Service</button>
                             </div>
                         </div>
                     </div>
