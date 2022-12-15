@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="card-title">Sub Services Header & Description</div>
                     <form id="subserviceFormSubmit">
-                        <input type="hidden" name="hero_key" value="service{{ $getServiceDetails->service_name }}">
+                        <input type="hidden" name="hero_key" value="service{{ str_replace(' ','-',$getServiceDetails->service_name) }}">
                         <div class="form-group">
                             <label for="">Header Text</label>
                             <input type="text" required name="hero_header_text" value="{{ $hero_header }}"
