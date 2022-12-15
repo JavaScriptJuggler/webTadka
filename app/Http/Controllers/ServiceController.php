@@ -24,13 +24,15 @@ class ServiceController extends Controller
             $getServicedetails = Services::where('service_name', str_replace('-', ' ', $servicename))->with('subservices')->first();
         }
         /* get hero image */
-        $heroContents = Heros::where('hero_key', 'frontendForm')->first();
-
+        $heroContents = Heros::where('hero_key', 'service' . $servicename)->first();
+        $heroimage = !empty($heroContents) ? $heroContents->heroimage : "";
+        $heroheader = !empty($heroContents) ? $heroContents->header_text : "";
+        $heroDescription = !empty($heroContents) ? $heroContents->description : "";
         view()->share([
-            'heroImage' => !empty($heroContents) ? $heroContents->heroimage : '',
-            'heroheader' => !empty($heroContents) ? $heroContents->header_text : '',
-            'heroDescription' => !empty($heroContents) ? $heroContents->description : '',
-            'heroContents' => /* !empty($heroContents) ? $heroContents->contents : '' */'',
+            'heroImage' => $heroimage,
+            'heroheader' => $heroheader,
+            'heroDescription' => $heroDescription,
+            'heroContents' => /* !empty($heroContents) ? $heroContents->contents : '' */ '',
             'seo_heading' => HeaderAndDescriptions::where('keyword', 'servicesanddigitalmarketing')->first()->heading,
             'seo_description' => HeaderAndDescriptions::where('keyword', 'servicesanddigitalmarketing')->first()->description,
             'cta_heading' => HeaderAndDescriptions::where('keyword', 'ctaheadinganddescription')->first()->heading,
