@@ -102,7 +102,7 @@ class seoAndDigitalMarketingController extends Controller
         $service_id = Crypt::decryptString($servicedetails);
         $getServiceDetails = Services::find($service_id);
         $subservices = subServicesModel::where('service_id', $service_id)->get();
-        $getheroDetails = Heros::where('hero_key', 'service' . Services::find($service_id)->service_name)->first();
+        $getheroDetails = Heros::where('hero_key', 'service' . str_replace(' ', '-', Services::find($service_id)->service_name))->first();
         $hero_header = '';
         $hero_description = '';
         if (!empty($getheroDetails)) {
