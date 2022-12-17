@@ -93,10 +93,7 @@
                             <div class="col-md-13 mb-3">
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="1"
-                                            id="flexCheckDefault" name="subscribe">
-                                        <input class="form-check-input" type="hidden" value="0"
-                                            name="subscribe">
+                                        <input class="form-check-input" type="checkbox" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Yes, I’d Like to Receive Updates and Tips on Digital Marketing for My
                                             Business
@@ -242,21 +239,147 @@
             </div>
         </div>
     </div>
+
+    {{-- engagement modal --}}
+    <div class="modal fade contact" style="font-family: 'Poppins';" id="serviceEngagementModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog php-email-form {{-- modal-xl modal-dialog-centered --}}  modal-fullscreen" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-10 ">
+                            <h4 class="modal-title mb-4" id="exampleModalLabel">Let's Talk About Your Project
+                                Idea</h4>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" style="float: right" class="btn-close" data-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <form id="serviceEngagementForm" class="php-email-form" name="serviceEngagementForm">
+                        <input type="hidden" name="subservice_name" id="subservice_name">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Name</label>
+                                    <input required type="text" name="name" class="form-control"
+                                        placeholder="Enter Your Name"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Email</label>
+                                    <input required type="email" name="email" class="form-control"
+                                        placeholder="Enter Your Email"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Phone</label>
+                                    <input required type="text" name="phone" class="form-control"
+                                        placeholder="Enter Phone Number"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Business Name</label>
+                                    <input required type="text" name="businessname" class="form-control"
+                                        placeholder="Enter Your Business Name"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Country</label>
+                                    <input required type="text" class="form-control"
+                                        placeholder="Enter Your Country Name" name="country"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">State</label>
+                                    <input required type="text" name="state" class="form-control"
+                                        placeholder="Enter Your State Name"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Address</label>
+                                    <input required type="text" name="address" class="form-control"
+                                        placeholder="Enter Your Address"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                    <label for="" class="form-label">Project Details</label>
+                                    <textarea required class="form-control" name="projectdetails" rows="5"
+                                        placeholder="Enter Your Project Details..."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-13 mb-3">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="flexCheckDefault2">
+                                        <label class="form-check-label" for="flexCheckDefault2">
+                                            Yes, I’d Like to Receive Updates and Tips on Digital Marketing for My
+                                            Business
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div class="col-md-12 d-flex">
+                                    <div class="divGenerateRandomValues" style="float:right;margin-right:5px"></div>
+                                    <button type="button" onclick="refreshChaptcha()" class="btn btn-transparent"
+                                        style="margin-right:5px"><i
+                                            class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    <input type="text" class="form-control textInputModal2"
+                                        placeholder="Enter The Captcha Here" style="margin-right:5px" />
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="text-danger d-none captcha-error">Wrong Captcha. Please Re-Enter</p>
+                                </div>
+                                {{-- {!! htmlFormSnippet() !!} --}}
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div class="form-group">
+                                    <div class="alert engagement-success alert-success d-none alert-dismissible fade show"
+                                        role="alert">
+                                        <button type="button" class="close d-none close-alert" data-dismiss="alert"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        Thank You for response !. We will contact to you as soon as possible .
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-btn" data-dismiss="modal">Close</button>
+                    <button type="submit" form="serviceEngagementForm">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        $('#letstalk, #clientSupportForm').submit(function(e) {
+        $('#letstalk, #clientSupportForm, #serviceEngagementForm').submit(function(e) {
             e.preventDefault();
             var targetInput = '';
             if (e.target.id == 'clientSupportForm')
                 targetInput = $(".textInputModal1")
             if (e.target.id == 'letstalk')
                 targetInput = $(".textInputModal")
+            if (e.target.id == 'serviceEngagementForm')
+                targetInput = $(".textInputModal2")
+
             if (targetInput.val() != iNumber) {
                 refreshChaptcha();
                 $('.captcha-error').removeClass('d-none');
             } else {
                 $('.captcha-error').addClass('d-none');
+
                 if (e.target.id == 'clientSupportForm') {
                     var formdata = new FormData($('#clientSupportForm')[0]);
                     formdata.append('action', 'client-support');
@@ -265,6 +388,15 @@
                 if (e.target.id == 'letstalk') {
                     var formdata = new FormData($('#letstalk')[0]);
                     formdata.append('action', 'lets-talk');
+                    let checkValue = document.querySelector('#flexCheckDefault').checked ? 1 : 0;
+                    formdata.append('subscribe', checkValue);
+
+                }
+                if (e.target.id == 'serviceEngagementForm') {
+                    var formdata = new FormData($('#serviceEngagementForm')[0]);
+                    formdata.append('action', 'lets-talk');
+                    let checkValue = document.querySelector('#flexCheckDefault2').checked ? 1 : 0;
+                    formdata.append('subscribe', checkValue);
 
                 }
                 $.ajaxSetup({
@@ -288,11 +420,16 @@
                             if (e.target.id == 'clientSupportForm') {
                                 $('.client-support-success').removeClass('d-none');
                             }
+                            if (e.target.id == 'serviceEngagementForm') {
+                                $('.engagement-success').removeClass('d-none');
+                            }
                             setTimeout(() => {
-                                if (e.target.id == 'letstalk') {
+                                if (e.target.id == 'letstalk' || e.target.id ==
+                                    'serviceEngagementForm') {
                                     $('.close-btn').click();
                                     $('.close-alert').click();
                                     $('#letstalk').trigger('reset');
+                                    $('#serviceEngagementForm').trigger('reset');
                                 }
                                 if (e.target.id == 'clientSupportForm') {
                                     $('.close-btn1').click();

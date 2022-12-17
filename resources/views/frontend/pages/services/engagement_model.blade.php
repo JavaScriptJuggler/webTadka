@@ -21,7 +21,9 @@
                                     {!! $item->features !!}
                                 </p>
                                 <div style="height:30px"></div>
-                                <button class="btn btn-dark p-2 m-2" style="position: absolute;right:0;bottom:0;left:0">Book
+                                <button class="btn btn-dark p-2 m-2" style="position: absolute;right:0;bottom:0;left:0"
+                                    data-toggle="modal" data-target="#serviceEngagementModal"
+                                    onclick="$('#serviceEngagementForm').trigger('reset');refreshChaptcha();$('#serviceEngagementForm #subservice_name').val('{{ $item->name }}')">Book
                                     Service</button>
                             </div>
                         </div>
