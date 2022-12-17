@@ -55,6 +55,7 @@
         } else {
             $('.captcha-error').addClass('d-none');
             let formdata = new FormData($('#contactform')[0]);
+            formdata.append('action','lets-talk');
             $('.loading').removeClass('d-none');
             $.ajaxSetup({
                 headers: {
@@ -64,7 +65,7 @@
             })
             $.ajax({
                 type: "POST",
-                url: "/save-lets-talk",
+                url: "/save-lets-talk-and-client-support",
                 data: formdata,
                 processData: false,
                 contentType: false,

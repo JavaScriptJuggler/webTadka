@@ -135,7 +135,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="close-btn" data-dismiss="modal">Close</button>
-                    <button type="submit" form="letstalk" >Save changes</button>
+                    <button type="submit" form="letstalk">Save changes</button>
                 </div>
             </div>
         </div>
@@ -197,11 +197,11 @@
                                 <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="1"
-                                            id="flexCheckDefault" name="subscribe">
+                                            id="flexCheckDefault1" name="subscribe">
                                         <input class="form-check-input" required type="hidden" value="0"
                                             name="subscribe">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                           I'm Accepting <a href="#">Terms & Conditions</a>
+                                        <label class="form-check-label" for="flexCheckDefault1">
+                                            I'm Accepting <a href="#">Terms & Conditions</a>
                                         </label>
                                     </div>
                                 </div>
@@ -212,7 +212,7 @@
                                     <button type="button" onclick="refreshChaptcha()" class="btn btn-transparent"
                                         style="margin-right:5px"><i
                                             class="fa-solid fa-arrow-rotate-right"></i></button>
-                                    <input type="text" class="form-control textInputModal"
+                                    <input type="text" class="form-control textInputModal1"
                                         placeholder="Enter The Captcha Here" style="margin-right:5px" />
                                 </div>
                                 <div class="col-md-12">
@@ -222,9 +222,9 @@
                             </div>
                             <div class="col-md-12 mt-3">
                                 <div class="form-group">
-                                    <div class="alert lets-talk-success alert-success d-none alert-dismissible fade show"
+                                    <div class="alert client-support-success alert-success d-none alert-dismissible fade show"
                                         role="alert">
-                                        <button type="button" class="close d-none close-alert" data-dismiss="alert"
+                                        <button type="button" class="close d-none close-alert1" data-dismiss="alert"
                                             aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -236,8 +236,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="close-btn" data-dismiss="modal">Close</button>
-                    <button type="submit" form="letstalk">Save changes</button>
+                    <button type="button" class="close-btn1" data-dismiss="modal">Close</button>
+                    <button type="submit" form="clientSupportForm">Save changes</button>
                 </div>
             </div>
         </div>
@@ -245,14 +245,28 @@
     </div>
 
     <script>
-        $('#letstalk').submit(function(e) {
+        $('#letstalk, #clientSupportForm').submit(function(e) {
             e.preventDefault();
-            if ($(".textInputModal").val() != iNumber) {
+            var targetInput = '';
+            if (e.target.id == 'clientSupportForm')
+                targetInput = $(".textInputModal1")
+            if (e.target.id == 'letstalk')
+                targetInput = $(".textInputModal")
+            if (targetInput.val() != iNumber) {
                 refreshChaptcha();
                 $('.captcha-error').removeClass('d-none');
             } else {
                 $('.captcha-error').addClass('d-none');
-                let formdata = new FormData($('#letstalk')[0]);
+                if (e.target.id == 'clientSupportForm') {
+                    var formdata = new FormData($('#clientSupportForm')[0]);
+                    formdata.append('action', 'client-support');
+
+                }
+                if (e.target.id == 'letstalk') {
+                    var formdata = new FormData($('#letstalk')[0]);
+                    formdata.append('action', 'lets-talk');
+
+                }
                 $.ajaxSetup({
                     headers: {
                         'accept': 'application/json',
@@ -261,18 +275,31 @@
                 })
                 $.ajax({
                     type: "POST",
-                    url: "/save-lets-talk",
+                    url: "/save-lets-talk-and-client-support",
                     data: formdata,
                     processData: false,
                     contentType: false,
                     success: function(response) {
                         if (response == 1) {
                             $('.captcha-error').addClass('d-none');
-                            $('.lets-talk-success').removeClass('d-none');
+                            if (e.target.id == 'letstalk') {
+                                $('.lets-talk-success').removeClass('d-none');
+                            }
+                            if (e.target.id == 'clientSupportForm') {
+                                $('.client-support-success').removeClass('d-none');
+                            }
                             setTimeout(() => {
-                                $('.close-btn').click();
-                                $('.close-alert').click();
-                                $('#letstalk').trigger('reset');
+                                if (e.target.id == 'letstalk') {
+                                    $('.close-btn').click();
+                                    $('.close-alert').click();
+                                    $('#letstalk').trigger('reset');
+                                }
+                                if (e.target.id == 'clientSupportForm') {
+                                    $('.close-btn1').click();
+                                    $('.close-alert1').click();
+                                    $('#clientSupportForm').trigger('reset');
+                                }
+
                                 refreshChaptcha();
                             }, 2000);
                         }

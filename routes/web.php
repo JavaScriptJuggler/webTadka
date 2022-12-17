@@ -76,7 +76,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/faq-save', [faqController::class, 'saveFaq'])->name('faq-save');
     Route::post('/faq-delete', [faqController::class, 'deleteFaq'])->name('faq-delete');
     Route::get('/view-mails', [viewMailcontroller::class, 'index'])->name('view-mails');
-    Route::post('/save-lets-talk', [LetsTalkController::class, 'index'])->name('save-lets-talk');
+    Route::post('/save-lets-talk-and-client-support', [LetsTalkController::class, 'index'])->name('save-lets-talk-and-client-support');
     Route::get('/show-portfolio-page', [portfolioController::class, 'index'])->name('show-portfolio-page');
     Route::post('/save-portfolio', [portfolioController::class, 'savePortfolio'])->name('save-portfolio');
     Route::post('/save-portfolio-category', [portfolioController::class, 'savePortfolioCategory'])->name('save-portfolio-category');
