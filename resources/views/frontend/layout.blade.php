@@ -93,7 +93,7 @@
                             <div class="col-md-13 mb-3">
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" required type="checkbox" id="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             I agree to receive communications from WebTadka.com
                                         </label>
@@ -319,7 +319,7 @@
                             <div class="col-md-13 mb-3">
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input required class="form-check-input" type="checkbox"
+                                        <input class="form-check-input" type="checkbox"
                                             id="flexCheckDefault2">
                                         <label class="form-check-label" for="flexCheckDefault2">
                                             I agree to receive communications from WebTadka.com
