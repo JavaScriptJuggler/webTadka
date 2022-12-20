@@ -93,10 +93,9 @@
                             <div class="col-md-13 mb-3">
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                                        <input class="form-check-input" required type="checkbox" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            Yes, I’d Like to Receive Updates and Tips on Digital Marketing for My
-                                            Business
+                                            I agree to receive communications from WebTadka.com
                                         </label>
                                     </div>
                                 </div>
@@ -123,7 +122,9 @@
                                             aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        Thank You for response !. We will contact to you as soon as possible .
+                                        <h4 class="alert-heading">Thanks!</h4>
+                                        <p>You are very important to us, all information received will always remain
+                                            confidential. We will contact you as soon as we review your message.</p>
                                     </div>
                                 </div>
                             </div>
@@ -193,10 +194,8 @@
                             <div class="col-md-13 mb-3">
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="1"
+                                        <input required class="form-check-input" type="checkbox" value="1"
                                             id="flexCheckDefault1" name="subscribe">
-                                        <input class="form-check-input" required type="hidden" value="0"
-                                            name="subscribe">
                                         <label class="form-check-label" for="flexCheckDefault1">
                                             I'm Accepting <a href="#">Terms & Conditions</a>
                                         </label>
@@ -221,11 +220,13 @@
                                 <div class="form-group">
                                     <div class="alert client-support-success alert-success d-none alert-dismissible fade show"
                                         role="alert">
-                                        <button type="button" class="close d-none close-alert1" data-dismiss="alert"
+                                        <button type="button" class="close d-none close-alert" data-dismiss="alert"
                                             aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        Thank You for response !. We will contact to you as soon as possible .
+                                        <h4 class="alert-heading">Thanks!</h4>
+                                        <p>You are very important to us, all information received will always remain
+                                            confidential. We will contact you as soon as we review your message.</p>
                                     </div>
                                 </div>
                             </div>
@@ -318,10 +319,10 @@
                             <div class="col-md-13 mb-3">
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="flexCheckDefault2">
+                                        <input required class="form-check-input" type="checkbox"
+                                            id="flexCheckDefault2">
                                         <label class="form-check-label" for="flexCheckDefault2">
-                                            Yes, I’d Like to Receive Updates and Tips on Digital Marketing for My
-                                            Business
+                                            I agree to receive communications from WebTadka.com
                                         </label>
                                     </div>
                                 </div>
@@ -348,7 +349,9 @@
                                             aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        Thank You for response !. We will contact to you as soon as possible .
+                                        <h4 class="alert-heading">Thanks!</h4>
+                                        <p>You are very important to us, all information received will always remain
+                                            confidential. We will contact you as soon as we review your message.</p>
                                     </div>
                                 </div>
                             </div>
@@ -366,6 +369,7 @@
     <script>
         $('#letstalk, #clientSupportForm, #serviceEngagementForm').submit(function(e) {
             e.preventDefault();
+            holdOn();
             var targetInput = '';
             if (e.target.id == 'clientSupportForm')
                 targetInput = $(".textInputModal1")
@@ -413,6 +417,7 @@
                     contentType: false,
                     success: function(response) {
                         if (response == 1) {
+                            closeHoldOn();
                             $('.captcha-error').addClass('d-none');
                             if (e.target.id == 'letstalk') {
                                 $('.lets-talk-success').removeClass('d-none');
@@ -429,6 +434,7 @@
                                     $('.close-btn').click();
                                     $('.close-alert').click();
                                     $('#letstalk').trigger('reset');
+                                    document.querySelector('.modal-dialog').scrollBy(0, -1);
                                     $('#serviceEngagementForm').trigger('reset');
                                 }
                                 if (e.target.id == 'clientSupportForm') {
@@ -438,7 +444,7 @@
                                 }
 
                                 refreshChaptcha();
-                            }, 2000);
+                            }, 3000);
                         }
                     }
                 });

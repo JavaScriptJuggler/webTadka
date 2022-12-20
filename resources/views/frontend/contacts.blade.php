@@ -23,7 +23,7 @@
                         <i class="bi bi-geo-alt flex-shrink-0"></i>
                         <div>
                             <h4>Location:</h4>
-                            <p>A108 Adam Street, New York, NY 535022</p>
+                            <p>A2 – 502, Vibhuti Building, Anand Nagar, G.B. Road, Thane</p>
                         </div>
                     </div><!-- End Info Item -->
 
@@ -31,7 +31,7 @@
                         <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
                             <h4>Email:</h4>
-                            <p>info@example.com</p>
+                            <a href="mailto:team@webtadka.com">team@webtadka.com</a>
                         </div>
                     </div><!-- End Info Item -->
 
@@ -104,9 +104,9 @@
                         </div>
                     </div>
                     <div class="my-3">
-                        <div class="loading d-none">Loading</div>
+                        <div class="loading d-none">You are very important to us, all information received will always remain confidential.</div>
                         <div class="error-message d-none"></div>
-                        <div class="sent-message d-none">Your message has been sent. Thank you!</div>
+                        <div class="sent-message d-none">We appreciate that you’ve taken the time to write us. We’ll get back to you very soon. Please come back and see us often.</div>
                     </div>
                     <div class="text-center"><button type="submit">Send Message</button></div>
                 </form>

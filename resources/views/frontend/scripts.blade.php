@@ -17,7 +17,19 @@
 
 <!-- Template Main JS File -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
+<script src="{{ asset('assets/js/HoldOn.min.js') }}"></script>
 <script>
+    function holdOn() {
+        HoldOn.open({
+            theme: "sk-circle",
+            message: 'You are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message. Thanks for your patience ',
+        });
+    }
+
+    function closeHoldOn() {
+        HoldOn.close();
+    }
+
     var iNumber = '';
     $(document).ready(function() {
         refreshChaptcha();
