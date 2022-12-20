@@ -10,16 +10,17 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class EnquiryMail extends Mailable
+class SupportMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $body, $subject;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($body_string, $subject)
+    public function __construct($body_string,$subject)
     {
         $this->body = $body_string;
         $this->subject = $subject;
@@ -33,7 +34,7 @@ class EnquiryMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('team@webtadka.com', 'Team Webtadka'),
+            from: new Address('support@webtadka.com', 'Team Webtadka'),
             subject: $this->subject,
         );
     }

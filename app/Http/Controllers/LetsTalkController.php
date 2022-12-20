@@ -25,14 +25,14 @@ class LetsTalkController extends Controller
             $message = '
                 Message From <strong>' . $request->name . '</strong>, <br>
                 I want to talk to you about my project.<br> My Business name is <strong>' . $request->businessname . '</strong><br>My Requested Service is <strong>' . $service . '</strong><br>My addredd is <strong>' . $request->address . ',' . $request->state . ',' . $request->country . '</strong><br> Email: <strong>' . $request->email . '</strong><br>Phone: <strong>' . $request->phone . '</strong>.<br> My Project Details is as follows :<br>' . $request->projectdetails;
-            sendMail('team@webtadka.com', "New Client want's to talk about project", $message, $request->name);
+            sendEnquiryMail('team@webtadka.com', "New Client want's to talk about project", $message, $request->name);
             return $is_success;
         }
         if ($request->has('action') && $request->action == 'client-support') {
             $message = '
             Message From <strong>' . $request->name . '</strong>, <br>
             I have a issue with my project. Can you please help me ?.<br> My Prjecct name is <strong>' . $request->project_name . '<br> Email: <strong>' . $request->email . '</strong><br>Phone: <strong>' . $request->phone . '</strong>.<br> My Service Details is as follows :<br>' . $request->serviceDetails;
-            sendMail('team@webtadka.com', "Need Client Support", $message, $request->name);
+            sendSupportMail('support@webtadka.com', "Need Client Support", $message, $request->name);
             return true;
         }
     }
