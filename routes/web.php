@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\aboutUsController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\blogController;
 use App\Http\Controllers\brandController;
 use App\Http\Controllers\CtaController;
 use App\Http\Controllers\faqController;
@@ -41,13 +42,14 @@ Route::get('/service-details/{servicename}', [ServiceController::class, 'index']
 /* prevent back afetr logout */
 Route::group(['middleware' => 'prevent-back-history'], function () {
     Auth::routes(['register' => false]);
+
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/cms', function () {
         view()->share([
             'pageTitle' => 'Content Management System',
         ]);
         return view('admin_dashboard.cms');
-    })->name('cms')->middleware(['auth']);;
+    })->name('cms')->middleware(['auth']);
     Route::get('/change-hero-image', [HeroController::class, 'goToHeroPage'])->name('change-hero-image');
     Route::post('/upload-hero-image', [HeroController::class, 'uploadHeroImage'])->name('upload-hero-image');
     Route::get('/hero-content-page', [HeroController::class, 'showHeroContentPage'])->name('hero-content-page');
@@ -84,6 +86,11 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/sub-services/{servicedetails}', [seoAndDigitalMarketingController::class, 'subServices'])->name('sub-services');
     Route::post('/add-edit-subservices', [seoAndDigitalMarketingController::class, 'addEditSubServices'])->name('add-edit-subservices');
     Route::post('/delete-subservices', [seoAndDigitalMarketingController::class, 'deleteSubServices'])->name('delete-subservices');
+    Route::get('/blog-list', [blogController::class, 'blogList'])->name('blog-list');
+    Route::get('/create-blog', [blogController::class, 'createBlog'])->name('create-blog');
+    Route::post('/upload-blog-image', [blogController::class, 'uploadBlogImage'])->name('upload-blog-image');
+    Route::post('/add-blog-category', [blogController::class, 'addBlogCategory'])->name('add-blog-category');
+    Route::post('/save-blog', [blogController::class, 'saveBlog'])->name('save-blog');
 });
 
 Route::get('/get-mails', [testController::class, 'index']);
