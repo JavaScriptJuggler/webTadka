@@ -18,7 +18,7 @@ class blogs extends Model
         'meta_description',
         'image',
     ];
-    public function blog_category()
+    public function blogCategory()
     {
         return $this->hasOne(blog_categories::class, 'id', 'blog_category');
     }

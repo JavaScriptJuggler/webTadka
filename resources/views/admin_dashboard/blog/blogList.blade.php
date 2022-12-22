@@ -20,20 +20,26 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Blog Name</th>
+                        <th scope="col">Blog Author</th>
                         <th scope="col">Blog Category</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>
-                            <button class="btn btn-gradient-primary">Edit</button>
-                            <button class="btn btn-gradient-danger">Delete</button>
-                        </td>
-                    </tr>
+                    @if (count($blogs) > 0)
+                        @foreach ($blogs as $key => $item)
+                            <tr>
+                                <th scope="row">{{$key+1}}</th>
+                                <td>{{$item->heading}}</td>
+                                <td>{{$item->author}}</td>
+                                <td>{{$item->blogCategory->category_name}}</td>
+                                <td>
+                                    <button class="btn btn-gradient-primary">Edit</button>
+                                    <button class="btn btn-gradient-danger">Delete</button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

@@ -11,7 +11,11 @@ class blogController extends Controller
 {
     public function blogList()
     {
-        view()->share(['pageTitle' => 'Blog List']);
+        $blogs = blogs::with('blogCategory')->get();
+        view()->share([
+            'pageTitle' => 'Blog List',
+            'blogs' => $blogs,
+        ]);
         return view('admin_dashboard.blog.blogList');
     }
 
