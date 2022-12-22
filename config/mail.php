@@ -46,13 +46,13 @@ return [
         ],
         'smtp2' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => env('SUPPORT_MAIL_HOST', 'smtp.mailgun.org'),
+            'port' => env('SUPPORT_MAIL_PORT', 587),
+            'encryption' => env('SUPPORT_MAIL_ENCRYPTION', 'tls'),
+            'username' => env('SUPPORT_MAIL_USERNAME'),
+            'password' => env('SUPPORT_MAIL_PASSWORD'),
             'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN'),
+            'local_domain' => env('SUPPORT_MAIL_EHLO_DOMAIN'),
         ],
 
         'ses' => [
