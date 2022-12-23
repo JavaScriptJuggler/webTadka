@@ -29,13 +29,14 @@
                     @if (count($blogs) > 0)
                         @foreach ($blogs as $key => $item)
                             <tr>
-                                <th scope="row">{{$key+1}}</th>
-                                <td>{{$item->heading}}</td>
-                                <td>{{$item->author}}</td>
-                                <td>{{$item->blogCategory->category_name}}</td>
+                                <th scope="row">{{ $key + 1 }}</th>
+                                <td>{{ $item->heading }}</td>
+                                <td>{{ $item->author }}</td>
+                                <td>{{ $item->blogCategory->category_name }}</td>
                                 <td>
                                     <button class="btn btn-gradient-primary">Edit</button>
-                                    <button class="btn btn-gradient-danger">Delete</button>
+                                    <button class="btn btn-gradient-danger"
+                                        onclick="deleteBlog({{ $item->id }})">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -44,4 +45,34 @@
             </table>
         </div>
     </div>
+    <script src="{{ asset('assets/js/toastr.js') }}"></script>
+    <script>
+        function deleteBlog(blogid) {
+            holdOn();
+            $.ajaxSetup({
+                headers: {
+                    'accept': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            $.ajax({
+                type: "POST",
+                url: "{{ route('delete-blog') }}",
+                data: {
+                    id: blogid
+                },
+                success: function(response) {
+                    if (response.status) {
+                        toastr.success(response.message);
+                        setTimeout(() => {
+                            closeHoldOn();
+                            location.reload();
+                        }, 3000);
+                    } else {
+                        toastr.error(response.message);
+                    }
+                }
+            });
+        }
+    </script>
 @endsection

@@ -91,6 +91,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/upload-blog-image', [blogController::class, 'uploadBlogImage'])->name('upload-blog-image');
     Route::post('/add-blog-category', [blogController::class, 'addBlogCategory'])->name('add-blog-category');
     Route::post('/save-blog', [blogController::class, 'saveBlog'])->name('save-blog');
+    Route::post('/delete-blog', [blogController::class, 'deleteBlog'])->name('delete-blog');
 });
 
 Route::get('/get-mails', [testController::class, 'index']);

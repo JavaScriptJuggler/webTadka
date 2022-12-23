@@ -120,4 +120,29 @@ class blogController extends Controller
         $finalImageUrl = '/document_bucket/' . $input['imagename'];
         return $finalImageUrl;
     }
+
+    public function deleteBlog(Request $request)
+    {
+        $search = blogs::find($request->id);
+        if (!empty($search)) {
+            if ($search->image != '' && $search->image != null)
+                unlink(public_path($search->image));
+            $is_success = $search->delete();
+            if ($is_success)
+                return response()->json([
+                    'status' => true,
+                    'message' => "Successfully deleted the blog."
+                ]);
+            else
+                return response()->json([
+                    'status' => false,
+                    'message' => "Something Went Wrong, Please Contact developer."
+                ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => "Can't delete this blog. This blog is invalid"
+            ]);
+        }
+    }
 }
