@@ -34,7 +34,8 @@
                                 <td>{{ $item->author }}</td>
                                 <td>{{ $item->blogCategory->category_name }}</td>
                                 <td>
-                                    <button class="btn btn-gradient-primary">Edit</button>
+                                    <a href="{{ route('create-blog') }}?data={{ Crypt::encryptString($item) }}"
+                                        class="btn btn-gradient-primary">Edit</a>
                                     <button class="btn btn-gradient-danger"
                                         onclick="deleteBlog({{ $item->id }})">Delete</button>
                                 </td>
@@ -48,31 +49,43 @@
     <script src="{{ asset('assets/js/toastr.js') }}"></script>
     <script>
         function deleteBlog(blogid) {
-            holdOn();
-            $.ajaxSetup({
-                headers: {
-                    'accept': 'application/json',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            })
-            $.ajax({
-                type: "POST",
-                url: "{{ route('delete-blog') }}",
-                data: {
-                    id: blogid
-                },
-                success: function(response) {
-                    if (response.status) {
-                        toastr.success(response.message);
-                        setTimeout(() => {
-                            closeHoldOn();
-                            location.reload();
-                        }, 3000);
-                    } else {
-                        toastr.error(response.message);
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        holdOn();
+                        $.ajaxSetup({
+                            headers: {
+                                'accept': 'application/json',
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        })
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ route('delete-blog') }}",
+                            data: {
+                                id: blogid
+                            },
+                            success: function(response) {
+                                if (response.status) {
+                                    toastr.success(response.message);
+                                    setTimeout(() => {
+                                        closeHoldOn();
+                                        location.reload();
+                                    }, 3000);
+                                } else {
+                                    toastr.error(response.message);
+                                }
+                            }
+                        });
+
                     }
-                }
-            });
+                });
         }
     </script>
 @endsection

@@ -21,6 +21,8 @@
 </script>
 <script src="//cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
 <script src="{{ asset('assets/js/HoldOn.min.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
     function holdOn() {
         HoldOn.open({
