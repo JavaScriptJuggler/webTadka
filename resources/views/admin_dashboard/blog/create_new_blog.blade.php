@@ -19,7 +19,8 @@
         <div class="col-md-8">
             <div class="form-group">
                 <label for="" class="form-label">Blog Title</label>
-                <input type="text" name="blogname" required form="saveBlogForm" placeholder="Add Blog Title" class="form-control">
+                <input type="text" name="blogname" required form="saveBlogForm" placeholder="Add Blog Title"
+                    class="form-control">
             </div>
             <div class="form-group">
                 <label for="" class="form-label">Blog Description</label>
@@ -27,11 +28,13 @@
             </div>
             <div class="form-group">
                 <label for="" class="form-label">Meta Title</label>
-                <input type="text" name="metatitle" required form="saveBlogForm" placeholder="Add Meta Title" class="form-control">
+                <input type="text" name="metatitle" required form="saveBlogForm" placeholder="Add Meta Title"
+                    class="form-control">
             </div>
             <div class="form-group">
                 <label for="" class="form-label">Meta Description</label>
-                <input type="text"  name="metadescription" required form="saveBlogForm" placeholder="Add Meta Description" class="form-control">
+                <input type="text" name="metadescription" required form="saveBlogForm" placeholder="Add Meta Description"
+                    class="form-control">
             </div>
             <div class="form-group">
                 <button type="submit" form="saveBlogForm" class="btn btn-gradient-primary">Create Blog</button>
@@ -52,8 +55,9 @@
                         @if (count($blogCategory) > 0)
                             @foreach ($blogCategory as $key => $item)
                                 <li class="list-group-item">
-                                    <input required form="saveBlogForm" type="radio" name="categorySelctor" value="{{ $item->id }}"
-                                        class="form-check-input" id="exampleCheck{{ $key }}">
+                                    <input required form="saveBlogForm" type="radio" name="categorySelctor"
+                                        value="{{ $item->id }}" class="form-check-input"
+                                        id="exampleCheck{{ $key }}">
                                     <label class="form-check-label"
                                         for="exampleCheck{{ $key }}">{{ $item->category_name }}</label>
                                 </li>
@@ -75,8 +79,8 @@
                             class="img-fluid rounded shadow-sm mx-auto d-block w-75">
                     </div>
                     <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                        <input id="upload" form="saveBlogForm" type="file" onchange="readURL(this);"
-                            class="form-control border-0">
+                        <input required name="thumbnail" id="upload" form="saveBlogForm" type="file"
+                            onchange="readURL(this);" class="form-control border-0">
                         <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
                         <div class="input-group-append">
                             <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i

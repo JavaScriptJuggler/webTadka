@@ -6,6 +6,7 @@ use App\Models\blog_categories;
 use App\Models\blogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class blogController extends Controller
 {
@@ -93,7 +94,7 @@ class blogController extends Controller
                 'blog_category' => $request->category,
                 'meta_title' => $request->metatitle,
                 'meta_description' => $request->metadescription,
-                'image' => '',
+                'image' => $this->imageLinkGenerator($request),
             ])->save();
             if ($isSuccess) {
                 return response()->json([
@@ -107,5 +108,16 @@ class blogController extends Controller
                 ]);
             }
         }
+    }
+
+    public function imageLinkGenerator($request)
+    {
+        $image = $request->file('thumbnail');
+        $extention = explode('.', $image->getClientOriginalName());
+        $input['imagename'] = time() . '_' . Str::random(5) . '_blog_thumbnail.' . $extention[1];
+        $destinationPath = public_path('/document_bucket');
+        $image->move($destinationPath, $input['imagename']);
+        $finalImageUrl = '/document_bucket/' . $input['imagename'];
+        return $finalImageUrl;
     }
 }
