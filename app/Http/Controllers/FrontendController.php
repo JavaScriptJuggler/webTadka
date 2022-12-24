@@ -76,6 +76,11 @@ class FrontendController extends Controller
     /* blog details */
     public function blog_details($blogid)
     {
+        $findBlog = blogs::find($blogid);
+        view()->share([
+            'blogData' => $findBlog,
+            'blogs' => blogs::with('blogCategory')->get(),
+        ]);
         return view('frontend.pages.blog_details');
     }
 
