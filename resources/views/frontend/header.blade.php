@@ -20,7 +20,8 @@
                         href="{{ !Request::is('/') ? route('landing') . '#portfolio' : '#portfolio' }}">Portfolio</a>
                 </li>
                 <li><a class="nav-link scrollto" href="{{ route('blogs') }}">Blogs</a></li>
-                <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+                <li><a class="nav-link scrollto"
+                        href="{{ !Request::is('/') ? route('landing') . '#about' : '#about' }}">About Us</a></li>
                 <li><a class="nav-link scrollto"
                         href="{{ !Request::is('/') ? route('landing') . '#contact' : '#contact' }}">Contact Us</a>
                 </li>

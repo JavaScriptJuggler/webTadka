@@ -31,12 +31,17 @@
                         <div class="sidebar-item categories">
                             <h3 class="sidebar-title">Categories</h3>
                             <ul class="mt-3">
-                                <li><a href="#">General <span>(25)</span></a></li>
-                                <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                                <li><a href="#">Travel <span>(5)</span></a></li>
-                                <li><a href="#">Design <span>(22)</span></a></li>
-                                <li><a href="#">Creative <span>(8)</span></a></li>
-                                <li><a href="#">Educaion <span>(14)</span></a></li>
+                                @if (count($blogcategories) > 0)
+                                    @foreach ($blogcategories as $key => $item)
+                                        <li>
+                                            <a href="#">
+                                                <span>{{ $item->category_name }}
+                                                    ({{ \App\Models\blogs::where('blog_category', $item->id)->count() }})
+                                                </span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div><!-- End sidebar categories-->
 
@@ -56,7 +61,8 @@
                                                     @php
                                                         $dateData = getDate(strtotime($item->created_at));
                                                     @endphp
-                                                    <time datetime="2020-01-01">{{ $dateData['month'] }} {{ $dateData['mday'] }}, {{ $dateData['year'] }}</time>
+                                                    <time datetime="2020-01-01">{{ $dateData['month'] }}
+                                                        {{ $dateData['mday'] }}, {{ $dateData['year'] }}</time>
                                                 </div>
                                             </div>
                                         @endif

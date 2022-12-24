@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\aboutUsModel;
+use App\Models\blog_categories;
 use App\Models\blogs;
 use App\Models\brandModel;
 use App\Models\faqModel;
@@ -72,6 +73,7 @@ class FrontendController extends Controller
     {
         view()->share([
             'blogs' => blogs::with('blogCategory')->paginate(6),
+            'blogcategories' => blog_categories::all(),
         ]);
         return view('frontend.pages.blog');
     }
@@ -82,6 +84,7 @@ class FrontendController extends Controller
         $findBlog = blogs::find($blogid);
         view()->share([
             'blogData' => $findBlog,
+            'blogcategories' => blog_categories::all(),
             'blogs' => blogs::with('blogCategory')->get(),
         ]);
         return view('frontend.pages.blog_details');
