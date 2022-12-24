@@ -133,7 +133,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="close-btn" data-dismiss="modal">Close</button>
-                    <button type="submit" form="letstalk">Save changes</button>
+                    <button type="submit" form="letstalk">Submit</button>
                 </div>
             </div>
         </div>
@@ -235,7 +235,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="close-btn1" data-dismiss="modal">Close</button>
-                    <button type="submit" form="clientSupportForm">Save changes</button>
+                    <button type="submit" form="clientSupportForm">Submit</button>
                 </div>
             </div>
         </div>
@@ -319,8 +319,7 @@
                             <div class="col-md-13 mb-3">
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            id="flexCheckDefault2">
+                                        <input class="form-check-input" type="checkbox" id="flexCheckDefault2">
                                         <label class="form-check-label" for="flexCheckDefault2">
                                             I agree to receive communications from WebTadka.com
                                         </label>
@@ -360,7 +359,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="close-btn" data-dismiss="modal">Close</button>
-                    <button type="submit" form="serviceEngagementForm">Save changes</button>
+                    <button type="submit" form="serviceEngagementForm">Submit</button>
                 </div>
             </div>
         </div>
