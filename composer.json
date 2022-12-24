@@ -16,6 +16,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
+        "spatie/laravel-sitemap": "^6.2",
         "webklex/laravel-imap": "^4.0"
     },
     "require-dev": {
