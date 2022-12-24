@@ -40,14 +40,20 @@
                                 </li>
                                 @if (count($blogcategories) > 0)
                                     @foreach ($blogcategories as $key => $item)
-                                        <li>
-                                            <a href="{{ route('blogs') }}?category={{ Crypt::encryptString($item->id) }}">
-                                                <span>{{ $item->category_name }}
-                                                    ({{ \App\Models\blogs::where('blog_category', $item->id)->count() }})
-                                                </span>
-                                            </a>
-                                        </li>
-                                    @endforeach
+                                        @if (\App\Models\blogs::where('blog_category', $item->id)->count() == 0)
+                                            @continue
+                                        @else
+                                            <li>
+                                                <a
+                                                    href="{{ route('blogs') }}?category={{ Crypt::encryptString($item->id) }}">
+                                                    <span>{{ $item->category_name }}
+                                                        ({{ \App\Models\blogs::where('blog_category', $item->id)->count() }})
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endif
+                                @endforeach
                                 @endif
                             </ul>
                         </div><!-- End sidebar categories-->
