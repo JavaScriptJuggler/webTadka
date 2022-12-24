@@ -140,7 +140,8 @@ class blogController extends Controller
             if (!empty($getBlogData)) {
                 $image = '';
                 if ($request->thumbnail != '') {
-                    unlink(public_path($getBlogData->image));
+                    if ($getBlogData->image != '')
+                        unlink(public_path($getBlogData->image));
                     $image = $this->imageLinkGenerator($request);
                 } else
                     $image = $getBlogData->image;
