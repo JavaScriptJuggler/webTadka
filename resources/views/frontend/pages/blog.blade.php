@@ -34,14 +34,12 @@
                         </div>
 
                         <div class="content">
-                            <p>
-                                Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi
-                                praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                            <p>{{ str_replace('&#39', "'", preg_replace("/\n\s+/", "\n", rtrim(html_entity_decode(strip_tags(strlen($item->description) > 200 ? substr($item->description, 0, 200) . '...' : $item->description))))) }}
                             </p>
                         </div>
 
                         <div class="read-more mt-auto align-self-end">
-                            <a href="{{ route('blog-details', 777) }}">Read More</a>
+                            <a href="{{ route('blog-details', ['blogid' => $item->id]) }}">Read More</a>
                         </div>
 
                     </article>
