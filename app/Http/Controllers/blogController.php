@@ -11,6 +11,11 @@ use Illuminate\Support\Str;
 
 class blogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function blogList()
     {
         $blogs = blogs::with('blogCategory')->get();
