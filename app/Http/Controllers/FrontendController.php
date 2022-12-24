@@ -70,6 +70,9 @@ class FrontendController extends Controller
     /* blogs */
     public function blogs()
     {
+        view()->share([
+            'blogs' => blogs::with('blogCategory')->paginate(6),
+        ]);
         return view('frontend.pages.blog');
     }
 

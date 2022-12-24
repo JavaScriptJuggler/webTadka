@@ -65,7 +65,7 @@
                                                     @php
                                                         $dateData = getDate(strtotime($item->created_at));
                                                     @endphp
-                                                    <time datetime="2020-01-01">{{ $date['month'] }} {{ $date['mday'] }}, {{ $date['year'] }}</time>
+                                                    <time datetime="2020-01-01">{{ $dateData['month'] }} {{ $dateData['mday'] }}, {{ $dateData['year'] }}</time>
                                                 </div>
                                             </div>
                                         @endif
