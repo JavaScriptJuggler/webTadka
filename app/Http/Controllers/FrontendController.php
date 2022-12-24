@@ -71,14 +71,17 @@ class FrontendController extends Controller
     /* blogs */
     public function blogs()
     {
+        $category = '';
         if (isset($_GET['category'])) {
-            $blogs = blogs::with('blogCategory')->where('blog_category', Crypt::decryptString($_GET['category']))->paginate(6);
+            $blogs = blogs::with('blogCategory')->where('blog_category', $_GET['category'])->paginate(6);
             $blogs->appends('category', $_GET['category']);
+            $category = $_GET['category'];
         } else
             $blogs = blogs::with('blogCategory')->paginate(6);
         view()->share([
             'blogs' => $blogs,
             'blogcategories' => blog_categories::all(),
+            'category' => $category,
         ]);
         return view('frontend.pages.blog');
     }
@@ -91,6 +94,7 @@ class FrontendController extends Controller
             'blogData' => $findBlog,
             'blogcategories' => blog_categories::all(),
             'blogs' => blogs::with('blogCategory')->get(),
+            'category' => '',
         ]);
         return view('frontend.pages.blog_details');
     }

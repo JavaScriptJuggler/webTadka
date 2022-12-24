@@ -1,9 +1,9 @@
-@extends('frontend.pages.blogs.layout', ['title' => 'Blogs', 'blogs' => $blogs])
+@extends('frontend.pages.blogs.layout', ['title' => 'Recent Blogs', 'blogs' => $blogs ])
 @section('blog_page_section')
     <div class="row gy-4 posts-list">
         @if (count($blogs) > 0)
             @foreach ($blogs as $item)
-                <div class="col-md-6">
+                <div class="col-md-4">
                     @php
                         $date = getDate(strtotime($item->created_at));
                     @endphp
