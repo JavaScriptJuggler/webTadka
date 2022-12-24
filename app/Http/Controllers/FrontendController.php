@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\aboutUsModel;
+use App\Models\blogs;
 use App\Models\brandModel;
 use App\Models\faqModel;
 use App\Models\HeaderAndDescriptions;
@@ -55,6 +56,7 @@ class FrontendController extends Controller
             'tools' => toolsTechnologiesModel::all(),
             'brands' => brandModel::all(),
             'services' => Services::all(),
+            'blogs' => blogs::with('blogCategory')->orderBy('id', 'DESC')->get(),
         ]);
         return view('frontend.main');
     }

@@ -83,7 +83,9 @@
         <!-- End F.A.Q Section -->
 
         <!-- ======= Recent Blog Posts Section ======= -->
-        @include('frontend.recent_blogs')
+        @include('frontend.recent_blogs', [
+            'blogs' => $blogs,
+        ])
         <!-- End Recent Blog Posts Section -->
 
         <!-- ======= Contact Section ======= -->
