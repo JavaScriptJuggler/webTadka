@@ -4,6 +4,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\testController;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sitemap\SitemapGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,7 @@ Route::get('/blogs', [FrontendController::class, 'blogs'])->name('blogs');
 Route::get('/portfolio-details/{portfolioid}', [FrontendController::class, 'gotoPortfolioDetails'])->name('portfolio-details');
 Route::get('/blog-details/{blogid}', [FrontendController::class, 'blog_details'])->name('blog-details');
 Route::get('/service-details/{servicename}', [ServiceController::class, 'index'])->name('service-details');
-
+Route::get('/generate-sitemap', function () {
+    SitemapGenerator::create('https://www.webtadka.com')->writeToFile(public_path('sitemap.xml'));
+});
 Route::get('/get-mails', [testController::class, 'index']);
