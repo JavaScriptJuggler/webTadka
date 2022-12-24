@@ -28,15 +28,6 @@
                 <div class="col-lg-4">
 
                     <div class="sidebar">
-
-                        <div class="sidebar-item search-form">
-                            <h3 class="sidebar-title">Search</h3>
-                            <form action="" class="mt-3">
-                                <input type="text">
-                                <button type="submit"><i class="bi bi-search"></i></button>
-                            </form>
-                        </div><!-- End sidebar search formn-->
-
                         <div class="sidebar-item categories">
                             <h3 class="sidebar-title">Categories</h3>
                             <ul class="mt-3">
