@@ -71,8 +71,13 @@ class FrontendController extends Controller
     /* blogs */
     public function blogs()
     {
+        if (isset($_GET['category'])) {
+            $blogs = blogs::with('blogCategory')->where('blog_category', Crypt::decryptString($_GET['category']))->paginate(6);
+            $blogs->appends('category', $_GET['category']);
+        } else
+            $blogs = blogs::with('blogCategory')->paginate(6);
         view()->share([
-            'blogs' => blogs::with('blogCategory')->paginate(6),
+            'blogs' => $blogs,
             'blogcategories' => blog_categories::all(),
         ]);
         return view('frontend.pages.blog');

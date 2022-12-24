@@ -31,10 +31,17 @@
                         <div class="sidebar-item categories">
                             <h3 class="sidebar-title">Categories</h3>
                             <ul class="mt-3">
+                                <li>
+                                    <a href="{{ route('blogs') }}">
+                                        <span>All
+                                            ({{ \App\Models\blogs::all()->count() }})
+                                        </span>
+                                    </a>
+                                </li>
                                 @if (count($blogcategories) > 0)
                                     @foreach ($blogcategories as $key => $item)
                                         <li>
-                                            <a href="#">
+                                            <a href="{{ route('blogs') }}?category={{ Crypt::encryptString($item->id) }}">
                                                 <span>{{ $item->category_name }}
                                                     ({{ \App\Models\blogs::where('blog_category', $item->id)->count() }})
                                                 </span>
