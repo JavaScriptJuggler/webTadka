@@ -34,7 +34,7 @@
                                 <td>{{ $item->author }}</td>
                                 <td>{{ $item->blogCategory->category_name }}</td>
                                 <td>
-                                    <a href="{{ route('create-blog') }}?data={{ Crypt::encryptString($item) }}"
+                                    <a href="{{ route('create-blog') }}?data='{{ Crypt::encryptString($item) }}'"
                                         class="btn btn-gradient-primary">Edit</a>
                                     <button class="btn btn-gradient-danger"
                                         onclick="deleteBlog({{ $item->id }})">Delete</button>

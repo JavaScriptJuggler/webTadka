@@ -7,37 +7,33 @@
                 <i class="mdi mdi-home"></i>
             </span> Blogs
         </h3>
-        <nav aria-label="breadcrumb">
-            <a class="btn btn-gradient-primary btn-sm">
-                <i class="mdi mdi-plus"></i> Create New Blog
-            </a>
-        </nav>
+        <nav aria-label="breadcrumb"></nav>
     </div>
     <div class="row">
         <form name="saveBlogForm" id="saveBlogForm"></form>
-        <input type="hidden" name="blogid" form="saveBlogForm">
+        <input type="hidden" name="blogid" id="blogid" value="{{ $blogid }}" form="saveBlogForm">
         <div class="col-md-8">
             <div class="form-group">
                 <label for="" class="form-label">Blog Title</label>
-                <input type="text" name="blogname" required form="saveBlogForm" placeholder="Add Blog Title"
-                    class="form-control">
+                <input type="text" name="blogname" value="{{ $blogheading }}" required form="saveBlogForm"
+                    placeholder="Add Blog Title" class="form-control">
             </div>
             <div class="form-group">
                 <label for="" class="form-label">Blog Description</label>
-                <textarea id="blogdescription" form="saveBlogForm" placeholder="Blog Description" class="form-control"></textarea>
+                <textarea id="blogdescription" form="saveBlogForm" placeholder="Blog Description" class="form-control">{{ $blog }}</textarea>
             </div>
             <div class="form-group">
                 <label for="" class="form-label">Meta Title</label>
-                <input type="text" name="metatitle" required form="saveBlogForm" placeholder="Add Meta Title"
-                    class="form-control">
+                <input type="text" name="metatitle" required value="{{ $metatitle }}" form="saveBlogForm"
+                    placeholder="Add Meta Title" class="form-control">
             </div>
             <div class="form-group">
                 <label for="" class="form-label">Meta Description</label>
-                <input type="text" name="metadescription" required form="saveBlogForm" placeholder="Add Meta Description"
-                    class="form-control">
+                <input type="text" name="metadescription" value="{{ $metadescription }}" required form="saveBlogForm"
+                    placeholder="Add Meta Description" class="form-control">
             </div>
             <div class="form-group">
-                <button type="submit" form="saveBlogForm" class="btn btn-gradient-primary">Create Blog</button>
+                <button type="submit" form="saveBlogForm" class="btn btn-gradient-primary">Publish</button>
             </div>
         </div>
         <div class="col-md-4">
@@ -57,7 +53,7 @@
                                 <li class="list-group-item">
                                     <input required form="saveBlogForm" type="radio" name="categorySelctor"
                                         value="{{ $item->id }}" class="form-check-input"
-                                        id="exampleCheck{{ $key }}">
+                                        id="exampleCheck{{ $key }}" {{ $category == $item->id ? 'checked' : '' }}>
                                     <label class="form-check-label"
                                         for="exampleCheck{{ $key }}">{{ $item->category_name }}</label>
                                 </li>
@@ -75,12 +71,12 @@
                         Please upload your featured image. It will show on blog thumbnail
                     </p>
                     <div class="image-area mt-4">
-                        <img id="imageResult" src="" alt=""
+                        <img id="imageResult" src="{{ $image ?? '' }}" alt=""
                             class="img-fluid rounded shadow-sm mx-auto d-block w-75">
                     </div>
                     <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                        <input required name="thumbnail" id="upload" form="saveBlogForm" type="file"
-                            onchange="readURL(this);" class="form-control border-0">
+                        <input {{ $image == '' ? 'required' : '' }} name="thumbnail" id="upload" form="saveBlogForm"
+                            type="file" onchange="readURL(this);" class="form-control border-0">
                         <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
                         <div class="input-group-append">
                             <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
@@ -235,7 +231,10 @@
                         toastr.success(response.message);
                         setTimeout(() => {
                             closeHoldOn();
-                            location.reload();
+                            if ($('#blogid').val() != '')
+                                window.location.href = "{{ route('blog-list') }}";
+                            else
+                                location.reload();
                         }, 3000);
                     } else {
                         toastr.error(response.message);

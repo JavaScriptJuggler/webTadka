@@ -6,6 +6,7 @@ use App\Models\blog_categories;
 use App\Models\blogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 
 class blogController extends Controller
@@ -23,10 +24,37 @@ class blogController extends Controller
     public function createBlog()
     {
         $blogCategory = blog_categories::all();
-        view()->share([
-            'pageTitle' => 'Create New Blog',
+        $blogname = '';
+        $blog = '';
+        $category = '';
+        $image = '';
+        $metatitle = '';
+        $blog_id = '';
+        $metadescription = '';
+        $pageTitle = 'Create New Blog';
+        if (isset($_GET['data'])) {
+            $decryptedData = json_decode(Crypt::decryptString($_GET['data']));
+            $blogname = $decryptedData->heading;
+            $blog = $decryptedData->description;
+            $category = $decryptedData->blog_category->id;
+            $image = $decryptedData->image;
+            $metatitle = $decryptedData->meta_title;
+            $metadescription = $decryptedData->meta_description;
+            $blog_id = $decryptedData->id;
+            $pageTitle = "Update Blog";
+        }
+        $blogData = [
+            'pageTitle' => $pageTitle,
             'blogCategory' => $blogCategory,
-        ]);
+            'blogheading' => $blogname,
+            'blog' => $blog,
+            'category' => $category,
+            'image' => $image,
+            'metatitle' => $metatitle,
+            'metadescription' => $metadescription,
+            'blogid' => $blog_id,
+        ];
+        view()->share($blogData);
         return view('admin_dashboard.blog.create_new_blog');
     }
 
@@ -105,6 +133,40 @@ class blogController extends Controller
                 return response()->json([
                     'status' => false,
                     'message' => "Something Went Wrong, Please Contact developer."
+                ]);
+            }
+        } else {
+            $getBlogData = blogs::find($request->blogid);
+            if (!empty($getBlogData)) {
+                $image = '';
+                if ($request->thumbnail != '') {
+                    unlink(public_path($getBlogData->image));
+                    $image = $this->imageLinkGenerator($request);
+                } else
+                    $image = $getBlogData->image;
+                $getBlogData->author = 'WebTadka';
+                $getBlogData->heading = $request->blogname;
+                $getBlogData->description = $request->blog;
+                $getBlogData->blog_category = $request->category;
+                $getBlogData->meta_title = $request->metatitle;
+                $getBlogData->meta_description = $request->metadescription;
+                $getBlogData->image = $image;
+                $isSuccess = $getBlogData->save();
+                if ($isSuccess) {
+                    return response()->json([
+                        'status' => true,
+                        'message' => "Blog Edited Successfully."
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => false,
+                        'message' => "Something Went Wrong, Please Contact developer."
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => "Can'r edit the blog, Blog Not exists."
                 ]);
             }
         }
