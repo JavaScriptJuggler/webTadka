@@ -4,7 +4,7 @@
 
     <title>WebTadka - Lorem ipsum dolor sit amet.</title>
     <meta content="" name="description">
-    <meta content="" name="keywords">
+    <meta content="" name="title">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Favicons -->
