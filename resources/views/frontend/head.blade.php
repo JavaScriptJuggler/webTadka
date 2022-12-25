@@ -3,8 +3,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>WebTadka - Lorem ipsum dolor sit amet.</title>
-    <meta content="" name="description">
-    <meta content="" name="title">
+    <meta content="{{ $meta_title ?? '' }}" name="description">
+    <meta content="{{ $meta_description ?? '' }}" name="title">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Favicons -->
@@ -26,13 +26,15 @@
 
     <!-- Variables CSS Files. Uncomment your preferred color scheme -->
     <link href="{{ asset('assets/css/variables.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/HoldOn.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/HoldOn.min.css') }}">
     {!! htmlScriptTagJsApi([]) !!}
 </head>
