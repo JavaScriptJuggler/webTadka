@@ -81,8 +81,11 @@
 
                                 <div class="mt-3">
                                     @if (count($blogs) > 0)
+                                        @php
+                                            $count = 0;
+                                        @endphp
                                         @foreach ($blogs as $key => $item)
-                                            @if ($key < 5)
+                                            @if ($count < 5 && $item->heading != $url)
                                                 <div class="post-item mt-3">
                                                     <img src="{{ $item->image }}" alt="" class="flex-shrink-0">
                                                     <div>
@@ -96,6 +99,9 @@
                                                             {{ $dateData['mday'] }}, {{ $dateData['year'] }}</time>
                                                     </div>
                                                 </div>
+                                                @php
+                                                    $count++;
+                                                @endphp
                                             @endif
                                         @endforeach
                                     @endif

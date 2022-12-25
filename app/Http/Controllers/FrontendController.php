@@ -95,6 +95,7 @@ class FrontendController extends Controller
             'blogcategories' => blog_categories::all(),
             'blogs' => blogs::with('blogCategory')->orderBy('id', 'DESC')->get(),
             'category' => '',
+            'url' => urldecode(str_replace('-', ' ', $blogname)),
         ]);
         return view('frontend.pages.blog_details');
     }
