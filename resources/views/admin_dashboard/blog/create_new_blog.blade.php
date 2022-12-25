@@ -33,6 +33,11 @@
                     placeholder="Add Meta Description" class="form-control">
             </div>
             <div class="form-group">
+                <label for="" class="form-label">Author</label>
+                <input type="text" name="author" value="{{ $author }}" required form="saveBlogForm"
+                    placeholder="Author Name" class="form-control">
+            </div>
+            <div class="form-group">
                 <button type="submit" form="saveBlogForm" class="btn btn-gradient-primary">Publish</button>
             </div>
         </div>

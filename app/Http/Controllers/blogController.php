@@ -37,6 +37,7 @@ class blogController extends Controller
         $blog_id = '';
         $metadescription = '';
         $pageTitle = 'Create New Blog';
+        $author = '';
         if (isset($_GET['data'])) {
             $decryptedData = json_decode(Crypt::decryptString($_GET['data']));
             $blogname = $decryptedData->heading;
@@ -47,6 +48,7 @@ class blogController extends Controller
             $metadescription = $decryptedData->meta_description;
             $blog_id = $decryptedData->id;
             $pageTitle = "Update Blog";
+            $author = $decryptedData->author;
         }
         $blogData = [
             'pageTitle' => $pageTitle,
@@ -58,6 +60,7 @@ class blogController extends Controller
             'metatitle' => $metatitle,
             'metadescription' => $metadescription,
             'blogid' => $blog_id,
+            'author' => $author,
         ];
         view()->share($blogData);
         return view('admin_dashboard.blog.create_new_blog');
@@ -121,7 +124,7 @@ class blogController extends Controller
     {
         if ($request->blogid == '') {
             $isSuccess = blogs::create([
-                'author' => 'WebTadka',
+                'author' => $request->author,
                 'heading' => $request->blogname,
                 'description' => $request->blog,
                 'blog_category' => $request->category,
@@ -150,7 +153,7 @@ class blogController extends Controller
                     $image = $this->imageLinkGenerator($request);
                 } else
                     $image = $getBlogData->image;
-                $getBlogData->author = 'WebTadka';
+                $getBlogData->author = $request->author;
                 $getBlogData->heading = $request->blogname;
                 $getBlogData->description = $request->blog;
                 $getBlogData->blog_category = $request->category;
