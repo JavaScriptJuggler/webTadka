@@ -19,17 +19,13 @@
     {{-- modal --}}
     <div class="modal fade contact" style="font-family: 'Poppins';" id="letstalk_modal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog php-email-form {{-- modal-xl modal-dialog-centered --}}  modal-fullscreen" role="document">
+        <div class="modal-dialog php-email-form {{-- modal-xl modal-dialog-centered --}} modal-lg " role="document">
             <div class="modal-content">
-                <div class="modal-body">
+                <div class="modal-body p-4 py-5 p-md-">
                     <div class="row">
-                        <div class="col-10 ">
-                            <h4 class="modal-title mb-4" id="exampleModalLabel">Let's Talk About Your Project
-                                Idea</h4>
-                        </div>
-                        <div class="col-2">
-                            <button type="button" style="float: right" class="btn-close" data-dismiss="modal"
-                                aria-label="Close"></button>
+                        <div class="col-12 ">
+                            <h3 class="mb-3 text-center" id="exampleModalLabel">Let's Talk About Your Project
+                                Idea</h3>
                         </div>
                     </div>
                     <form id="letstalk" class="php-email-form" name="letstalk">
@@ -95,7 +91,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            I agree to receive communications from WebTadka.com
+                                            I agree to receive communications from <a href="javascrit:;">WebTadka.com</a>
                                         </label>
                                     </div>
                                 </div>
@@ -142,17 +138,13 @@
     {{-- client support modal --}}
     <div class="modal fade contact" style="font-family: 'Poppins';" id="clientSupportModal" tabindex="-1"
         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen {{-- modal-dialog-centered --}} php-email-form" role="document">
+        <div class="modal-dialog {{-- modal-dialog-centered --}}  modal-lg php-email-form" role="document">
             <div class="modal-content">
-                <div class="modal-body">
+                <div class="modal-body p-4 py-5 p-md-">
                     <div class="row">
-                        <div class="col-10 ">
-                            <h4 class="modal-title mb-4" id="exampleModalLabel">Happy to help you, Let's Talk About
-                                your issue</h4>
-                        </div>
-                        <div class="col-2">
-                            <button type="button" style="float: right" class="btn-close" data-dismiss="modal"
-                                aria-label="Close"></button>
+                        <div class="col-12 ">
+                            <h3 class="mb-3 text-center" id="exampleModalLabel">Happy to help you, Let's Talk About
+                                your issue</h3>
                         </div>
                     </div>
                     <form id="clientSupportForm" class="php-email-form" name="clientSupportForm">
@@ -244,17 +236,13 @@
     {{-- engagement modal --}}
     <div class="modal fade contact" style="font-family: 'Poppins';" id="serviceEngagementModal" tabindex="-1"
         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog php-email-form {{-- modal-xl modal-dialog-centered --}}  modal-fullscreen" role="document">
+        <div class="modal-dialog php-email-form {{-- modal-xl modal-dialog-centered --}} modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-body">
+                <div class="modal-body p-4 py-5 p-md-">
                     <div class="row">
-                        <div class="col-10 ">
-                            <h4 class="modal-title mb-4" id="exampleModalLabel">Let's Talk About Your Project
-                                Idea</h4>
-                        </div>
-                        <div class="col-2">
-                            <button type="button" style="float: right" class="btn-close" data-dismiss="modal"
-                                aria-label="Close"></button>
+                        <div class="col-12">
+                            <h3 class="mb-3 text-center" id="exampleModalLabel">Let's Talk About Your Project
+                                Idea</h3>
                         </div>
                     </div>
                     <form id="serviceEngagementForm" class="php-email-form" name="serviceEngagementForm">
@@ -360,6 +348,36 @@
                 <div class="modal-footer">
                     <button type="button" class="close-btn" data-dismiss="modal">Close</button>
                     <button type="submit" form="serviceEngagementForm">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- call modal --}}
+    <div class="modal fade contact" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered php-email-form" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-4 py-5 p-md-5">
+                    <h3 class="text-center mb-3">Instant Call Connect</h3>
+                    <form action="#" class="signup-form">
+                        <div class="form-group mb-2">
+                            <label for="name">Full Name</label>
+                            <input type="text" class="form-control" placeholder="John Doe">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="email">Email Address</label>
+                            <input type="text" class="form-control" placeholder="johndoe@gmail.com">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="form-group mb-2">
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">Request
+                                Instant Call Back</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
