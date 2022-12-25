@@ -27,7 +27,7 @@
                                 <h3 class="post-title">{{ $item->heading }}</h3>
                                 <p>{{ str_replace('&#39', "'", preg_replace("/\n\s+/", "\n", rtrim(html_entity_decode(strip_tags(strlen($item->description) > 200 ? substr($item->description, 0, 200) . '...' : $item->description))))) }}
                                 </p>
-                                <a href="{{ route('blog-details', ['blogid' => $item->id]) }}"
+                                <a href="{{ route('blog-details', ['blogname' => urlencode(str_replace(' ', '-', $item->heading))]) }}"
                                     class="readmore stretched-link"><span>Read More</span><i
                                         class="bi bi-arrow-right"></i></a>
                             </div>

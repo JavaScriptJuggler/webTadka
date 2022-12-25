@@ -24,7 +24,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('landing');
 // Route::get('/about-us', [FrontendController::class, 'about_us'])->name('about-us');
 Route::get('/blogs', [FrontendController::class, 'blogs'])->name('blogs');
 Route::get('/portfolio-details/{portfolioid}', [FrontendController::class, 'gotoPortfolioDetails'])->name('portfolio-details');
-Route::get('/blog-details/{blogid}', [FrontendController::class, 'blog_details'])->name('blog-details');
+Route::get('/blog-details/{blogname}', [FrontendController::class, 'blog_details'])->name('blog-details');
 Route::get('/service-details/{servicename}', [ServiceController::class, 'index'])->name('service-details');
 Route::get('/sitemap.xml', [sitemapController::class, 'index'])->name('sitemap.xml');
 Route::get('/get-mails', [testController::class, 'index']);

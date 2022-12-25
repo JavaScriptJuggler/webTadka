@@ -1,4 +1,4 @@
-@extends('frontend.pages.blogs.layout', ['title' => 'Recent Blogs', 'blogs' => $blogs ])
+@extends('frontend.pages.blogs.layout', ['title' => 'Recent Blogs', 'blogs' => $blogs])
 @section('blog_page_section')
     <div class="row gy-4 posts-list">
         @if (count($blogs) > 0)
@@ -14,16 +14,16 @@
                         </div>
 
                         <h2 class="title">
-                            <a href="{{ route('blog-details', ['blogid' => $item->id]) }}">{{ $item->heading }}</a>
+                            <a href="{{ route('blog-details', ['blogname' => urlencode(str_replace(' ', '-', $item->heading))]) }}">{{ $item->heading }}</a>
                         </h2>
 
                         <div class="meta-top">
                             <ul>
                                 <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                        href="{{ route('blog-details', ['blogid' => $item->id]) }}">{{ $item->author }}</a>
+                                        href="{{ route('blog-details', ['blogname' => urlencode(str_replace(' ', '-', $item->heading))]) }}">{{ $item->author }}</a>
                                 </li>
                                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                        href="{{ route('blog-details', ['blogid' => $item->id]) }}"><time
+                                        href="{{ route('blog-details', ['blogname' => urlencode(str_replace(' ', '-', $item->heading))]) }}"><time
                                             datetime="2022-01-01">{{ $date['month'] }} {{ $date['mday'] }},
                                             {{ $date['year'] }}</time></a>
                                 </li>
@@ -39,7 +39,9 @@
                         </div>
 
                         <div class="read-more mt-auto align-self-end">
-                            <a href="{{ route('blog-details', ['blogid' => $item->id]) }}">Read More</a>
+                            <a
+                                href="{{ route('blog-details', ['blogname' => urlencode(str_replace(' ', '-', $item->heading))]) }}">Read
+                                More</a>
                         </div>
 
                     </article>

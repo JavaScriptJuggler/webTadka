@@ -73,11 +73,11 @@ class FrontendController extends Controller
     {
         $category = '';
         if (isset($_GET['category'])) {
-            $blogs = blogs::with('blogCategory')->where('blog_category', $_GET['category'])->paginate(6);
+            $blogs = blogs::with('blogCategory')->where('blog_category', $_GET['category'])->orderBy('id', 'DESC')->paginate(6);
             $blogs->appends('category', $_GET['category']);
             $category = $_GET['category'];
         } else
-            $blogs = blogs::with('blogCategory')->paginate(6);
+            $blogs = blogs::with('blogCategory')->orderBy('id', 'DESC')->paginate(6);
         view()->share([
             'blogs' => $blogs,
             'blogcategories' => blog_categories::all(),
@@ -87,13 +87,13 @@ class FrontendController extends Controller
     }
 
     /* blog details */
-    public function blog_details($blogid)
+    public function blog_details($blogname)
     {
-        $findBlog = blogs::find($blogid);
+        $findBlog = blogs::where('heading', urldecode(str_replace('-', ' ', $blogname)))->first();
         view()->share([
             'blogData' => $findBlog,
             'blogcategories' => blog_categories::all(),
-            'blogs' => blogs::with('blogCategory')->get(),
+            'blogs' => blogs::with('blogCategory')->orderBy('id', 'DESC')->get(),
             'category' => '',
         ]);
         return view('frontend.pages.blog_details');

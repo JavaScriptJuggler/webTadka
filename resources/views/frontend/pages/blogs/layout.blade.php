@@ -6,21 +6,24 @@
 
             <div class="d-flex justify-content-between align-items-center">
                 <h2>{{ $title }}</h2>
-                <select name="" id="" class="form-control blog-category-select">
-                    @if (count($blogcategories) > 0)
-                        @foreach ($blogcategories as $key => $item)
-                            @if (\App\Models\blogs::where('blog_category', $item->id)->count() == 0)
-                                @continue
-                            @else
-                                <option value="{{ $item->id }}" {{ $category == $item->id ? 'selected' : '' }}>
-                                    {{ $item->category_name }}
+                @if (Request::is('blogs'))
+                    <select name="" id="" class="form-control blog-category-select">
+                        <option value="all">All</option>
+                        @if (count($blogcategories) > 0)
+                            @foreach ($blogcategories as $key => $item)
+                                @if (\App\Models\blogs::where('blog_category', $item->id)->count() == 0)
+                                    @continue
+                                @else
+                                    <option value="{{ $item->id }}" {{ $category == $item->id ? 'selected' : '' }}>
+                                        {{ $item->category_name }}
 
-                                    ({{ \App\Models\blogs::where('blog_category', $item->id)->count() }})
-                                </option>
-                            @endif
-                        @endforeach
-                    @endif
-                </select>
+                                        ({{ \App\Models\blogs::where('blog_category', $item->id)->count() }})
+                                    </option>
+                                @endif
+                            @endforeach
+                        @endif
+                    </select>
+                @endif
             </div>
 
         </div>
@@ -84,7 +87,7 @@
                                                     <img src="{{ $item->image }}" alt="" class="flex-shrink-0">
                                                     <div>
                                                         <h4><a
-                                                                href="{{ route('blog-details', ['blogid' => $item->id]) }}">{{ $item->heading }}</a>
+                                                                href="{{ route('blog-details', ['blogname' => urlencode(str_replace(' ', '-', $item->heading))]) }}">{{ $item->heading }}</a>
                                                         </h4>
                                                         @php
                                                             $dateData = getDate(strtotime($item->created_at));
@@ -121,9 +124,12 @@
     <script>
         $('.blog-category-select').change(function(e) {
             e.preventDefault();
-            let data = document.querySelector('.blog-category-select').value;
-            window.location.href =
-                '{{ route('blogs') }}?category=' + $(this).val();
+            if ($(this).val() == 'all') {
+                window.location.href = '{{ route('blogs') }}';
+            } else {
+                window.location.href =
+                    '{{ route('blogs') }}?category=' + $(this).val();
+            }
         });
     </script>
 @endsection
