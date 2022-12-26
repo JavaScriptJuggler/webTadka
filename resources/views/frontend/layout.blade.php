@@ -91,7 +91,8 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            I agree to receive communications from <a href="javascrit:;">WebTadka.com</a>
+                                            I agree to receive communications from <a
+                                                href="javascrit:;">WebTadka.com</a>
                                         </label>
                                     </div>
                                 </div>
@@ -354,26 +355,55 @@
     </div>
 
     {{-- call modal --}}
-    <div class="modal fade contact" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade contact" id="callConnectModal" tabindex="-1" role="dialog"
+        aria-labelledby="callConnectModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered php-email-form" role="document">
             <div class="modal-content">
                 <div class="modal-body p-4 py-5 p-md-5">
                     <h3 class="text-center mb-3">Instant Call Connect</h3>
-                    <form action="#" class="signup-form">
+                    <form id="callConnect">
                         <div class="form-group mb-2">
-                            <label for="name">Full Name</label>
-                            <input type="text" class="form-control" placeholder="John Doe">
+                            <label for="name">Name</label>
+                            <input type="text" required class="form-control" placeholder="Name">
                         </div>
                         <div class="form-group mb-2">
-                            <label for="email">Email Address</label>
-                            <input type="text" class="form-control" placeholder="johndoe@gmail.com">
+                            <label for="email">Phone Number</label>
+                            <input type="text" name="phone" required class="form-control"
+                                placeholder="1234567890">
                         </div>
                         <div class="form-group mb-2">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <label for="password">Priority</label>
+                            <select name="priority" required id="priority" class="form-control"
+                                style="height: 45px;">
+                                <option style="display: none;">Select Priority</option>
+                                <option value="URGENT">Urgent</option>
+                                <option value="MEDIUM">Medium</option>
+                                <option value="LOW">Low</option>
+                            </select>
                         </div>
                         <div class="form-group mb-2">
+                            <label for="email">City</label>
+                            <input type="text" required name="city" class="form-control" placeholder="City">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="email">Message</label>
+                            <textarea required style="height:100px" name="message" class="form-control"
+                                placeholder="What you want to tell us..."></textarea>
+                        </div>
+                        <div class="form-group mb-2">
+                            <div class="alert engagement-success1 alert-success d-none alert-dismissible fade show"
+                                role="alert">
+                                <button type="button" class="close d-none close-alert2" data-dismiss="alert"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="alert-heading">Thanks!</h4>
+                                <p>You are very important to us, all information received will always remain
+                                    confidential. We will contact you as soon as we review your message.</p>
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <button type="button" class="close-btn2 d-none" data-dismiss="modal">Close</button>
                             <button type="submit" class="form-control btn btn-primary rounded submit px-3">Request
                                 Instant Call Back</button>
                         </div>
@@ -384,7 +414,7 @@
     </div>
 
     <script>
-        $('#letstalk, #clientSupportForm, #serviceEngagementForm').submit(function(e) {
+        $('#letstalk, #clientSupportForm, #serviceEngagementForm, #callConnect').submit(function(e) {
             e.preventDefault();
             holdOn();
             var targetInput = '';
@@ -394,78 +424,93 @@
                 targetInput = $(".textInputModal")
             if (e.target.id == 'serviceEngagementForm')
                 targetInput = $(".textInputModal2")
-
-            if (targetInput.val() != iNumber) {
-                refreshChaptcha();
-                $('.captcha-error').removeClass('d-none');
-            } else {
-                $('.captcha-error').addClass('d-none');
-
-                if (e.target.id == 'clientSupportForm') {
-                    var formdata = new FormData($('#clientSupportForm')[0]);
-                    formdata.append('action', 'client-support');
-
+            if (e.target.id == 'clientSupportForm' && e.target.id == 'letstalk' && e.target.id ==
+                'serviceEngagementForm') {
+                if (targetInput.val() != iNumber) {
+                    refreshChaptcha();
+                    $('.captcha-error').removeClass('d-none');
+                    return false;
                 }
-                if (e.target.id == 'letstalk') {
-                    var formdata = new FormData($('#letstalk')[0]);
-                    formdata.append('action', 'lets-talk');
-                    let checkValue = document.querySelector('#flexCheckDefault').checked ? 1 : 0;
-                    formdata.append('subscribe', checkValue);
+            }
+            $('.captcha-error').addClass('d-none');
 
-                }
-                if (e.target.id == 'serviceEngagementForm') {
-                    var formdata = new FormData($('#serviceEngagementForm')[0]);
-                    formdata.append('action', 'lets-talk');
-                    let checkValue = document.querySelector('#flexCheckDefault2').checked ? 1 : 0;
-                    formdata.append('subscribe', checkValue);
+            if (e.target.id == 'clientSupportForm') {
+                var formdata = new FormData($('#clientSupportForm')[0]);
+                formdata.append('action', 'client-support');
 
+            }
+            if (e.target.id == 'letstalk') {
+                var formdata = new FormData($('#letstalk')[0]);
+                formdata.append('action', 'lets-talk');
+                let checkValue = document.querySelector('#flexCheckDefault').checked ? 1 : 0;
+                formdata.append('subscribe', checkValue);
+
+            }
+            if (e.target.id == 'serviceEngagementForm') {
+                var formdata = new FormData($('#serviceEngagementForm')[0]);
+                formdata.append('action', 'lets-talk');
+                let checkValue = document.querySelector('#flexCheckDefault2').checked ? 1 : 0;
+                formdata.append('subscribe', checkValue);
+
+            }
+            if (e.target.id == 'callConnect') {
+                var formdata = new FormData($('#callConnect')[0]);
+                formdata.append('action', 'callConnect');
+            }
+            $.ajaxSetup({
+                headers: {
+                    'accept': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-                $.ajaxSetup({
-                    headers: {
-                        'accept': 'application/json',
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                })
-                $.ajax({
-                    type: "POST",
-                    url: "/save-lets-talk-and-client-support",
-                    data: formdata,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        if (response == 1) {
-                            closeHoldOn();
-                            $('.captcha-error').addClass('d-none');
-                            if (e.target.id == 'letstalk') {
-                                $('.lets-talk-success').removeClass('d-none');
+            })
+            $.ajax({
+                type: "POST",
+                url: "/save-lets-talk-and-client-support",
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if (response == 1) {
+                        closeHoldOn();
+                        $('.captcha-error').addClass('d-none');
+                        if (e.target.id == 'letstalk') {
+                            $('.lets-talk-success').removeClass('d-none');
+                        }
+                        if (e.target.id == 'clientSupportForm') {
+                            $('.client-support-success').removeClass('d-none');
+                        }
+                        if (e.target.id == 'serviceEngagementForm') {
+                            $('.engagement-success').removeClass('d-none');
+                        }
+                        if (e.target.id == 'callConnect') {
+                            $('.engagement-success1').removeClass('d-none');
+                        }
+                        setTimeout(() => {
+                            if (e.target.id == 'letstalk' || e.target.id ==
+                                'serviceEngagementForm') {
+                                $('.close-btn').click();
+                                $('.close-alert').click();
+                                $('#letstalk').trigger('reset');
+                                document.querySelector('.modal-dialog').scrollBy(0, -1);
+                                $('#serviceEngagementForm').trigger('reset');
                             }
                             if (e.target.id == 'clientSupportForm') {
-                                $('.client-support-success').removeClass('d-none');
+                                $('.close-btn1').click();
+                                $('.close-alert1').click();
+                                $('#clientSupportForm').trigger('reset');
                             }
-                            if (e.target.id == 'serviceEngagementForm') {
-                                $('.engagement-success').removeClass('d-none');
+                            if (e.target.id == 'callConnect') {
+                                $('#callConnectModal').modal('hide');
+                                $('.close-btn2').click();
+                                $('.close-alert2').click();
+                                $('#callConnect').trigger('reset');
                             }
-                            setTimeout(() => {
-                                if (e.target.id == 'letstalk' || e.target.id ==
-                                    'serviceEngagementForm') {
-                                    $('.close-btn').click();
-                                    $('.close-alert').click();
-                                    $('#letstalk').trigger('reset');
-                                    document.querySelector('.modal-dialog').scrollBy(0, -1);
-                                    $('#serviceEngagementForm').trigger('reset');
-                                }
-                                if (e.target.id == 'clientSupportForm') {
-                                    $('.close-btn1').click();
-                                    $('.close-alert1').click();
-                                    $('#clientSupportForm').trigger('reset');
-                                }
 
-                                refreshChaptcha();
-                            }, 3000);
-                        }
+                            refreshChaptcha();
+                        }, 3000);
                     }
-                });
-            }
+                }
+            });
         });
     </script>
 </body>

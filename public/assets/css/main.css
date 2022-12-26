@@ -2436,6 +2436,7 @@ section {
 
 .contact .php-email-form input[type=text],
 .contact .php-email-form input[type=email],
+.contact .php-email-form select,
 .contact .php-email-form textarea {
     border-radius: 0px;
     box-shadow: none;

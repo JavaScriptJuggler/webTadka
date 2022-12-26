@@ -16,7 +16,7 @@
                         onclick="$('#clientSupportForm').trigger('reset');refreshChaptcha()" data-toggle="modal"
                         data-target="#clientSupportModal">CLIENT SUPPORT</a>
                     <a class="cta-btn align-self-start" href="javascript:void(0)" data-toggle="modal"
-                        data-target="#exampleModalCenter">INSTANT CALL CONNECT</a>
+                        data-target="#callConnectModal">INSTANT CALL CONNECT</a>
                 </div>
             </div>
         </div>

@@ -31,8 +31,15 @@ class LetsTalkController extends Controller
         if ($request->has('action') && $request->action == 'client-support') {
             $message = '
             Message From <strong>' . $request->name . '</strong>, <br>
-            I have a issue with my project. Can you please help me ?.<br> My Prjecct name is <strong>' . $request->project_name . '<br> Email: <strong>' . $request->email . '</strong><br>Phone: <strong>' . $request->phone . '</strong>.<br> My Service Details is as follows :<br>' . $request->serviceDetails;
+            I have a issue with my project. Can you please help me ?.<br><strong> My Prjecct name is </strong>' . $request->project_name . '<br><strong> Email: </strong>' . $request->email . '<br><strong>Phone: </strong>' . $request->phone . '<strong>.<br> My Service Details is as follows :</strong><br>' . $request->serviceDetails;
             sendSupportMail('support@webtadka.com', "Need Client Support", $message, $request->name);
+            return true;
+        }
+        if ($request->has('action') && $request->action == 'callConnect') {
+            $message = '
+            Message From <strong>' . $request->name . '</strong>, <br>
+            I want to connect a call with you. <br><strong>Phone Number: </strong>' . $request->phone . '<br><strong>Priority: </strong>' . $request->priority . '<br><strong>City: </strong>' . $request->city . '<br><strong>Message: </strong>' . $request->message;
+            sendEnquiryMail('team@webtadka.com', "Client want's to connect a call", $message, $request->name);
             return true;
         }
     }
