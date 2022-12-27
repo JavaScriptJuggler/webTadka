@@ -14,11 +14,17 @@ class BotmanController extends Controller
         $botman = app('botman');
         $botman->hears('{message}', function ($botman, $message) {
             $chatbot = chatbot::all();
+            $flag = 0;
             $botman->typesAndWaits(2);
             foreach ($chatbot as $key => $value) {
                 if ($message == strtolower($value->question)) {
                     $botman->reply($value->answer);
+                    $flag = 1;
+                    break;
                 }
+            }
+            if ($flag == 0) {
+                $botman->reply("Sorry, I can't understand this right now, But don't worry, PLEASE GIVE YOUR EMAIL, one of our representative will contact you ASAP... Thank You");
             }
         });
         $botman->listen();
