@@ -30,6 +30,3 @@ Route::get('/service-details/{servicename}', [ServiceController::class, 'index']
 Route::get('/sitemap.xml', [sitemapController::class, 'index'])->name('sitemap.xml');
 Route::get('/get-mails', [testController::class, 'index']);
 Route::match(['get', 'post'], '/botman', [BotmanController::class, 'index'])->name('botman');
-Route::get('/chatbotBackground', function () {
-    return view('frontend.chatbotBackground');
-})->name('background');
