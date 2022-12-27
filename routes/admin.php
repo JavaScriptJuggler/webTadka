@@ -3,6 +3,7 @@
 use App\Http\Controllers\aboutUsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\blogController;
+use App\Http\Controllers\BotmanController;
 use App\Http\Controllers\brandController;
 use App\Http\Controllers\CtaController;
 use App\Http\Controllers\faqController;
@@ -34,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* prevent back afetr logout */
+
 Route::group(['middleware' => 'prevent-back-history'], function () {
     Auth::routes(['register' => false]);
 
@@ -80,12 +82,18 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/sub-services/{servicedetails}', [seoAndDigitalMarketingController::class, 'subServices'])->name('sub-services');
     Route::post('/add-edit-subservices', [seoAndDigitalMarketingController::class, 'addEditSubServices'])->name('add-edit-subservices');
     Route::post('/delete-subservices', [seoAndDigitalMarketingController::class, 'deleteSubServices'])->name('delete-subservices');
+
+    /* blog route */
     Route::get('/blog-list', [blogController::class, 'blogList'])->name('blog-list');
     Route::get('/create-blog', [blogController::class, 'createBlog'])->name('create-blog');
     Route::post('/upload-blog-image', [blogController::class, 'uploadBlogImage'])->name('upload-blog-image');
     Route::post('/add-blog-category', [blogController::class, 'addBlogCategory'])->name('add-blog-category');
     Route::post('/save-blog', [blogController::class, 'saveBlog'])->name('save-blog');
     Route::post('/delete-blog', [blogController::class, 'deleteBlog'])->name('delete-blog');
+
+    /* bot route */
+    Route::get('/botdata-list', [BotmanController::class, 'showbotmandata'])->name('botdata-list');
+    Route::post('/save-bot', [BotmanController::class, 'saveBotData'])->name('save-bot');
 });
 
 Route::get('/get-mails', [testController::class, 'index']);

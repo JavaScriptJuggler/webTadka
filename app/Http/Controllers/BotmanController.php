@@ -23,4 +23,28 @@ class BotmanController extends Controller
         });
         $botman->listen();
     }
+
+    public function showbotmandata()
+    {
+        $chatbotdata = chatbot::all();
+        view()->share([
+            'pageTitle' => 'Chatbot',
+            'botData' => $chatbotdata,
+        ]);
+        return view('admin_dashboard.chatbot');
+    }
+
+    public function saveBotData(Request $request)
+    {
+        chatbot::truncate();
+        if (count($request->question) > 0) {
+            for ($i = 0; $i < count($request->question); $i++) {
+                chatbot::create([
+                    'question' => $request->question[$i],
+                    'answer' => $request->answer[$i],
+                ]);
+            }
+        }
+        return response()->json(['status' => true, 'message' => "Chat's inserted successfully"]);
+    }
 }

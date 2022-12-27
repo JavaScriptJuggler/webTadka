@@ -47,5 +47,11 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('botdata-list') }}">
+                <span class="menu-title">Chat Bot</span>
+                <i class="mdi mdi-robot menu-icon"></i>
+            </a>
+        </li>
     </ul>
 </nav>
