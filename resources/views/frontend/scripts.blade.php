@@ -18,7 +18,23 @@
 <!-- Template Main JS File -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="{{ asset('assets/js/HoldOn.min.js') }}"></script>
+<script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+
 <script>
+    var botmanWidget = {
+        aboutText: 'Powered By WebTadka',
+        introMessage: "✋ Hi! I'm form webtadka.com. How can I help you ?",
+        title: 'Soumya from WebTadka',
+        mainColor: '#1ec3e0',
+    };
+
+    $(document).ready(function() {
+        setTimeout(() => {
+            botmanChatWidget.open()
+        }, 6000);
+    });
+
+
     function holdOn() {
         HoldOn.open({
             theme: "sk-circle",
@@ -67,7 +83,7 @@
         } else {
             $('.captcha-error').addClass('d-none');
             let formdata = new FormData($('#contactform')[0]);
-            formdata.append('action','lets-talk');
+            formdata.append('action', 'lets-talk');
             $('.loading').removeClass('d-none');
             $.ajaxSetup({
                 headers: {

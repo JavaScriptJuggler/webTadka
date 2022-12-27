@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BotmanController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\sitemapController;
@@ -28,3 +29,7 @@ Route::get('/blog-details/{blogname}', [FrontendController::class, 'blog_details
 Route::get('/service-details/{servicename}', [ServiceController::class, 'index'])->name('service-details');
 Route::get('/sitemap.xml', [sitemapController::class, 'index'])->name('sitemap.xml');
 Route::get('/get-mails', [testController::class, 'index']);
+Route::match(['get', 'post'], '/botman', [BotmanController::class, 'index'])->name('botman');
+Route::get('/chatbotBackground', function () {
+    return view('frontend.chatbotBackground');
+})->name('background');
