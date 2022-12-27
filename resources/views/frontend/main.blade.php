@@ -96,7 +96,7 @@
 @endsection
 
 @section('go-to-top')
-    <a href="#hero-static" class="scroll-top d-flex align-items-center justify-content-center">
+   {{--  <a href="#hero-static" class="scroll-top d-flex align-items-center justify-content-center">
         <i class="bi bi-arrow-up-short"></i>
-    </a>
+    </a> --}}
 @endsection
