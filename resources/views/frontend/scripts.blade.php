@@ -25,8 +25,9 @@
         aboutText: 'Powered By WebTadka',
         introMessage: "✋ Hi! I'm form webtadka.com. How can I help you ?",
         title: 'Soumya from WebTadka',
-        mainColor: '#1ec3e0',
-        bubbleAvatarUrl:"{{asset('assets/img/chat.png')}}"
+        mainColor: '#0ea2bd',
+        bubbleAvatarUrl: "{{ asset('assets/img/chat.png') }}",
+        bubbleBackground:'#0ea2bd',
     };
 
     $(document).ready(function() {
