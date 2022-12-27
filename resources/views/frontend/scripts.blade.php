@@ -26,6 +26,7 @@
         introMessage: "✋ Hi! I'm form webtadka.com. How can I help you ?",
         title: 'Soumya from WebTadka',
         mainColor: '#1ec3e0',
+        bubbleAvatarUrl:"{{asset('assets/img/chat.png')}}"
     };
 
     $(document).ready(function() {
