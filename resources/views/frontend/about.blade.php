@@ -2,10 +2,10 @@
     <div class="container" data-aos="fade-up">
         <div class="section-header">
             <h2>{{$about_us_header}}</h2>
-            <p style="white-space: pre-line;">{{$about_us_description}}</p>
+            <p>{{$about_us_description}}</p>
         </div>
         <div class="text-center">
-            <p>{{$aboutus}}</p>
+            <p style="white-space: pre-line;">{{$aboutus}}</p>
         </div>
 
     </div>
