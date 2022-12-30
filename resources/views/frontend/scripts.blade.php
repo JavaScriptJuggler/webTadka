@@ -24,16 +24,21 @@
     var botmanWidget = {
         aboutText: 'Powered By WebTadka',
         introMessage: "✋ Hi! I'm form webtadka.com. How can I help you ?",
-        title: 'Soumya from WebTadka',
+        title: 'Praveen from WebTadka',
         mainColor: '#0ea2bd',
         bubbleAvatarUrl: "{{ asset('assets/img/chat.png') }}",
-        bubbleBackground:'#0ea2bd',
+        bubbleBackground: '#0ea2bd',
     };
 
     $(document).ready(function() {
+        <?php
+        if(\Request::is('/')){ ?>
         setTimeout(() => {
-            botmanChatWidget.open()
+            botmanChatWidget.open();
         }, 15000);
+        <?php
+        }
+        ?>
     });
 
 
