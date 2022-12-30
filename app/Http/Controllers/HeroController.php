@@ -100,13 +100,17 @@ class HeroController extends Controller
         }
         if ($request->has('action') && $request->action == 'downpart') {
             $content_array = [];
-            $image = $request->file('image');
-            $input['imagename'] = time() . '_heroTypes.png';
-            $destinationPath = public_path('/document_bucket');
-            $img = ImageResizer::make($image->path());
-            $img->resize(100, 100, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($destinationPath . '/' . $input['imagename']);
+            if ($request->has('previousServiceName') && $request->previousServiceName == '') {
+                $image = $request->file('image');
+                $input['imagename'] = time() . '_heroTypes.png';
+                $destinationPath = public_path('/document_bucket');
+                $img = ImageResizer::make($image->path());
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath . '/' . $input['imagename']);
+            } else {
+                return $this->editServiceSection($request);
+            }
 
             $is_found = Heros::where('hero_key', $request->key)->first();
             if (!empty($is_found)) {
@@ -173,6 +177,43 @@ class HeroController extends Controller
                     }
                 }
             }
+        }
+    }
+
+    public function editServiceSection($request)
+    {
+        $is_found = Heros::where('hero_key', $request->key)->first();
+        if (!empty($is_found)) {
+            if ($is_found->contents != '') {
+                $data = unserialize($is_found->contents);
+                if (count($data) > 0) {
+                    foreach ($data as $key => $value) {
+                        if ($value['text'] == $request->previousServiceName) {
+                            $data[$key]['text'] = $request->service_name;
+                            if ($request->image != '') {
+                                if ($data[$key]['file'] != '')
+                                    unlink(public_path($data[$key]['file']));
+                                $image = $request->file('image');
+                                $input['imagename'] = time() . '_heroTypes.png';
+                                $destinationPath = public_path('/document_bucket');
+                                $img = ImageResizer::make($image->path());
+                                $img->resize(100, 100, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->save($destinationPath . '/' . $input['imagename']);
+                                $data[$key]['file'] = '/document_bucket/' . $input['imagename'];
+                            }
+                            $is_found->contents = serialize($data);
+                            $is_success = $is_found->save();
+                            if ($is_success)
+                                return response()->json(['status' => true,]);
+                            else
+                                return response()->json(['status' => false,]);
+                        }
+                    }
+                }
+            }
+        } else {
+            return response()->json(['status' => false]);
         }
     }
 }

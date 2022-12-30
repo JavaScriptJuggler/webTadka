@@ -33,7 +33,7 @@
     $(document).ready(function() {
         setTimeout(() => {
             botmanChatWidget.open()
-        }, 6000);
+        }, 15000);
     });
 
 

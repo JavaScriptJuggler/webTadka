@@ -54,7 +54,8 @@
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-gradient-primary btn-rounded" data-toggle="modal"
-                            data-target="#imageAndContent" onclick="$('#modalForm').trigger('reset');">Add</button>
+                            data-target="#imageAndContent"
+                            onclick="$('#modalForm').trigger('reset');$('.modal-title').text('Add Services');$('#image').attr('required','required');">Add</button>
                     </div>
                 </div>
                 <table class="table table-striped">
@@ -76,7 +77,8 @@
                                     <td> {{ $item['text'] }} </td>
                                     <td style="width: 40%;">
                                         <button class="btn btn-gradient-warning btn-rounded" data-toggle="modal"
-                                            data-target="#imageAndContent" onclick="onClickEdit()">Edit</button>
+                                            data-target="#imageAndContent"
+                                            onclick="onClickEdit('{{ $item['text'] }}')">Edit</button>
                                         <button class="btn btn-gradient-danger btn-rounded delete-service"
                                             data-deletename="{{ $item['text'] }}">Delete</button>
                                     </td>
@@ -103,14 +105,15 @@
                 <form id="modalForm" name="modalForm" class="customForm2">
                     <input type="hidden" name="action" value="downpart">
                     <input type="hidden" name="key" value="frontendForm">
+                    <input type="hidden" name="previousServiceName" id="previousServiceName" value="">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="" class="form-label">Service Name</label>
-                            <input type="text" name="service_name" class="form-control">
+                            <input type="text" name="service_name" id="service_name" required class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Image</label>
-                            <input type="file" name='image' class="form-control">
+                            <input type="file" name='image' id="image" required class="form-control">
                         </div>
                     </div>
                 </form>
@@ -217,8 +220,12 @@
         });
 
         /* edit */
-        function onClickEdit() {
+        function onClickEdit(service_text) {
+            $('.modal-title').text('Edit Services')
             $('#modalForm').trigger('reset');
+            $('#service_name').val(service_text);
+            $('#image').removeAttr('required');
+            $('#previousServiceName').val(service_text);
         }
     </script>
 @endsection
