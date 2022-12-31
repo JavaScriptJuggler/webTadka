@@ -1,2 +1,24 @@
 User-agent: *
-Disallow:
+Disallow: /login/
+Disallow: /dashboard/
+Disallow: /cms/
+Disallow: /change-hero-image/
+Disallow: /hero-content-page/
+Disallow: /seo-and-digital-marketing/
+Disallow: /cta/
+Disallow: /why-choose-us/
+Disallow: /testimonials/
+Disallow: /brand-that-trust/
+Disallow: /tools-technologies/
+Disallow: /about-us/
+Disallow: /faq/
+Disallow: /show-portfolio-page/
+Disallow: /sub-services/
+Disallow: /blog-list/
+Disallow: /create-blog/
+Disallow: /botdata-list/
+Disallow: /get-mails/
+
+Allow: /blogs/
+
+Sitemap: https://www.webtadka.com/sitemap.xml
