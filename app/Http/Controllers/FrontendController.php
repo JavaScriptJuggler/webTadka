@@ -58,15 +58,17 @@ class FrontendController extends Controller
             'brands' => brandModel::all(),
             'services' => Services::all(),
             'blogs' => blogs::with('blogCategory')->orderBy('id', 'DESC')->get(),
+            'meta_title' => 'Number 1 Web, Digital Marketing Company in Mumbai, India',
+            'meta_description' => "We are an Award-winning digital marketing company with 4 offices in metro cities like Kolkata, Mumbai, Chennai,Delhi and other places across India and, and offers We offer a wide range of services including SEO, PPC, Social Media Marketing, Content Creation, and Web Design & Development",
         ]);
         return view('frontend.main');
     }
 
     /* about us */
-    public function about_us()
+   /*  public function about_us()
     {
         return view('frontend.pages.aboutus');
-    }
+    } */
 
     /* blogs */
     public function blogs()
@@ -82,6 +84,8 @@ class FrontendController extends Controller
             'blogs' => $blogs,
             'blogcategories' => blog_categories::all(),
             'category' => $category,
+            'meta_title' => 'Number 1 Web, Digital Marketing Company in Mumbai, India',
+            'meta_description' => "We are an Award-winning digital marketing company with 4 offices in metro cities like Kolkata, Mumbai, Chennai,Delhi and other places across India and, and offers We offer a wide range of services including SEO, PPC, Social Media Marketing, Content Creation, and Web Design & Development",
         ]);
         return view('frontend.pages.blog');
     }
