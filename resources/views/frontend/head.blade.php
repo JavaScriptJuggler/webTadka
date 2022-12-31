@@ -5,6 +5,7 @@
     <title>WebTadka - Lorem ipsum dolor sit amet.</title>
     <meta content="{{ $meta_title ?? '' }}" name="description">
     <meta content="{{ $meta_description ?? '' }}" name="title">
+    <meta name="google-site-verification" content="GDs1LrF8z6s2GWTbvTrHckyvbh9_EL2-4_O0EcdsuP0" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Favicons -->
