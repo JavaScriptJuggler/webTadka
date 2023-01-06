@@ -367,6 +367,7 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
+                        holdOn();
                         $.ajaxSetup({
                             headers: {
                                 'accept': 'application/json',
