@@ -78,6 +78,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/show-portfolio-page', [portfolioController::class, 'index'])->name('show-portfolio-page');
     Route::post('/save-portfolio', [portfolioController::class, 'savePortfolio'])->name('save-portfolio');
     Route::post('/save-portfolio-category', [portfolioController::class, 'savePortfolioCategory'])->name('save-portfolio-category');
+    Route::post('/delete-portfolio-category', [portfolioController::class, 'deletePortfolioCategory'])->name('delete-portfolio-category');
     Route::post('/delete-portfolio', [portfolioController::class, 'deletePortfolio'])->name('delete-portfolio');
     Route::get('/sub-services/{servicedetails}', [seoAndDigitalMarketingController::class, 'subServices'])->name('sub-services');
     Route::post('/add-edit-subservices', [seoAndDigitalMarketingController::class, 'addEditSubServices'])->name('add-edit-subservices');

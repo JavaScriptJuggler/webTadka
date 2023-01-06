@@ -95,20 +95,33 @@ class portfolioController extends Controller
 
     public function savePortfolioCategory(Request $request)
     {
-        if ($request->category_name != '' && empty(PortfolioCategoryModel::where('category_name', $request->category_name)->first())) {
-            $success = PortfolioCategoryModel::create([
-                'category_name' => $request->category_name,
-            ])->save();
-            if ($success) {
-                return response()->json(['status' => true, 'message' => 'Category Added Successfully']);
+        if (!$request->has('id')) {
+            if ($request->category_name != '' && empty(PortfolioCategoryModel::where('category_name', $request->category_name)->first())) {
+                $success = PortfolioCategoryModel::create([
+                    'category_name' => $request->category_name,
+                ])->save();
+                if ($success) {
+                    return response()->json(['status' => true, 'message' => 'Category Added Successfully']);
+                } else {
+                    return response()->json(['status' => false, 'message' => 'Something went wrong']);
+                }
             } else {
-                return response()->json(['status' => false, 'message' => 'Something went wrong']);
+                return response()->json([
+                    'status' => false,
+                    'message' => "Category already exist or category name is empty",
+                ]);
             }
         } else {
-            return response()->json([
-                'status' => false,
-                'message' => "Category already exist or category name is empty",
-            ]);
+            $findCategory = PortfolioCategoryModel::find($request->id);
+            if (!empty($findCategory)) {
+                $findCategory->category_name = $request->category_name;
+                if ($findCategory->save()) {
+                    return response()->json([
+                        "status" => true,
+                        "message" => 'Sucessfully updated the category',
+                    ]);
+                }
+            }
         }
     }
 
@@ -147,6 +160,21 @@ class portfolioController extends Controller
                 return response()->json(['status' => false,]);
         } else {
             return response()->json(['status' => false,]);
+        }
+    }
+
+    /* delete portfolio category */
+    public function deletePortfolioCategory(Request $request)
+    {
+        $findCategory = PortfolioCategoryModel::find($request->categoryId);
+        if (!empty($findCategory)) {
+            if ($findCategory->delete()) {
+                PortfolioModel::where('category_id', $request->categoryId)->delete();
+                return response()->json([
+                    "status" => true,
+                    "message" => 'Sucessfully deleted the category',
+                ]);
+            }
         }
     }
 }

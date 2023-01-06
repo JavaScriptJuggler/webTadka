@@ -9,12 +9,9 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
-                <a data-toggle="modal" data-target="#exampleModal">
-                    <li class="breadcrumb-item active" aria-current="page">
-                        <span></span>Add Portfolio Category <i
-                            class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                    </li>
-                </a>
+                <a data-toggle="modal" onclick="$('#category_name').val('')" data-target="#exampleModal"
+                    class="btn btn-gradient-primary btn-rounded">Portfolio
+                    Category</a>
             </ul>
         </nav>
     </div>
@@ -119,6 +116,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="categortAdderForm" id="categortAdderForm">
+                        <input type="hidden" name="category_id" id="category_id" value="">
                         <div class="form-group">
                             <label for="" class="form-label">Category Name</label>
                             <input type="text" id="category_name" name="category_name" class="form-control">
@@ -126,34 +124,36 @@
                     </form>
 
                     <h3>Categories</h3>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Category Name</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm rounded-circle"><i class="mdi mdi-delete-empty"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div>
+                        <table class="table table-striped table-responsive">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (count($category) > 0)
+                                    @foreach ($category as $key => $item)
+                                        <tr>
+                                            <th scope="row">{{ $key + 1 }}</th>
+                                            <td>{{ $item->category_name }}</td>
+                                            <td>
+                                                <button class="btn btn-danger btn-sm rounded-circle"
+                                                    onclick="deleteCategory('{{ $item->id }}')"><i
+                                                        class="mdi mdi-delete-empty"></i></button>
+                                                <button
+                                                    onclick="editCategory('{{ $item->id }}','{{ $item->category_name }}')"
+                                                    class="btn btn-warning btn-sm rounded-circle"><i
+                                                        class="mdi mdi-pen"></i></button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -216,6 +216,10 @@
     </div>
     <script src="{{ asset('assets/js/toastr.js') }}"></script>
     <script>
+        function editCategory(itemId, categoryName) {
+            $('#category_name').val(categoryName);
+            $('#category_id').val(itemId);
+        }
         $('#toppartForm').submit(function(e) {
             e.preventDefault();
             holdOn();
@@ -321,6 +325,9 @@
         }
 
         $('#categortAdderForm').submit(function(e) {
+            let formdata = new FormData($('#categortAdderForm')[0]);
+            if ($('#category_id').val() != '')
+                formdata.append('id', $('#category_id').val());
             e.preventDefault();
             holdOn();
             $.ajaxSetup({
@@ -332,7 +339,7 @@
             $.ajax({
                 type: "POST",
                 url: "/save-portfolio-category",
-                data: new FormData($('#categortAdderForm')[0]),
+                data: formdata,
                 contentType: false,
                 processData: false,
                 success: function(response) {
@@ -349,5 +356,44 @@
                 }
             });
         });
+
+        function deleteCategory(itemid) {
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this Category! and all portfolio related to this categiry will be deleted",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajaxSetup({
+                            headers: {
+                                'accept': 'application/json',
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        })
+                        $.ajax({
+                            type: "POST",
+                            url: "/delete-portfolio-category",
+                            data: {
+                                categoryId: itemid
+                            },
+                            success: function(response) {
+                                if (response.status) {
+                                    toastr.success(response.message)
+                                    setTimeout(() => {
+                                        closeHoldOn();
+                                        location.reload()
+                                    }, 2000);
+                                } else {
+                                    closeHoldOn();
+                                    toastr.error(response.message)
+                                }
+                            }
+                        });
+                    }
+                });
+        }
     </script>
 @endsection

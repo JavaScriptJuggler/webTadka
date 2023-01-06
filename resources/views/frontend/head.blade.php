@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>WebTadka - Lorem ipsum dolor sit amet.</title>
+    <title>WebTadka - Web, Digital Marketing Company in Mumbai, India.</title>
     <meta content="{{ $meta_title ?? '' }}" name="description">
     <meta content="{{ $meta_description ?? '' }}" name="title">
     <meta name="google-site-verification" content="GDs1LrF8z6s2GWTbvTrHckyvbh9_EL2-4_O0EcdsuP0" />
