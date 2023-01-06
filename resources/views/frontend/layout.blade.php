@@ -111,20 +111,6 @@
                                 </div>
                                 {{-- {!! htmlFormSnippet() !!} --}}
                             </div>
-                            <div class="col-md-12 mt-3">
-                                <div class="form-group">
-                                    <div class="alert lets-talk-success alert-success d-none alert-dismissible fade show"
-                                        role="alert">
-                                        <button type="button" class="close d-none close-alert" data-dismiss="alert"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="alert-heading">Thanks!</h4>
-                                        <p>You are very important to us, all information received will always remain
-                                            confidential. We will contact you as soon as we review your message.</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </form>
                 </div>
@@ -208,20 +194,6 @@
                                     <p class="text-danger d-none captcha-error">Wrong Captcha. Please Re-Enter</p>
                                 </div>
                                 {{-- {!! htmlFormSnippet() !!} --}}
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <div class="form-group">
-                                    <div class="alert client-support-success alert-success d-none alert-dismissible fade show"
-                                        role="alert">
-                                        <button type="button" class="close d-none close-alert" data-dismiss="alert"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="alert-heading">Thanks!</h4>
-                                        <p>You are very important to us, all information received will always remain
-                                            confidential. We will contact you as soon as we review your message.</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </form>
@@ -329,20 +301,6 @@
                                 </div>
                                 {{-- {!! htmlFormSnippet() !!} --}}
                             </div>
-                            <div class="col-md-12 mt-3">
-                                <div class="form-group">
-                                    <div class="alert engagement-success alert-success d-none alert-dismissible fade show"
-                                        role="alert">
-                                        <button type="button" class="close d-none close-alert" data-dismiss="alert"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="alert-heading">Thanks!</h4>
-                                        <p>You are very important to us, all information received will always remain
-                                            confidential. We will contact you as soon as we review your message.</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </form>
                 </div>
@@ -389,18 +347,6 @@
                             <label for="email">Message</label>
                             <textarea required style="height:100px" name="message" class="form-control"
                                 placeholder="What you want to tell us..."></textarea>
-                        </div>
-                        <div class="form-group mb-2">
-                            <div class="alert engagement-success1 alert-success d-none alert-dismissible fade show"
-                                role="alert">
-                                <button type="button" class="close d-none close-alert2" data-dismiss="alert"
-                                    aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h4 class="alert-heading">Thanks!</h4>
-                                <p>You are very important to us, all information received will always remain
-                                    confidential. We will contact you as soon as we review your message.</p>
-                            </div>
                         </div>
                         <div class="form-group mb-2">
                             <button type="button" class="close-btn2 d-none" data-dismiss="modal">Close</button>
@@ -474,16 +420,24 @@
                         closeHoldOn();
                         $('.captcha-error').addClass('d-none');
                         if (e.target.id == 'letstalk') {
-                            $('.lets-talk-success').removeClass('d-none');
+                            swal("Thanks !",
+                                "You are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
+                                "success");
                         }
                         if (e.target.id == 'clientSupportForm') {
-                            $('.client-support-success').removeClass('d-none');
+                            swal("Thanks !",
+                                "You are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
+                                "success");
                         }
                         if (e.target.id == 'serviceEngagementForm') {
-                            $('.engagement-success').removeClass('d-none');
+                            swal("Thanks !",
+                                "ou are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
+                                "success");
                         }
                         if (e.target.id == 'callConnect') {
-                            $('.engagement-success1').removeClass('d-none');
+                            swal("Thanks !",
+                                "ou are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
+                                "success");
                         }
                         setTimeout(() => {
                             if (e.target.id == 'letstalk' || e.target.id ==
