@@ -36,10 +36,8 @@
                     </div><!-- End Info Item -->
 
                     <div class="info-item d-flex">
-                        <i class="bi bi-phone flex-shrink-0"></i>
-                        <div>
-                            <h4>Call:</h4>
-                            <p>+1 5589 55488 55</p>
+                        <div class="php-email-form text-center">
+                            <button type="submit" data-toggle="modal" data-target="#callConnectModal" style="position: relative;left:30px">Instant Call Connect</button>
                         </div>
                     </div><!-- End Info Item -->
 
