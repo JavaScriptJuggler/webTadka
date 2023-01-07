@@ -3,7 +3,7 @@
 
         <div class="section-header">
             <h2>{{ $header }}</h2>
-            <p style="min-width: 100%;text-align: justify;" class="text-dark">{{ $description }}</p>
+            <p style="min-width: 100%;text-align: justify; white-space: pre-line;" class="text-dark">{{ $description }}</p>
         </div>
         <div class="row gy-5 mt-1">
             @if (count($services) > 0)
