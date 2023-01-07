@@ -5,7 +5,7 @@
             <p>{{$about_us_description}}</p>
         </div>
         <div class="text-center">
-            <p style="white-space: pre-line;">{{$aboutus}}</p>
+            <p style="white-space: pre-line; text-align: justify;">{{$aboutus}}</p>
         </div>
 
     </div>
