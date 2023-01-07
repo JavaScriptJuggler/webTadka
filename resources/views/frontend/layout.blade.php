@@ -176,7 +176,8 @@
                                         <input required class="form-check-input" type="checkbox" value="1"
                                             id="flexCheckDefault1" name="subscribe">
                                         <label class="form-check-label" for="flexCheckDefault1">
-                                            I'm Accepting <a href="#">Terms & Conditions</a>
+                                            I'm Accepting <a href="{{ route('terms-and-conditions') }}">Terms &
+                                                Conditions</a>
                                         </label>
                                     </div>
                                 </div>

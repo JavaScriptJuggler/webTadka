@@ -29,4 +29,10 @@ Route::get('/blog-details/{blogname}', [FrontendController::class, 'blog_details
 Route::get('/service-details/{servicename}', [ServiceController::class, 'index'])->name('service-details');
 Route::get('/sitemap.xml', [sitemapController::class, 'index'])->name('sitemap.xml');
 Route::get('/get-mails', [testController::class, 'index']);
+Route::get('/privecy-policy', function () {
+    return view('frontend.pages.privecy_policy');
+})->name('privecy-policy');
+Route::get('/terms-and-conditions', function () {
+    return view('frontend.pages.terms_and_conditions');
+})->name('terms-and-conditions');
 Route::match(['get', 'post'], '/botman', [BotmanController::class, 'index'])->name('botman');
