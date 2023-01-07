@@ -9,7 +9,7 @@
     <!-- End Header -->
     @yield('body')
     <!-- ======= Footer ======= -->
-    @include('frontend.footer')
+    @yield('footer')
     <!-- End Footer -->
 
     @yield('go-to-top')

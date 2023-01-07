@@ -93,10 +93,15 @@
         <!-- End Contact Section -->
 
     </main><!-- End #main -->
+@section('footer')
+    @include('frontend.footer', [
+        'services' => $services,
+    ])
+@endsection
 @endsection
 
 @section('go-to-top')
-   {{--  <a href="#hero-static" class="scroll-top d-flex align-items-center justify-content-center">
+{{--  <a href="#hero-static" class="scroll-top d-flex align-items-center justify-content-center">
         <i class="bi bi-arrow-up-short"></i>
     </a> --}}
 @endsection
