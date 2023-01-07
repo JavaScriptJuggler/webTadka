@@ -47,7 +47,7 @@
                         @if (count($services) > 0)
                             @foreach ($services as $item)
                                 <li><i class="bi bi-chevron-right"></i> <a
-                                        href="{{ route('service-details', ['servicename' => $item->service_name]) }}">{{ $item->service_name }}</a>
+                                        href="{{ route('service-details', ['servicename' => str_replace(' ', '-', $item->service_name)]) }}">{{ $item->service_name }}</a>
                                 </li>
                             @endforeach
                         @endif
