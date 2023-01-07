@@ -40,6 +40,7 @@
                                 class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
                     </div>
                 </div>
+                <p class="text-muted text-center">width:2000 X 800</p>
             </div>
         </div>
     </div>
