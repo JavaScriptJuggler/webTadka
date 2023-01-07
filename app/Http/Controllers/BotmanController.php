@@ -9,6 +9,10 @@ use BotMan\BotMan\Messages\Incoming\Answer;
 
 class BotmanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['showbotmandata', 'index']]);
+    }
     public function index()
     {
         $botman = app('botman');
