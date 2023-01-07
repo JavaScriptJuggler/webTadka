@@ -20,11 +20,13 @@
                 @endforeach
             @endif
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="javascript:;" onclick="$('#letstalk').trigger('reset');refreshChaptcha()" data-toggle="modal"
-                data-target="#letstalk_modal" class="custom-button">Request Free Quote</a>
+        @if (\Request::is('/'))
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="javascript:;" onclick="$('#letstalk').trigger('reset');refreshChaptcha()"
+                        data-toggle="modal" data-target="#letstalk_modal" class="custom-button">Request Free Quote</a>
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 </section>
