@@ -21,13 +21,15 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog php-email-form {{-- modal-xl modal-dialog-centered --}} modal-lg " role="document">
             <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center">Let's Talk About Your Project Idea</h4>
+                </div>
                 <div class="modal-body p-4 py-5 p-md-">
-                    <div class="row">
+                    {{--  <div class="row">
                         <div class="col-12 ">
-                            <h3 class="mb-3 text-center" id="exampleModalLabel">Let's Talk About Your Project
-                                Idea</h3>
+                            <h3 class="mb-3 text-center letstalk-underline" id="exampleModalLabel"></h3>
                         </div>
-                    </div>
+                    </div> --}}
                     <form id="letstalk" class="php-email-form" name="letstalk">
                         <div class="row">
                             <div class="col-md-3 mb-3">
@@ -127,13 +129,16 @@
         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog {{-- modal-dialog-centered --}}  modal-lg php-email-form" role="document">
             <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center">Happy to help you, Let's Talk About your issue</h4>
+                </div>
                 <div class="modal-body p-4 py-5 p-md-">
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-12 ">
                             <h3 class="mb-3 text-center" id="exampleModalLabel">Happy to help you, Let's Talk About
                                 your issue</h3>
                         </div>
-                    </div>
+                    </div> --}}
                     <form id="clientSupportForm" class="php-email-form" name="clientSupportForm">
                         <div class="row">
                             <div class="col-md-3 mb-3">
@@ -212,13 +217,16 @@
         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog php-email-form {{-- modal-xl modal-dialog-centered --}} modal-lg" role="document">
             <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center">Let's Talk About Your Project Idea</h4>
+                </div>
                 <div class="modal-body p-4 py-5 p-md-">
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-12">
                             <h3 class="mb-3 text-center" id="exampleModalLabel">Let's Talk About Your Project
                                 Idea</h3>
                         </div>
-                    </div>
+                    </div> --}}
                     <form id="serviceEngagementForm" class="php-email-form" name="serviceEngagementForm">
                         <input type="hidden" name="subservice_name" id="subservice_name">
                         <div class="row">
