@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\aboutUsModel;
 use App\Models\brandModel;
 use App\Models\faqModel;
 use App\Models\HeaderAndDescriptions;
@@ -58,6 +59,9 @@ class ServiceController extends Controller
             'portfolio_category' => PortfolioCategoryModel::all(),
             'portfolio_details' => PortfolioModel::all(),
             'serviceDetails' => $getServicedetails,
+            'aboutus' => aboutUsModel::find(1)->about,
+            'about_us_header' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->heading,
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
         ]);
         return view('frontend.pages.services.service_details');
     }

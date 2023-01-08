@@ -7,50 +7,54 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-info">
                         <h3>WebTadka</h3>
-                        <div class="d-flex">
-                            <img style="height: 40px" class="m-1"
-                                src="https://i.pcmag.com/imagery/reviews/01dD7c6Jiwhc0I2GjnOxkdz-83..v1666885025.jpg"
-                                alt="">
-                            <img style="height: 40px" class="m-1"
-                                src="https://i.pcmag.com/imagery/reviews/01dD7c6Jiwhc0I2GjnOxkdz-83..v1666885025.jpg"
-                                alt="">
-                            <img style="height: 40px" class="m-1"
-                                src="https://i.pcmag.com/imagery/reviews/01dD7c6Jiwhc0I2GjnOxkdz-83..v1666885025.jpg"
-                                alt="">
-
+                        <p style="margin-bottom: 5px">{{ substr($about_us_description, 0, 200) }}</p><br>
+                        <div class="row">
+                            <div class="php-email-form d-flex">
+                                <button type="submit" class="m-1">Contact Us</button>
+                                <button type="submit" class="m-1" style="background-color: rgb(255, 105, 105)">Apply
+                                    Here</button>
+                            </div>
                         </div>
-                        <br>
-                        <p>
-                            A2 – 502, Vibhuti Building, Anand Nagar, G.B. Road, Thane<br>
-                            <strong>Email:</strong> <a href="mailto:team@webtadka.com"
-                                class="text-light">team@webtadka.com</a><br>
-                        </p>
                     </div>
                 </div>
 
                 <div class="col-lg-2 col-md-6 footer-links">
                     <h4>Useful Links</h4>
-                    <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('landing') }}">Home</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#about">About us</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#services">Services</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('terms-and-conditions') }}">Terms of
-                                service</a></li>
+                    {{-- <ul class="ul-links">
+                        <li class="php-email-form"><button style="height: 30px; background-color:rgb(255, 201, 121); color:black" type="submit" class="m-1 w-100">Policies</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:rgb(174, 255, 75); color:black" type="submit" class="m-1 w-100">Terms & Conditions</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:rgb(87, 255, 247); color:black" type="submit" class="m-1 w-100">Privacy Policy</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:rgb(237, 99, 255); color:black" type="submit" class="m-1 w-100">Disclaimer</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:rgb(255, 135, 215); color:black" type="submit" class="m-1 w-100">Refund Policies</button></li>
+                    </ul> --}}
+                    <ul class="useful-links">
+                        <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Policies</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('terms-and-conditions') }}">Terms &
+                                Conditions</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ route('privecy-policy') }}">Privacy
-                                policy</a></li>
+                                Policy</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Disclaimer</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Refund Policies</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Our Services</h4>
-                    <ul>
-                        @if (count($services) > 0)
-                            @foreach ($services as $item)
-                                <li><i class="bi bi-chevron-right"></i> <a
-                                        href="{{ route('service-details', ['servicename' => str_replace(' ', '-', $item->service_name)]) }}">{{ $item->service_name }}</a>
-                                </li>
-                            @endforeach
-                        @endif
+                    <h4>Our Offices</h4>
+                    <ul class="offices">
+                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
+                                type="submit" class="m-1 w-75">Mumbai, India</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#8596a7; color:black"
+                                type="submit" class="m-1 w-75">Kolkata, India</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
+                                type="submit" class="m-1 w-75">Delhi, India</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#8596a7; color:black"
+                                type="submit" class="m-1 w-75">Gulbarga, India</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
+                                type="submit" class="m-1 w-75">USA</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#8596a7; color:black"
+                                type="submit" class="m-1 w-75">UK</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
+                                type="submit" class="m-1 w-75">UAE</button></li>
                     </ul>
                 </div>
 
@@ -60,7 +64,21 @@
                     <form action="" method="post">
                         <input type="email" name="email"><input type="submit" value="Subscribe">
                     </form>
-
+                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo1.png') }}"
+                        alt="">
+                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo2.png') }}"
+                        alt="">
+                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo3.png') }}"
+                        alt="">
+                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo4.png') }}"
+                        alt="">
+                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo5.png') }}"
+                        alt="">
+                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo6.png') }}"
+                        alt="">
+                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo7.png') }}"
+                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo8.png') }}"
+                        alt="">
                 </div>
 
             </div>

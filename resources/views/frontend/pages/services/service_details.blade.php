@@ -53,6 +53,14 @@
         ])
         <!-- End Tools Section -->
 
+        <!-- ======= About Section ======= -->
+        @include('frontend.about', [
+            'header' => $about_us_header,
+            'description' => $about_us_description,
+            'brands' => $aboutus,
+        ])
+        <!-- End About Section -->
+
         <!-- ======= Portfolio Section ======= -->
         @include('frontend.portfolio', [
             'header' => $portfolio_header,
@@ -74,4 +82,10 @@
         @include('frontend.contacts')
         <!-- End Contact Section -->
     </main>
+@section('footer')
+    @include('frontend.footer', [
+        'services' => $services,
+        'description' => $about_us_description,
+    ])
+@endsection
 @endsection

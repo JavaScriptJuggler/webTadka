@@ -2468,6 +2468,24 @@ section {
     transition: 0.4s;
     border-radius: 0;
 }
+.footer .php-email-form button[type=submit] {
+    background: var(--color-primary);
+    border: 0;
+    padding: 5px 30px;
+    color: var(--color-white);
+    transition: 0.4s;
+    border-radius: 0;
+    height: 50px;
+}
+.footer .ul-links .php-email-form button[type=submit] {
+    background: var(--color-primary);
+    border: 0;
+    padding: 5px 10px;
+    color: var(--color-white);
+    transition: 0.4s;
+    border-radius: 0;
+    height: 50px;
+}
 
 .contact .php-email-form button[type=submit]:hover {
     background: rgba(var(--color-primary-rgb), 0.85);
@@ -3183,7 +3201,7 @@ section {
 
 .footer .footer-content .footer-info h3 {
     font-size: 28px;
-    margin: 0 0 20px 0;
+    /* margin: 0 0 20px 0; */
     padding: 2px 0 2px 0;
     line-height: 1;
     font-weight: 700;
@@ -3239,7 +3257,12 @@ section {
     line-height: 1;
 }
 
-.footer .footer-content .footer-links ul li {
+.footer .footer-content .footer-links .offices li {
+    /* padding: 10px 0; */
+    display: flex;
+    align-items: center;
+}
+.footer .footer-content .footer-links .useful-links li {
     padding: 10px 0;
     display: flex;
     align-items: center;

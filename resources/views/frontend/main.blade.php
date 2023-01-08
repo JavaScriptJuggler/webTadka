@@ -96,6 +96,7 @@
 @section('footer')
     @include('frontend.footer', [
         'services' => $services,
+        'description' => $about_us_description,
     ])
 @endsection
 @endsection
