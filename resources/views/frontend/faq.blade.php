@@ -18,7 +18,7 @@
                                 $count = 0;
                             @endphp
                             @foreach ($faqs as $item)
-                                <div class="accordion-item col-6" data-aos="fade-up" data-aos-delay="200">
+                                <div class="accordion-item col-md-6" data-aos="fade-up" data-aos-delay="200">
                                     <h3 class="accordion-header">
                                         <button class="accordion-button collapsed" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#faq-content-{{ $count }}">
