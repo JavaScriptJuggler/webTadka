@@ -53,13 +53,13 @@
                                 class="m-1 w-75">Gulbarga, India</button></li>
                         <li class="php-email-form"><button
                                 style="height: 30px; background-color:#0ea2bd; color:black" type="submit"
-                                class="m-1 w-75">USA</button></li>
+                                class="m-1 w-75">USA <sup class="text-light">soon</sup> </button></li>
                         <li class="php-email-form"><button
                                 style="height: 30px; background-color:#8596a7; color:black" type="submit"
-                                class="m-1 w-75">UK</button></li>
+                                class="m-1 w-75">UK <sup class="text-light">soon</sup> </button></li>
                         <li class="php-email-form"><button
                                 style="height: 30px; background-color:#0ea2bd; color:black" type="submit"
-                                class="m-1 w-75">UAE</button></li>
+                                class="m-1 w-75">UAE <sup class="text-light">soon</sup> </button></li>
                     </ul>
                 </div>
 
