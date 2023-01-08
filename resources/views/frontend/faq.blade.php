@@ -3,7 +3,7 @@
 
         <div class="row gy-4">
 
-            <div class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
                 <div class="content px-xl-5 text-center">
                     <h3><strong>{{ $faq_header }}</strong></h3>
