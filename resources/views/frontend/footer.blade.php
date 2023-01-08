@@ -29,10 +29,8 @@
                     </ul> --}}
                     <ul class="useful-links">
                         <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Policies</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('terms-and-conditions') }}">Terms &
-                                Conditions</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('privecy-policy') }}">Privacy
-                                Policy</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('terms-and-conditions') }}">Terms & Conditions</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('privecy-policy') }}">Privacy Policy</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Disclaimer</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Refund Policies</a></li>
                     </ul>
@@ -41,20 +39,27 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Offices</h4>
                     <ul class="offices">
-                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
-                                type="submit" class="m-1 w-75">Mumbai, India</button></li>
-                        <li class="php-email-form"><button style="height: 30px; background-color:#8596a7; color:black"
-                                type="submit" class="m-1 w-75">Kolkata, India</button></li>
-                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
-                                type="submit" class="m-1 w-75">Delhi, India</button></li>
-                        <li class="php-email-form"><button style="height: 30px; background-color:#8596a7; color:black"
-                                type="submit" class="m-1 w-75">Gulbarga, India</button></li>
-                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
-                                type="submit" class="m-1 w-75">USA</button></li>
-                        <li class="php-email-form"><button style="height: 30px; background-color:#8596a7; color:black"
-                                type="submit" class="m-1 w-75">UK</button></li>
-                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
-                                type="submit" class="m-1 w-75">UAE</button></li>
+                        <li class="php-email-form"><button
+                                style="height: 30px; background-color:#0ea2bd; color:black" type="submit"
+                                class="m-1 w-75">Mumbai, India</button></li>
+                        <li class="php-email-form"><button
+                                style="height: 30px; background-color:#8596a7; color:black" type="submit"
+                                class="m-1 w-75">Kolkata, India</button></li>
+                        <li class="php-email-form"><button
+                                style="height: 30px; background-color:#0ea2bd; color:black" type="submit"
+                                class="m-1 w-75">Delhi, India</button></li>
+                        <li class="php-email-form"><button
+                                style="height: 30px; background-color:#8596a7; color:black" type="submit"
+                                class="m-1 w-75">Gulbarga, India</button></li>
+                        <li class="php-email-form"><button
+                                style="height: 30px; background-color:#0ea2bd; color:black" type="submit"
+                                class="m-1 w-75">USA</button></li>
+                        <li class="php-email-form"><button
+                                style="height: 30px; background-color:#8596a7; color:black" type="submit"
+                                class="m-1 w-75">UK</button></li>
+                        <li class="php-email-form"><button
+                                style="height: 30px; background-color:#0ea2bd; color:black" type="submit"
+                                class="m-1 w-75">UAE</button></li>
                     </ul>
                 </div>
 
@@ -64,20 +69,21 @@
                     <form action="" method="post">
                         <input type="email" name="email"><input type="submit" value="Subscribe">
                     </form>
-                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo1.png') }}"
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo1.png') }}"
                         alt="">
-                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo2.png') }}"
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo2.png') }}"
                         alt="">
-                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo3.png') }}"
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo3.png') }}"
                         alt="">
-                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo4.png') }}"
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo4.png') }}"
                         alt="">
-                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo5.png') }}"
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo5.png') }}"
                         alt="">
-                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo6.png') }}"
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo6.png') }}"
                         alt="">
-                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo7.png') }}"
-                    <img class="mt-2 mr-2" style="width: 50px; height:50px" src="{{ asset('assets/logos/logo8.png') }}"
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo7.png') }}"
+                        alt="">
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo8.png') }}"
                         alt="">
                 </div>
 
