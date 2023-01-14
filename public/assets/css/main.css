@@ -1073,6 +1073,13 @@ section {
     color: var(--color-white);
     font-family: var(--font-secondary);
 }
+.hero-static h3 {
+    margin: 0 0 10px 0;
+    font-size: 45px;
+    font-weight: 300;
+    color: var(--color-white);
+    font-family: var(--font-secondary);
+}
 
 .hero-static h2 span {
     color: var(--color-primary);
@@ -2468,15 +2475,18 @@ section {
     transition: 0.4s;
     border-radius: 0;
 }
+
 .footer .php-email-form button[type=submit] {
     background: var(--color-primary);
     border: 0;
-    padding: 5px 30px;
+    padding: 5px 15px;
     color: var(--color-white);
     transition: 0.4s;
     border-radius: 0;
-    height: 50px;
+    height: 70px;
+    width: 200px;
 }
+
 .footer .ul-links .php-email-form button[type=submit] {
     background: var(--color-primary);
     border: 0;
@@ -2490,6 +2500,7 @@ section {
 .contact .php-email-form button[type=submit]:hover {
     background: rgba(var(--color-primary-rgb), 0.85);
 }
+
 .contact .php-email-form .close-btn {
     background: var(--color-pink);
     border: 0;
@@ -2502,6 +2513,7 @@ section {
 .contact .php-email-form .close-btn:hover {
     background: rgba(var(--color-pink-rgb), 0.85);
 }
+
 .contact .php-email-form .close-btn1 {
     background: var(--color-pink);
     border: 0;
@@ -3262,6 +3274,7 @@ section {
     display: flex;
     align-items: center;
 }
+
 .footer .footer-content .footer-links .useful-links li {
     padding: 10px 0;
     display: flex;
@@ -3373,12 +3386,21 @@ section {
 ::-webkit-scrollbar {
     width: 5px;
 }
+
 ::-webkit-scrollbar-button {
     background: var(--color-primary)
 }
+
 ::-webkit-scrollbar-track-piece {
     background: #888
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--color-primary)
+}
+
+@media screen and (min-width: 1400px) {
+    .footer-content .custom-container {
+        max-width: 1575px;
+    }
 }

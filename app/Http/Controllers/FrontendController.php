@@ -65,7 +65,7 @@ class FrontendController extends Controller
     }
 
     /* about us */
-   /*  public function about_us()
+    /*  public function about_us()
     {
         return view('frontend.pages.aboutus');
     } */
@@ -112,5 +112,22 @@ class FrontendController extends Controller
         $portfolio_id = Crypt::decryptString($portfolioid);
         $portfolio_details = PortfolioModel::find($portfolio_id);
         return view('frontend.portfolio_details', compact('portfolio_details'));
+    }
+
+    /* privecy policy */
+    public function privacyPolicy()
+    {
+        view()->share([
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+        ]);
+        return view('frontend.pages.privecy_policy');
+    }
+    /* Terms & Conditions */
+    public function termsAndConditions()
+    {
+        view()->share([
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+        ]);
+        return view('frontend.pages.terms_and_conditions');
     }
 }

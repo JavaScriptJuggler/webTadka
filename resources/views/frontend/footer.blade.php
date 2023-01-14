@@ -1,7 +1,7 @@
 <footer id="footer" class="footer">
 
     <div class="footer-content">
-        <div class="container">
+        <div class="container custom-container">
             <div class="row">
 
                 <div class="col-lg-3 col-md-6">
@@ -10,9 +10,19 @@
                         <p style="margin-bottom: 5px">{{ substr($about_us_description, 0, 200) }}</p><br>
                         <div class="row">
                             <div class="php-email-form d-flex">
-                                <button type="submit" class="m-1">Contact Us</button>
-                                <button type="submit" class="m-1" style="background-color: rgb(255, 105, 105)">Apply
-                                    Here</button>
+                                <button type="submit" class="m-1" data-toggle="modal"
+                                    data-target="#callConnectModal">
+                                    <p style="text-align:left">For Enquires</p>
+                                    <div class="d-flex">
+                                        <h5>Contact Us <i class="fa-solid fa-circle-arrow-right" style="margin-left: 20px;"></i></h5>
+                                    </div>
+                                </button>
+                                <button type="submit" class="m-1" style="background-color: rgb(255, 105, 105)">
+                                    <p style="text-align:left">For Career Opportunities</p>
+                                    <div class="d-flex">
+                                        <h5>Apply Here <i class="fa-solid fa-circle-arrow-right" style="margin-left: 20px;"></i></h5>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -29,8 +39,10 @@
                     </ul> --}}
                     <ul class="useful-links">
                         <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Policies</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('terms-and-conditions') }}">Terms & Conditions</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('privecy-policy') }}">Privacy Policy</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('terms-and-conditions') }}">Terms &
+                                Conditions</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('privecy-policy') }}">Privacy
+                                Policy</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Disclaimer</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Refund Policies</a></li>
                     </ul>
@@ -39,27 +51,17 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Offices</h4>
                     <ul class="offices">
-                        <li class="php-email-form"><button
-                                style="height: 30px; background-color:#0ea2bd; color:black" type="submit"
-                                class="m-1 w-75">Mumbai, India</button></li>
-                        <li class="php-email-form"><button
-                                style="height: 30px; background-color:#8596a7; color:black" type="submit"
-                                class="m-1 w-75">Kolkata, India</button></li>
-                        <li class="php-email-form"><button
-                                style="height: 30px; background-color:#0ea2bd; color:black" type="submit"
-                                class="m-1 w-75">Delhi, India</button></li>
-                        <li class="php-email-form"><button
-                                style="height: 30px; background-color:#8596a7; color:black" type="submit"
-                                class="m-1 w-75">Gulbarga, India</button></li>
-                        <li class="php-email-form"><button
-                                style="height: 30px; background-color:#0ea2bd; color:black" type="submit"
-                                class="m-1 w-75">USA <sup class="text-light">soon</sup> </button></li>
-                        <li class="php-email-form"><button
-                                style="height: 30px; background-color:#8596a7; color:black" type="submit"
-                                class="m-1 w-75">UK <sup class="text-light">soon</sup> </button></li>
-                        <li class="php-email-form"><button
-                                style="height: 30px; background-color:#0ea2bd; color:black" type="submit"
-                                class="m-1 w-75">UAE <sup class="text-light">soon</sup> </button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
+                                type="submit" class="m-1 w-75">Mumbai, India</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#8596a7; color:black"
+                                type="submit" class="m-1 w-75">Kolkata, India</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
+                                type="submit" class="m-1 w-75">Delhi, India</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#8596a7; color:black"
+                                type="submit" class="m-1 w-75">Gulbarga, India</button></li>
+                        <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
+                                type="submit" class="m-1 w-75">USA, UK, UAE <sup class="text-light">soon</sup>
+                            </button></li>
                     </ul>
                 </div>
 
