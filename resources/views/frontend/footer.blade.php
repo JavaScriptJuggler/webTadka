@@ -14,13 +14,16 @@
                                     data-target="#callConnectModal">
                                     <p style="text-align:left">For Enquires</p>
                                     <div class="d-flex">
-                                        <h5>Contact Us <i class="fa-solid fa-circle-arrow-right" style="margin-left: 20px;"></i></h5>
+                                        <h5>Contact Us <i class="fa-solid fa-circle-arrow-right"
+                                                style="margin-left: 20px;"></i></h5>
                                     </div>
                                 </button>
-                                <button type="submit" class="m-1" style="background-color: rgb(255, 105, 105)">
-                                    <p style="text-align:left">For Career Opportunities</p>
+                                <button type="submit" onclick="window.location.href='{{ route('career') }}'"
+                                    class="m-1" style="background-color: rgb(255, 105, 105)">
+                                    <p style="text-align:left">Career Opportunities</p>
                                     <div class="d-flex">
-                                        <h5>Apply Here <i class="fa-solid fa-circle-arrow-right" style="margin-left: 20px;"></i></h5>
+                                        <h5>Apply Here <i class="fa-solid fa-circle-arrow-right"
+                                                style="margin-left: 20px;"></i></h5>
                                     </div>
                                 </button>
                             </div>

@@ -120,14 +120,24 @@ class FrontendController extends Controller
         view()->share([
             'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
         ]);
-        return view('frontend.pages.privecy_policy');
+        return view('frontend.pages.external_pages.privecy_policy');
     }
+
     /* Terms & Conditions */
     public function termsAndConditions()
     {
         view()->share([
             'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
         ]);
-        return view('frontend.pages.terms_and_conditions');
+        return view('frontend.pages.external_pages.terms_and_conditions');
+    }
+
+    /* Terms & Conditions */
+    public function career()
+    {
+        view()->share([
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+        ]);
+        return view('frontend.pages.external_pages.career');
     }
 }
