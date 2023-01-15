@@ -371,7 +371,6 @@
     <script>
         $('#letstalk, #clientSupportForm, #serviceEngagementForm, #callConnect').submit(function(e) {
             e.preventDefault();
-            holdOn();
             var targetInput = '';
             if (e.target.id == 'clientSupportForm')
                 targetInput = $(".textInputModal1")
@@ -379,101 +378,102 @@
                 targetInput = $(".textInputModal")
             if (e.target.id == 'serviceEngagementForm')
                 targetInput = $(".textInputModal2")
-            if (e.target.id == 'clientSupportForm' && e.target.id == 'letstalk' && e.target.id ==
+            if (e.target.id == 'clientSupportForm' || e.target.id == 'letstalk' || e.target.id ==
                 'serviceEngagementForm') {
                 if (targetInput.val() != iNumber) {
                     refreshChaptcha();
                     $('.captcha-error').removeClass('d-none');
                     return false;
-                }
-            }
-            $('.captcha-error').addClass('d-none');
+                } else {
+                    holdOn();
+                    $('.captcha-error').addClass('d-none');
+                    if (e.target.id == 'clientSupportForm') {
+                        var formdata = new FormData($('#clientSupportForm')[0]);
+                        formdata.append('action', 'client-support');
 
-            if (e.target.id == 'clientSupportForm') {
-                var formdata = new FormData($('#clientSupportForm')[0]);
-                formdata.append('action', 'client-support');
-
-            }
-            if (e.target.id == 'letstalk') {
-                var formdata = new FormData($('#letstalk')[0]);
-                formdata.append('action', 'lets-talk');
-                let checkValue = document.querySelector('#flexCheckDefault').checked ? 1 : 0;
-                formdata.append('subscribe', checkValue);
-
-            }
-            if (e.target.id == 'serviceEngagementForm') {
-                var formdata = new FormData($('#serviceEngagementForm')[0]);
-                formdata.append('action', 'lets-talk');
-                let checkValue = document.querySelector('#flexCheckDefault2').checked ? 1 : 0;
-                formdata.append('subscribe', checkValue);
-
-            }
-            if (e.target.id == 'callConnect') {
-                var formdata = new FormData($('#callConnect')[0]);
-                formdata.append('action', 'callConnect');
-            }
-            $.ajaxSetup({
-                headers: {
-                    'accept': 'application/json',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            })
-            $.ajax({
-                type: "POST",
-                url: "/save-lets-talk-and-client-support",
-                data: formdata,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    if (response == 1) {
-                        closeHoldOn();
-                        $('.captcha-error').addClass('d-none');
-                        if (e.target.id == 'letstalk') {
-                            swal("Thanks !",
-                                "You are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
-                                "success");
-                        }
-                        if (e.target.id == 'clientSupportForm') {
-                            swal("Thanks !",
-                                "You are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
-                                "success");
-                        }
-                        if (e.target.id == 'serviceEngagementForm') {
-                            swal("Thanks !",
-                                "ou are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
-                                "success");
-                        }
-                        if (e.target.id == 'callConnect') {
-                            swal("Thanks !",
-                                "ou are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
-                                "success");
-                        }
-                        setTimeout(() => {
-                            if (e.target.id == 'letstalk' || e.target.id ==
-                                'serviceEngagementForm') {
-                                $('.close-btn').click();
-                                $('.close-alert').click();
-                                $('#letstalk').trigger('reset');
-                                document.querySelector('.modal-dialog').scrollBy(0, -1);
-                                $('#serviceEngagementForm').trigger('reset');
-                            }
-                            if (e.target.id == 'clientSupportForm') {
-                                $('.close-btn1').click();
-                                $('.close-alert1').click();
-                                $('#clientSupportForm').trigger('reset');
-                            }
-                            if (e.target.id == 'callConnect') {
-                                $('#callConnectModal').modal('hide');
-                                $('.close-btn2').click();
-                                $('.close-alert2').click();
-                                $('#callConnect').trigger('reset');
-                            }
-
-                            refreshChaptcha();
-                        }, 3000);
                     }
+                    if (e.target.id == 'letstalk') {
+                        var formdata = new FormData($('#letstalk')[0]);
+                        formdata.append('action', 'lets-talk');
+                        let checkValue = document.querySelector('#flexCheckDefault').checked ? 1 : 0;
+                        formdata.append('subscribe', checkValue);
+
+                    }
+                    if (e.target.id == 'serviceEngagementForm') {
+                        var formdata = new FormData($('#serviceEngagementForm')[0]);
+                        formdata.append('action', 'lets-talk');
+                        let checkValue = document.querySelector('#flexCheckDefault2').checked ? 1 : 0;
+                        formdata.append('subscribe', checkValue);
+
+                    }
+                    if (e.target.id == 'callConnect') {
+                        var formdata = new FormData($('#callConnect')[0]);
+                        formdata.append('action', 'callConnect');
+                    }
+                    $.ajaxSetup({
+                        headers: {
+                            'accept': 'application/json',
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    })
+                    $.ajax({
+                        type: "POST",
+                        url: "/save-lets-talk-and-client-support",
+                        data: formdata,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            if (response == 1) {
+                                closeHoldOn();
+                                $('.captcha-error').addClass('d-none');
+                                if (e.target.id == 'letstalk') {
+                                    swal("Thanks !",
+                                        "You are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
+                                        "success");
+                                }
+                                if (e.target.id == 'clientSupportForm') {
+                                    swal("Thanks !",
+                                        "You are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
+                                        "success");
+                                }
+                                if (e.target.id == 'serviceEngagementForm') {
+                                    swal("Thanks !",
+                                        "ou are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
+                                        "success");
+                                }
+                                if (e.target.id == 'callConnect') {
+                                    swal("Thanks !",
+                                        "ou are very important to us, all information received will always remain confidential. We will contact you as soon as we review your message.",
+                                        "success");
+                                }
+                                setTimeout(() => {
+                                    if (e.target.id == 'letstalk' || e.target.id ==
+                                        'serviceEngagementForm') {
+                                        $('.close-btn').click();
+                                        $('.close-alert').click();
+                                        $('#letstalk').trigger('reset');
+                                        document.querySelector('.modal-dialog').scrollBy(0, -1);
+                                        $('#serviceEngagementForm').trigger('reset');
+                                    }
+                                    if (e.target.id == 'clientSupportForm') {
+                                        $('.close-btn1').click();
+                                        $('.close-alert1').click();
+                                        $('#clientSupportForm').trigger('reset');
+                                    }
+                                    if (e.target.id == 'callConnect') {
+                                        $('#callConnectModal').modal('hide');
+                                        $('.close-btn2').click();
+                                        $('.close-alert2').click();
+                                        $('#callConnect').trigger('reset');
+                                    }
+
+                                    refreshChaptcha();
+                                }, 3000);
+                            }
+                        }
+                    });
                 }
-            });
+            }
         });
     </script>
 </body>
