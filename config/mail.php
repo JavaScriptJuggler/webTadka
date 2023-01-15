@@ -54,6 +54,16 @@ return [
             'timeout' => null,
             'local_domain' => env('SUPPORT_MAIL_EHLO_DOMAIN'),
         ],
+        'smtp3' => [
+            'transport' => 'smtp',
+            'host' => env('CAREER_MAIL_HOST', 'smtp.mailgun.org'),
+            'port' => env('CAREER_MAIL_PORT', 587),
+            'encryption' => env('CAREER_MAIL_ENCRYPTION', 'tls'),
+            'username' => env('CAREER_MAIL_USERNAME'),
+            'password' => env('CAREER_MAIL_PASSWORD'),
+            'timeout' => null,
+            'local_domain' => env('SUPPORT_MAIL_EHLO_DOMAIN'),
+        ],
 
         'ses' => [
             'transport' => 'ses',

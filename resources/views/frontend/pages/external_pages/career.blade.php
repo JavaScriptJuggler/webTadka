@@ -35,7 +35,8 @@
             <div class="container px-2" style="margin-top:30px;">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <form class="php-email-form" id="contactform">
+                        <form class="php-email-form" id="careerForm">
+                            <input type="hidden" name="filename" id="filename">
                             <div class="row">
                                 <div class="col-md-4 form-group">
                                     <input type="text" name="post" class="form-control" placeholder="Post For Apply"
@@ -57,7 +58,8 @@
                                     <input type="text" class="form-control" name="city" placeholder="City" required>
                                 </div>
                                 <div class="col-md-4 form-group mt-3 mt-md-0">
-                                    <input type="text" class="form-control" name="skills" placeholder="Skills" required>
+                                    <input type="text" class="form-control" name="skills"
+                                        placeholder="Skills i.e(PHP, Python)" required>
                                 </div>
                                 <div class="col-md-4 form-group mt-3 mt-md-0">
                                     <input type="text" class="form-control" name="experience" placeholder="Experience"
@@ -68,11 +70,12 @@
                                         placeholder="Heighest Qualification" required>
                                 </div>
                                 <div class="col-md-4 form-group mt-3 mt-md-0">
-                                    <input type="file" class="d-none form-control resume" name="resume"
-                                        placeholder="Upload Your Updated Resume" required>
+                                    <input type="file" onchange="onChangeFileInput(this)"
+                                        class="d-none form-control resume" name="resume"
+                                        placeholder="Upload Your Updated Resume" required id="formdataFile">
                                     <input type="text" class="form-control" name=""
-                                        placeholder="Upload Your Updated Resume" readonly onclick="$('.resume').click()"
-                                        required style="background-color: transparent">
+                                        placeholder="Upload Your Updated Resume" id="fakeFileBox" readonly
+                                        onclick="$('.resume').click()" required style="background-color: transparent">
                                 </div>
                             </div>
                             <div class="row">
@@ -103,4 +106,46 @@
             </div>
         </section>
     </main>
+    <script>
+        const onChangeFileInput = (element) => {
+            if ((element.value) != '') {
+                $('#fakeFileBox').val(element.files[0].name);
+                $('#filename').val(element.files[0].name);
+            } else {
+                $('#fakeFileBox').val('');
+                $('#filename').val('');
+            }
+        }
+
+        $('#careerForm').submit(function(e) {
+            e.preventDefault();
+            if ($(".textInput").val() != iNumber) {
+                refreshChaptcha();
+                $('.captcha-error').removeClass('d-none');
+            } else {
+                $('.captcha-error').addClass('d-none');
+                holdOn();
+                $.ajaxSetup({
+                    headers: {
+                        'accept': 'application/json',
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+                $.ajax({
+                    type: "POST",
+                    url: "/send-career-mail",
+                    data: new FormData($('#careerForm')[0]),
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.status) {
+                            closeHoldOn();
+                            $('#careerForm').trigger('reset');
+                            swal("Thank You!", response.message, "success");
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

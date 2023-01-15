@@ -140,4 +140,22 @@ class FrontendController extends Controller
         ]);
         return view('frontend.pages.external_pages.career');
     }
+
+    /* send career mail */
+    public function CareerMail(Request $request)
+    {
+        $body = "Name: $request->fullname, <br> Position: $request->post <br> Email: $request->email <br> Phone: $request->phone <br>City: $request->city <br>Skills: $request->skills <br>Experience: $request->experience <br>Qualification: $request->qualification";
+
+        $image = $request->file('resume');
+        $input['imagename'] = time() . $request->filename;
+        $destinationPath = public_path('/document_bucket');
+        $image->move($destinationPath, $input['imagename']);
+        $filePath =  '/document_bucket/' . $input['imagename'];
+        sendCareerMail('careers@webtadka.com', 'New Job Application', $body, 'careers@webtadka.com', $filePath);
+        unlink(public_path($filePath));
+        return response()->json([
+            'status'=>true,
+            'message'=>'Thanks for your response, we will contact you asap',
+        ]);
+    }
 }
