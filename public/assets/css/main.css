@@ -219,7 +219,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Disable aos animation delay on mobile devices 
+# Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
     [data-aos-delay] {
@@ -3405,7 +3405,7 @@ section {
 
 @media screen and (min-width: 1400px) {
     .footer-content .custom-container {
-        max-width: 1575px;
+        max-width: 1575px !important;
     }
 }
 
