@@ -41,13 +41,14 @@
                         <li class="php-email-form"><button style="height: 30px; background-color:rgb(255, 135, 215); color:black" type="submit" class="m-1 w-100">Refund Policies</button></li>
                     </ul> --}}
                     <ul class="useful-links">
-                        <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Policies</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('policies') }}">Policies</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ route('terms-and-conditions') }}">Terms &
                                 Conditions</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ route('privecy-policy') }}">Privacy
                                 Policy</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Disclaimer</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="javascript:;">Refund Policies</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('disclaimer') }}">Disclaimer</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('refund-policy') }}">Refund
+                                Policies</a></li>
                     </ul>
                 </div>
 

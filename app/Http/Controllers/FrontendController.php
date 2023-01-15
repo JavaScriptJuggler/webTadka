@@ -132,13 +132,40 @@ class FrontendController extends Controller
         return view('frontend.pages.external_pages.terms_and_conditions');
     }
 
-    /* Terms & Conditions */
+    /* career */
     public function career()
     {
         view()->share([
             'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
         ]);
         return view('frontend.pages.external_pages.career');
+    }
+
+    /* refund policy */
+    public function refundPolicy()
+    {
+        view()->share([
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+        ]);
+        return view('frontend.pages.external_pages.refund_policy');
+    }
+
+    /* disclaimer */
+    public function disclaimer()
+    {
+        view()->share([
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+        ]);
+        return view('frontend.pages.external_pages.disclaimer');
+    }
+
+    /* disclaimer */
+    public function policies()
+    {
+        view()->share([
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+        ]);
+        return view('frontend.pages.external_pages.policies');
     }
 
     /* send career mail */
@@ -154,8 +181,8 @@ class FrontendController extends Controller
         sendCareerMail('careers@webtadka.com', 'New Job Application', $body, 'careers@webtadka.com', $filePath);
         unlink(public_path($filePath));
         return response()->json([
-            'status'=>true,
-            'message'=>'Thanks for your response, we will contact you asap',
+            'status' => true,
+            'message' => 'Thanks for your response, we will contact you asap',
         ]);
     }
 }

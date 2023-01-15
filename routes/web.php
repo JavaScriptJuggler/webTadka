@@ -31,6 +31,9 @@ Route::get('/sitemap.xml', [sitemapController::class, 'index'])->name('sitemap.x
 Route::get('/get-mails', [testController::class, 'index']);
 Route::get('/privecy-policy', [FrontendController::class, 'privacyPolicy'])->name('privecy-policy');
 Route::get('/terms-and-conditions', [FrontendController::class, 'termsAndConditions'])->name('terms-and-conditions');
+Route::get('/disclaimer', [FrontendController::class, 'disclaimer'])->name('disclaimer');
 Route::get('/career', [FrontendController::class, 'career'])->name('career');
+Route::get('/policies', [FrontendController::class, 'policies'])->name('policies');
+Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name('refund-policy');
 Route::post('/send-career-mail', [FrontendController::class, 'CareerMail'])->name('send-career-mail');
 Route::match(['get', 'post'], '/botman', [BotmanController::class, 'index'])->name('botman');
