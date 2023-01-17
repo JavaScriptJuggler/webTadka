@@ -185,4 +185,12 @@ class FrontendController extends Controller
             'message' => 'Thanks for your response, we will contact you asap',
         ]);
     }
+
+    /* partner program */
+    public function partnerProgramm(){
+        view()->share([
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+        ]);
+        return view('frontend.pages.external_pages.partner');
+    }
 }

@@ -35,5 +35,6 @@ Route::get('/disclaimer', [FrontendController::class, 'disclaimer'])->name('disc
 Route::get('/career', [FrontendController::class, 'career'])->name('career');
 Route::get('/policies', [FrontendController::class, 'policies'])->name('policies');
 Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name('refund-policy');
+Route::get('/partner-program', [FrontendController::class, 'partnerProgramm'])->name('partner-program');
 Route::post('/send-career-mail', [FrontendController::class, 'CareerMail'])->name('send-career-mail');
 Route::match(['get', 'post'], '/botman', [BotmanController::class, 'index'])->name('botman');

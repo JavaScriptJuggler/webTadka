@@ -49,6 +49,7 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ route('disclaimer') }}">Disclaimer</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ route('refund-policy') }}">Refund
                                 Policies</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('partner-program') }}">Join as a partner</a></li>
                     </ul>
                 </div>
 
