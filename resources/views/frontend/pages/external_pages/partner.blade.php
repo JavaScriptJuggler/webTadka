@@ -227,7 +227,7 @@
             <div class="container">
                 <h2 class="wow fadeInDown animated" data-wow-delay="0.2s"
                     style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
-                    <span class="light">SAG IPL </span> <span class="bold">Partnership Program Features</span></h2>
+                    <span class="light">WebTadka </span> <span class="bold">Partnership Program Features</span></h2>
                 <p class="wow fadeInDown animated" data-wow-delay="0.4s"
                     style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
                     Get engaged in a professional Partnership with a Reputed Organization</p>
