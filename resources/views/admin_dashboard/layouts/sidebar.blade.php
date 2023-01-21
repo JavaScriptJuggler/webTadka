@@ -53,5 +53,11 @@
                 <i class="mdi mdi-robot menu-icon"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('settings') }}">
+                <span class="menu-title">Settings</span>
+                <i class="mdi mdi-comment-question-outline menu-icon"></i>
+            </a>
+        </li>
     </ul>
 </nav>

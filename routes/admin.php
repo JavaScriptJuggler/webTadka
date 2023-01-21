@@ -15,6 +15,7 @@ use App\Http\Controllers\LetsTalkController;
 use App\Http\Controllers\portfolioController;
 use App\Http\Controllers\seoAndDigitalMarketingController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\settingsController;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\testimonialsController;
 use App\Http\Controllers\toolsTechnologiesController;
@@ -83,6 +84,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/sub-services/{servicedetails}', [seoAndDigitalMarketingController::class, 'subServices'])->name('sub-services');
     Route::post('/add-edit-subservices', [seoAndDigitalMarketingController::class, 'addEditSubServices'])->name('add-edit-subservices');
     Route::post('/delete-subservices', [seoAndDigitalMarketingController::class, 'deleteSubServices'])->name('delete-subservices');
+    Route::get('/settings', [settingsController::class, 'userSettings'])->name('settings');
+    Route::post('/save-settings', [settingsController::class, 'saveSettings'])->name('save-settings');
 
     /* blog route */
     Route::get('/blog-list', [blogController::class, 'blogList'])->name('blog-list');
