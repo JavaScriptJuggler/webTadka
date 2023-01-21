@@ -6,7 +6,8 @@
                 <div class="card-body">
                     <h4 class="card-title">Profile Settings</h4>
                     <p class="card-description"> Profile settings for users </p>
-                    <form class="forms-sample" id="profile_form">
+                    <form class="forms-sample profile_form">
+                        <input type="hidden" name="action" value="nameAndEmail">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" name="name" id="name" placeholder="Name"
@@ -19,6 +20,10 @@
                                 value="{{ $userDetails->email }}">
                             <strong><span class="text-danger error-email" style="margin-top:10px;"></span></strong>
                         </div>
+                        <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                    </form>
+                    <form class="profile_form">
+                        <input type="hidden" name="action" value="changePassword">
                         <h4 class="card-title mt-5 mb-3">Change Password</h4>
                         <div class="form-group">
                             <label for="current_password">Current Password</label>
@@ -31,8 +36,7 @@
                             <label for="new_password">New Password</label>
                             <input type="password" class="form-control" id="new_password" placeholder="New Password"
                                 name="password">
-                                <strong><span class="text-danger error-password"
-                                    style="margin-top:10px;"></span></strong>
+                            <strong><span class="text-danger error-password" style="margin-top:10px;"></span></strong>
                         </div>
                         <div class="form-group">
                             <label for="confirm_password">Confirm Password</label>
@@ -40,14 +44,13 @@
                                 name="password_confirmation">
                         </div>
                         <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        $('#profile_form').submit(function(e) {
+        $('.profile_form').submit(function(e) {
             let formData = new FormData($(this)[0]);
             e.preventDefault();
             $.ajaxSetup({
@@ -67,6 +70,15 @@
                         Object.entries(response.error).forEach(element => {
                             $('.error-' + element[0]).text(element[1][0]);
                         });
+                    } else {
+                        if (response.status) {
+                            swal("Success", response.message, "success");
+                        } else {
+                            swal("Error", response.message, "error");
+                        }
+                        setTimeout(() => {
+                            location.reload();
+                        }, 3000);
                     }
                 }
             });
