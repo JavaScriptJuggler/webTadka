@@ -5,7 +5,7 @@
     <div class="mail-box">
         <aside class="lg-side">
             <div class="inbox-head">
-                <h3>Inbox</h3>
+                <h3>Inbox ({{ $inboxName }})</h3>
                 <div class="pull-right position">
                     <button class="btn btn-danger">Compose</button>
                 </div>
