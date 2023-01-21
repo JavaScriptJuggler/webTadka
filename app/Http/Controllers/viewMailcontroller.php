@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Webklex\IMAP\Facades\Client;
 
 class viewMailcontroller extends Controller
@@ -15,8 +16,14 @@ class viewMailcontroller extends Controller
     public function index()
     {
         view()->share(['pageTitle' => 'Email']);
+        return view('admin_dashboard.mail.mailSettings');
+    }
+
+    public function mailData($inboxid)
+    {
+        view()->share(['pageTitle' => 'Email']);
         $message_details = [];
-        $client = Client::account("default");
+        $client = Client::account(Crypt::decryptString($inboxid));
         $client->connect();
 
         /** @var \Webklex\PHPIMAP\Support\FolderCollection $folders */
@@ -36,16 +43,18 @@ class viewMailcontroller extends Controller
                 echo $message->getSubject() . '<br />';
                 echo $message->getHTMLBody(true);
                 echo 'Attachments: ' . $message->getAttachments() . '<br />'; */
-                if ($folder->path != 'INBOX.Sent') {
+
+                if ($folder->path != 'INBOX.Sent' && $folder->path != 'INBOX.Trash') {
                     $temp['from'] = $message->getFrom();
                     $temp['subject'] = $message->getSubject();
                     $temp['seen'] = $message->getFlags();
                     $temp['timestamp'] = $message->getDate();
+                    $temp['body'] = $message->getHTMLBody(true);
                     array_push($message_details, $temp);
                 }
                 // $this->info("\tMessage: ".$message->message_id);
             }
         }
-        return view('admin_dashboard.viewinbox', compact('message_details'));
+        return view('admin_dashboard.mail.viewinbox', compact('message_details'));
     }
 }

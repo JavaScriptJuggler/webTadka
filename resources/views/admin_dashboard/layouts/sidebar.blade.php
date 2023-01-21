@@ -26,12 +26,12 @@
                 <i class="mdi mdi-comment-question-outline menu-icon"></i>
             </a>
         </li>
-        {{-- <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('view-mails') }}">
                 <span class="menu-title">Mails</span>
                 <i class="mdi mdi-email-open menu-icon"></i>
             </a>
-        </li> --}}
+        </li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                 aria-controls="ui-basic">
@@ -56,7 +56,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('settings') }}">
                 <span class="menu-title">Settings</span>
-                <i class="mdi mdi-comment-question-outline menu-icon"></i>
+                <i class="mdi mdi-account-settings menu-icon"></i>
             </a>
         </li>
     </ul>

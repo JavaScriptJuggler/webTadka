@@ -46,7 +46,7 @@ return [
     */
     'accounts' => [
 
-        'default' => [// account identifier
+        'default' => [ // account identifier
             'host'  => 'localhost',
             'port'  => 993,
             'protocol'  => 'imap', //might also use imap, [pop3 or nntp (untested)]
@@ -65,6 +65,26 @@ return [
             "extensions" => []
         ],
 
+        'imap_teamWebtadka' => [
+            'host'          => 'mail.webtadka.com',
+            'port'          => 993,
+            'encryption'    => 'ssl',
+            'validate_cert' => true,
+            'username'      => 'team@webtadka.com',
+            'password'      => 'Yeshraj@400607',
+            'protocol'      => 'imap'
+        ],
+
+        'imap_supportWebtadka' => [
+            'host'          => 'mail.webtadka.com',
+            'port'          => 993,
+            'encryption'    => 'ssl',
+            'validate_cert' => true,
+            'username'      => 'support@webtadka.com',
+            'password'      => 'Yeshraj@400607',
+            'protocol'      => 'imap'
+        ],
+        
         /*
         'gmail' => [ // account identifier
             'host' => 'imap.gmail.com',
