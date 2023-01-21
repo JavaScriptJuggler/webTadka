@@ -18,11 +18,11 @@
                                                 style="margin-left: 20px;"></i></h5>
                                     </div>
                                 </button>
-                                <button type="submit" onclick="window.location.href='{{ route('career') }}'"
+                                <button type="submit" onclick="window.location.href='{{ route('partner-program') }}'"
                                     class="m-1" style="background-color: rgb(255, 105, 105)">
-                                    <p style="text-align:left">Career Opportunities</p>
+                                    <p style="text-align:left">Join as a</p>
                                     <div class="d-flex">
-                                        <h5>Apply Here <i class="fa-solid fa-circle-arrow-right"
+                                        <h5>Partner <i class="fa-solid fa-circle-arrow-right"
                                                 style="margin-left: 20px;"></i></h5>
                                     </div>
                                 </button>
@@ -49,7 +49,7 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ route('disclaimer') }}">Disclaimer</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ route('refund-policy') }}">Refund
                                 Policies</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('partner-program') }}">Join as a partner</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('career') }}">Career Opportunity</a></li>
                     </ul>
                 </div>
 
@@ -63,7 +63,7 @@
                         <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
                                 type="submit" class="m-1 w-75">Delhi, India</button></li>
                         <li class="php-email-form"><button style="height: 30px; background-color:#8596a7; color:black"
-                                type="submit" class="m-1 w-75">Gulbarga, India</button></li>
+                                type="submit" class="m-1 w-75">Karnataka, India</button></li>
                         <li class="php-email-form"><button style="height: 30px; background-color:#0ea2bd; color:black"
                                 type="submit" class="m-1 w-75">USA, UK, UAE <sup class="text-light">soon</sup>
                             </button></li>
