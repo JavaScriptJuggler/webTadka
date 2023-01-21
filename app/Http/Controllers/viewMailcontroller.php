@@ -21,7 +21,10 @@ class viewMailcontroller extends Controller
 
     public function mailData($inboxid)
     {
-        view()->share(['pageTitle' => 'Email']);
+        view()->share([
+            'pageTitle' => 'Email',
+            'inboxName' => Client::account(Crypt::decryptString($inboxid))->username,
+        ]);
         $message_details = [];
         $client = Client::account(Crypt::decryptString($inboxid));
         $client->connect();
