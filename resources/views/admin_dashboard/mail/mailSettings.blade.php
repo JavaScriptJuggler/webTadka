@@ -19,7 +19,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>''
+                        <td>1</td>
                         <td>team@webtadka.com</td>
                         <td><a href="{{route('view-mail-details',['inboxid'=>Crypt::encryptString('imap_teamWebtadka')])}}" class="btn btn-gradient-danger">Mail Box</a></td>
                     </tr>
