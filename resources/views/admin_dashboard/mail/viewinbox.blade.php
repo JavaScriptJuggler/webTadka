@@ -7,7 +7,7 @@
             <div class="inbox-head">
                 <h3>Inbox ({{ $inboxName }})</h3>
                 <div class="pull-right position">
-                    <button class="btn btn-danger">Compose</button>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#composeMail">Compose</button>
                 </div>
             </div>
             <div class="inbox-body" style="height:60vh;overflow-y: auto">
@@ -37,7 +37,22 @@
                 <div class="modal-header">
                     <h3 class="modal-title" id="mailMessageLabel"></h3>
                 </div>
-                <div class="modal-body mailMessageBody">
+                <div class="modal-body mailMessageBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="composeMail" tabindex="-1" role="dialog" aria-labelledby="composeMailLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="composeMailLabel"></h3>
+                </div>
+                <div class="modal-body composeMailBody">
                     ...
                 </div>
                 <div class="modal-footer">
