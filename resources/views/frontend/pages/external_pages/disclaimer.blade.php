@@ -14,9 +14,9 @@
         </section>
         <!-- About section-->
         <section id="about">
-            <div class="container px-2">
+            <div class="container px-1">
                 <div class="row justify-content-center">
-                    <div class="col-lg-10">
+                    <div class="col-lg-12">
                         <p class="lead">The information contained in this website is only for general purposes. The
                             information is provided by WebTadka.com and while we attempt to keep all the information up to
                             date and correct, we make no representations or warranties of any type, express or implied,
@@ -29,7 +29,7 @@
                             Through this website you are able to link to other websites which are not under the control of
                             WebTadka.com. We have no control over the nature, content and availability of those websites.
                             The inclusion of any links does not necessarily indicate a recommendation or endorse the views
-                            expressed within them.
+                            expressed within them.<br>
                             Every effort is made to keep the website up and running smoothly. Yet, WebTadka.com takes no
                             responsibility for, and will not be liable for, the website being temporarily unavailable due to
                             technical issues beyond our control.</p>
