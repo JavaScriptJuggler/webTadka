@@ -26,6 +26,7 @@ class viewMailcontroller extends Controller
             'inboxName' => Client::account(Crypt::decryptString($inboxid))->username,
         ]);
         $message_details = [];
+        return view('admin_dashboard.mail.viewinbox', compact('message_details'));
         $client = Client::account(Crypt::decryptString($inboxid));
         $client->connect();
 
