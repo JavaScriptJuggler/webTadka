@@ -66,6 +66,7 @@ class viewMailcontroller extends Controller
         $cc = $request->cc != '' ? explode(',', $request->cc) : [];
         $bcc = $request->bcc != '' ? explode(',', $request->bcc) : [];
         if ($request->sendMailForm == 'sendSupportMail') {
+            return 'hi';
             sendSupportMail($request->to_mail, $request->subject, $request->body, '', null, $cc, $bcc);
         } else {
             sendEnquiryMail($request->to_mail, $request->subject, $request->body, '', null, $cc, $bcc);
