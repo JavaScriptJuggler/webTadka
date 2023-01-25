@@ -13,7 +13,7 @@ function sendEnquiryMail($mail_to, $mail_subject, $mail_body, $mail_to_name, $at
     $to_mail = $mail_to;
     $to_name = $mail_to_name;
     $subject = $mail_subject;
-    Mail::mailer('smtp')->to($to_mail, $to_name)->cc(['soumyamanna180898@gmail.com'])->bcc($bcc)->send(new EnquiryMail($body_string, $subject));
+    Mail::mailer('smtp')->to($to_mail, $to_name)->cc($cc)->bcc($bcc)->send(new EnquiryMail($body_string, $subject));
 }
 function sendSupportMail($mail_to, $mail_subject, $mail_body, $mail_to_name, $attachments = null, $cc = [], $bcc = [])
 {
