@@ -63,10 +63,9 @@ class viewMailcontroller extends Controller
 
     public function sendMail(Request $request)
     {
-        dd($request->sendMailFrom);
         $cc = $request->cc != '' ? explode(',', $request->cc) : [];
         $bcc = $request->bcc != '' ? explode(',', $request->bcc) : [];
-        if ($request->sendMailForm == 'sendSupportMail') {
+        if ($request->sendMailFrom == 'sendSupportMail') {
             return 'hi';
             sendSupportMail($request->to_mail, $request->subject, $request->body, '', null, $cc, $bcc);
         } else {
