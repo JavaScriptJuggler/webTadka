@@ -75,6 +75,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/faq-save', [faqController::class, 'saveFaq'])->name('faq-save');
     Route::post('/faq-delete', [faqController::class, 'deleteFaq'])->name('faq-delete');
     Route::get('/view-mails', [viewMailcontroller::class, 'index'])->name('view-mails');
+    Route::post('/send-mails', [viewMailcontroller::class, 'sendMail'])->name('send-mails');
     Route::get('/view-mail-details/{inboxid}', [viewMailcontroller::class, 'mailData'])->name('view-mail-details');
     Route::post('/change-mail-stat', [viewMailcontroller::class, 'chnageMailStat'])->name('change-mail-stat');
     Route::post('/save-lets-talk-and-client-support', [LetsTalkController::class, 'index'])->name('save-lets-talk-and-client-support');

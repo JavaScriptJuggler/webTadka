@@ -26,7 +26,6 @@ class viewMailcontroller extends Controller
             'inboxName' => Client::account(Crypt::decryptString($inboxid))->username,
         ]);
         $message_details = [];
-        return view('admin_dashboard.mail.viewinbox', compact('message_details'));
         $client = Client::account(Crypt::decryptString($inboxid));
         $client->connect();
 
@@ -60,5 +59,20 @@ class viewMailcontroller extends Controller
             }
         }
         return view('admin_dashboard.mail.viewinbox', compact('message_details'));
+    }
+
+    public function sendMail(Request $request)
+    {
+        $cc = $request->cc != '' ? explode(',', $request->cc) : [];
+        $bcc = $request->bcc != '' ? explode(',', $request->bcc) : [];
+        if ($request->sendMailForm == 'sendSupportMail') {
+            sendSupportMail($request->to_mail, $request->subject, $request->body, '', null, $cc, $bcc);
+        } else {
+            sendEnquiryMail($request->to_mail, $request->subject, $request->body, '', null, $cc, $bcc);
+        }
+        return response()->json([
+            'status' => true,
+            'message' => 'Message Sent Successfull',
+        ]);
     }
 }
