@@ -13,16 +13,17 @@ use Illuminate\Queue\SerializesModels;
 class EnquiryMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $body, $subject;
+    public $body, $subject, $fromwhere;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($body_string, $subject)
+    public function __construct($body_string, $subject, $fromwhere)
     {
         $this->body = $body_string;
         $this->subject = $subject;
+        $this->fromwhere = $fromwhere;
     }
 
     /**
@@ -45,9 +46,16 @@ class EnquiryMail extends Mailable
      */
     public function content()
     {
-        return new Content(
-            view: 'mail.admin_mails',
-        );
+        if ($this->fromwhere == 'backend') {
+            return new Content(
+                view: 'mail.admin_mails',
+            );
+        }
+        if ($this->fromwhere == 'frontend') {
+            return new Content(
+                view: 'mail.frontend_mail',
+            );
+        }
     }
 
     /**

@@ -128,4 +128,29 @@
             });
         }
     });
+
+    $('#subscribeForm').submit(function(e) {
+        e.preventDefault();
+        let formdata = new FormData($(this)[0]);
+        $.ajaxSetup({
+            headers: {
+                'accept': 'application/json',
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+        $.ajax({
+            type: "post",
+            url: "/save-subscribe",
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if(response.status){
+                    swal("Thanks!", response.message, "success");
+                }else{
+                    swal("Already Subscribed", response.message, "info");
+                }
+            }
+        });
+    });
 </script>

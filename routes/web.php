@@ -4,6 +4,7 @@ use App\Http\Controllers\BotmanController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\sitemapController;
+use App\Http\Controllers\subscribeController;
 use App\Http\Controllers\testController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Sitemap\SitemapGenerator;
@@ -38,3 +39,4 @@ Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name(
 Route::get('/partner-program', [FrontendController::class, 'partnerProgramm'])->name('partner-program');
 Route::post('/send-career-mail', [FrontendController::class, 'CareerMail'])->name('send-career-mail');
 Route::match(['get', 'post'], '/botman', [BotmanController::class, 'index'])->name('botman');
+Route::post('/save-subscribe',[subscribeController::class, 'saveSubscribe'])->name('save-subscribe');

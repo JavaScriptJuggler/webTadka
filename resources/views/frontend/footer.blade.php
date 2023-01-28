@@ -49,7 +49,8 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ route('disclaimer') }}">Disclaimer</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ route('refund-policy') }}">Refund
                                 Policies</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('career') }}">Career Opportunity</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('career') }}">Career Opportunity</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -73,8 +74,19 @@
                 <div class="col-lg-4 col-md-6 footer-newsletter">
                     <h4>Subscribe Us</h4>
                     <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                    <form action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Subscribe">
+                    <form id="subscribeForm" class="d-flex php-email-form">
+                        <div class="row">
+                            <div class="col-md-4 form-group">
+                                <input type="text" placeholder="name" name="name">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <input type="email" placeholder="email" name="email">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <input type="submit"  value="Subscribe" class="">
+                            </div>
+
+                        </div>
                     </form>
                     <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo1.png') }}"
                         alt="">
@@ -86,12 +98,12 @@
                         alt="">
                     <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo5.png') }}"
                         alt="">
-                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo6.png') }}"
-                        alt="">
-                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo7.png') }}"
-                        alt="">
-                    <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo8.png') }}"
-                        alt="">
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px"
+                        src="{{ asset('assets/logos/logo6.png') }}" alt="">
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px"
+                        src="{{ asset('assets/logos/logo7.png') }}" alt="">
+                    <img class="mt-2 mr-2" style="width: 45px; height:45px"
+                        src="{{ asset('assets/logos/logo8.png') }}" alt="">
                 </div>
 
             </div>

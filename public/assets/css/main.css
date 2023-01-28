@@ -3311,10 +3311,18 @@ section {
 .footer .footer-content .footer-newsletter form input[type=email] {
     border: 0;
     padding: 4px;
-    width: calc(100% - 110px);
+    width: calc(100% - 31px);
+}
+.footer .footer-content .footer-newsletter form input[type=text] {
+    border: 0;
+    padding: 4px;
+    width: calc(100% - 31px);
 }
 
 .footer .footer-content .footer-newsletter form input[type=email]:focus-visible {
+    outline: none;
+}
+.footer .footer-content .footer-newsletter form input[type=text]:focus-visible {
     outline: none;
 }
 
