@@ -69,3 +69,9 @@
         </div>
     </div><!-- End post author --> --}}
 @endsection
+@section('footer')
+    @include('frontend.footer', [
+        'services' => $services,
+        'description' => $about_us_description,
+    ])
+@endsection

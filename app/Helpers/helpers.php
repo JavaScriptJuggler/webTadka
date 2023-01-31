@@ -4,6 +4,7 @@ use App\Mail\CareerMail;
 use App\Mail\EnquiryMail;
 use App\Mail\SupportMail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 // global mail function for sending mails

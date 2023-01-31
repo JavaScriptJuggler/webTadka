@@ -16,7 +16,7 @@ class subscribeController extends Controller
                     'email' => $request->email,
                     'name' => $request->name,
                 ])->save();
-                sendEnquiryMail($request->email, 'Thanks For Subscribe', ['header' => 'Thank you for subscribing us !', 'body' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"], $request->name, null, [], [], 'frontend');
+                sendEnquiryMail($request->email, 'Thanks For Subscribe', ['header' => 'Thank you for subscribing us !', 'body' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"], $request->name, null, [], [], 'frontend1');
                 if ($success) {
                     return response()->json([
                         'status' => true,

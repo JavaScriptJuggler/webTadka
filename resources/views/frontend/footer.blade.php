@@ -83,9 +83,8 @@
                                 <input type="email" placeholder="email" name="email">
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="submit"  value="Subscribe" class="">
+                                <input type="submit" value="Subscribe" class="">
                             </div>
-
                         </div>
                     </form>
                     <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo1.png') }}"

@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('command:letsTalktoSubscribe')->everyMinute();
+        $schedule->command('command:sendNewBlogMails')->everyMinute();
     }
 
     /**

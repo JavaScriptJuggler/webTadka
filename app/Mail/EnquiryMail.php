@@ -51,9 +51,14 @@ class EnquiryMail extends Mailable
                 view: 'mail.admin_mails',
             );
         }
-        if ($this->fromwhere == 'frontend') {
+        if ($this->fromwhere == 'frontend1') {
             return new Content(
                 view: 'mail.frontend_mail',
+            );
+        }
+        if ($this->fromwhere == 'frontend2') {
+            return new Content(
+                view: 'mail.blogmail',
             );
         }
     }

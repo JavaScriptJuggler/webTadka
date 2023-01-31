@@ -86,6 +86,8 @@ class FrontendController extends Controller
             'category' => $category,
             'meta_title' => 'Number 1 Web, Digital Marketing Company in Mumbai, India',
             'meta_description' => "We are an Award-winning digital marketing company with 4 offices in metro cities like Kolkata, Mumbai, Chennai,Delhi and other places across India and, and offers We offer a wide range of services including SEO, PPC, Social Media Marketing, Content Creation, and Web Design & Development",
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+            'services' => Services::all(),
         ]);
         return view('frontend.pages.blog');
     }
@@ -102,6 +104,8 @@ class FrontendController extends Controller
             'url' => urldecode(str_replace('-', ' ', $blogname)),
             'meta_title' => $findBlog->meta_title,
             'meta_description' => $findBlog->meta_description,
+            'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+            'services' => Services::all(),
         ]);
         return view('frontend.pages.blog_details');
     }
@@ -187,7 +191,8 @@ class FrontendController extends Controller
     }
 
     /* partner program */
-    public function partnerProgramm(){
+    public function partnerProgramm()
+    {
         view()->share([
             'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
         ]);

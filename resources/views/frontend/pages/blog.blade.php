@@ -54,3 +54,9 @@
     {!! $blogs->links() !!}
     {{-- @include('frontend.pages.blogs.pagination') --}}
 @endsection
+@section('footer')
+    @include('frontend.footer', [
+        'services' => $services,
+        'description' => $about_us_description,
+    ])
+@endsection
