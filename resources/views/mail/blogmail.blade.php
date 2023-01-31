@@ -48,15 +48,16 @@
         }
 
         .btn {
-            text-decoration: none;
-            color: #FFF;
-            background-color: #666;
-            padding: 10px 16px;
-            font-weight: bold;
-            margin-right: 10px;
-            text-align: center;
-            cursor: pointer;
-            display: inline-block;
+            text-decoration: none !important;
+            color: #FFF !important;
+            background-color: #666 !important;
+            padding: 10px 16px !important;
+            font-weight: bold !important;
+            margin-right: 10px !important;
+            text-align: center !important;
+            cursor: pointer !important;
+            display: inline-block !important;
+            border-radius: 5px;
         }
 
         p.callout {
