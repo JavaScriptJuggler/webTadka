@@ -38,7 +38,7 @@ class sendBlogMail extends Command
             $body['name'] = $value->name;
         try {
             // Log::debug($body);
-            sendEnquiryMail(/* $value->email */'soumya.m@aqbsolutions.com', 'Latest Blog From Webtadka', $body, $value->name, null, [], [], 'frontend2');
+            sendEnquiryMail($value->email, 'Latest Blog From Webtadka', $body, $value->name, null, [], [], 'frontend2');
         } catch (\Throwable $th) {
             Log::debug($th);
         }
