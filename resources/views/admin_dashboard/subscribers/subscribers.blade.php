@@ -4,29 +4,33 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <th>Sl.</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </thead>
-                        <tbody>
-                            @if (count($subscribers) > 0)
-                                @foreach ($subscribers as $key => $item)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td><button class="btn btn-danger"
-                                                onclick="deleteData({{ $item->id }})">Delete</button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endif
-                            <tr></tr>
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Sl.</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </thead>
+                                <tbody>
+                                    @if (count($subscribers) > 0)
+                                        @foreach ($subscribers as $key => $item)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->email }}</td>
+                                                <td><button class="btn btn-danger"
+                                                        onclick="deleteData({{ $item->id }})">Delete</button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
