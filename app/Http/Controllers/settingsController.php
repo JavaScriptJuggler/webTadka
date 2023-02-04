@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 
 class settingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function userSettings()
     {
         view()->share([

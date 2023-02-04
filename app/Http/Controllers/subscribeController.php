@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class subscribeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['saveSubscribe']]);
+    }
     public function deleteSubscribers(Request $request)
     {
         subscribeModel::find($request->deleteId)->delete();
