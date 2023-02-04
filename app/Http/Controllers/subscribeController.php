@@ -7,6 +7,20 @@ use Illuminate\Http\Request;
 
 class subscribeController extends Controller
 {
+    public function deleteSubscribers(Request $request)
+    {
+        subscribeModel::find($request->deleteId)->delete();
+    }
+
+    public function getSubscribers()
+    {
+        view()->share([
+            'pageTitle' => 'Subscribers',
+            'subscribers' => subscribeModel::all(),
+        ]);
+        return view('admin_dashboard.subscribers.subscribers');
+    }
+
     public function saveSubscribe(Request $request)
     {
         if (!empty($request)) {
