@@ -19,7 +19,32 @@
 <script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="{{ asset('assets/js/HoldOn.min.js') }}"></script>
 {{-- <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script> --}}
-<script src="//code.tidio.co/briyvnne41o2if3epc5tykfzgnvokjel.js" async></script>
+{{-- <script src="//code.tidio.co/briyvnne41o2if3epc5tykfzgnvokjel.js" async></script> --}}
+<script>
+    window.addEventListener('mouseover', initLandbot, {
+        once: true
+    });
+    window.addEventListener('touchstart', initLandbot, {
+        once: true
+    });
+    var myLandbot;
+
+    function initLandbot() {
+        if (!myLandbot) {
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.addEventListener('load', function() {
+                var myLandbot = new Landbot.Livechat({
+                    configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-1477296-D9DV9JGAOK839C92/index.json',
+                });
+            });
+            s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.js';
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        }
+    }
+</script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
@@ -145,9 +170,9 @@
             processData: false,
             contentType: false,
             success: function(response) {
-                if(response.status){
+                if (response.status) {
                     swal("Thanks!", response.message, "success");
-                }else{
+                } else {
                     swal("Already Subscribed", response.message, "info");
                 }
             }
