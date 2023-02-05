@@ -29,14 +29,19 @@
                         <td><a href="{{route('view-mail-details',['inboxid'=>Crypt::encryptString('imap_supportWebtadka')])}}" class="btn btn-gradient-danger">Mail Box</a></td>
                     </tr>
                     <tr>
+                        <td>4</td>
+                        <td>services@webtadka.com</td>
+                        <td><a href="{{route('view-mail-details',['inboxid'=>Crypt::encryptString('imap_servicesWebtadka')])}}" class="btn btn-gradient-danger">Mail Box</a></td>
+                    </tr>
+                    <tr>
                         <td>3</td>
                         <td>career@webtadka.com</td>
-                        <td><a href="javascript:;" class="btn btn-gradient-danger">Mail Box</a></td>
+                        <td><a href="{{route('view-mail-details',['inboxid'=>Crypt::encryptString('imap_careerWebtadka')])}}" class="btn btn-gradient-danger">Mail Box</a></td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>partner@webtadka.com</td>
-                        <td><a href="javascript:;" class="btn btn-gradient-danger">Mail Box</a></td>
+                        <td><a href="{{route('view-mail-details',['inboxid'=>Crypt::encryptString('imap_partnerWebtadka')])}}" class="btn btn-gradient-danger">Mail Box</a></td>
                     </tr>
                 </tbody>
             </table>
