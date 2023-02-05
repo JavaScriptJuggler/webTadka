@@ -156,6 +156,7 @@
 
     $('#subscribeForm').submit(function(e) {
         e.preventDefault();
+        holdOn();
         let formdata = new FormData($(this)[0]);
         $.ajaxSetup({
             headers: {
@@ -170,6 +171,7 @@
             processData: false,
             contentType: false,
             success: function(response) {
+                closeHoldOn();
                 if (response.status) {
                     swal("Thanks!", response.message, "success");
                 } else {

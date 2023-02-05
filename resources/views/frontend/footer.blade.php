@@ -72,21 +72,8 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
-                    <h4>Subscribe Us</h4>
+                    <h4>Our Partners</h4>
                     <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                    <form id="subscribeForm" class="d-flex php-email-form">
-                        <div class="row">
-                            <div class="col-md-4 form-group">
-                                <input type="text" placeholder="name" name="name">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <input type="email" placeholder="email" name="email">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <input type="submit" value="Subscribe" class="">
-                            </div>
-                        </div>
-                    </form>
                     <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo1.png') }}"
                         alt="">
                     <img class="mt-2 mr-2" style="width: 45px; height:45px" src="{{ asset('assets/logos/logo2.png') }}"

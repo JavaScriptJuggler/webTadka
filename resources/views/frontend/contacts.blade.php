@@ -37,7 +37,8 @@
 
                     <div class="info-item d-flex">
                         <div class="php-email-form text-center">
-                            <button type="submit" data-toggle="modal" data-target="#callConnectModal" style="position: relative;left:30px">Instant Call Connect</button>
+                            <button type="submit" data-toggle="modal" data-target="#callConnectModal"
+                                style="position: relative;left:30px">Instant Call Connect</button>
                         </div>
                     </div><!-- End Info Item -->
 
@@ -102,9 +103,11 @@
                         </div>
                     </div>
                     <div class="my-3">
-                        <div class="loading d-none">You are very important to us, all information received will always remain confidential.</div>
+                        <div class="loading d-none">You are very important to us, all information received will always
+                            remain confidential.</div>
                         <div class="error-message d-none"></div>
-                        <div class="sent-message d-none">We appreciate that you’ve taken the time to write us. We’ll get back to you very soon. Please come back and see us often.</div>
+                        <div class="sent-message d-none">We appreciate that you’ve taken the time to write us. We’ll get
+                            back to you very soon. Please come back and see us often.</div>
                     </div>
                     <div class="text-center"><button type="submit">Send Message</button></div>
                 </form>
