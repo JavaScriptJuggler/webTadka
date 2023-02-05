@@ -23,7 +23,7 @@ function sendServiceMails($mail_to, $mail_subject, $mail_body, $mail_to_name)
     $to_mail = $mail_to;
     $to_name = $mail_to_name;
     $subject = $mail_subject;
-    Mail::mailer('smtp')->to($to_mail, $to_name)->cc([])->bcc([])->send(new ServiceMail($body_string, $subject));
+    Mail::mailer('smtp4')->to($to_mail, $to_name)->cc([])->bcc([])->send(new ServiceMail($body_string, $subject));
 }
 function sendSupportMail($mail_to, $mail_subject, $mail_body, $mail_to_name, $attachments = null, $cc = [], $bcc = [])
 {
