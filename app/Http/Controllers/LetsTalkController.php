@@ -21,11 +21,19 @@ class LetsTalkController extends Controller
                 'project_details' => $request->projectdetails,
                 'subscribed' => $request->subscribe,
             ])->save();
-            $service = $request->has('services') ? $request->services : '';
-            $message = '
-                Message From <strong>' . $request->name . '</strong>, <br>
-                I want to talk to you about my project.<br> My Business name is <strong>' . $request->businessname . '</strong><br>My Requested Service is <strong>' . $service . '</strong><br>My addredd is <strong>' . $request->address . ',' . $request->state . ',' . $request->country . '</strong><br> Email: <strong>' . $request->email . '</strong><br>Phone: <strong>' . $request->phone . '</strong>.<br> My Project Details is as follows :<br>' . $request->projectdetails;
-            sendEnquiryMail('team@webtadka.com', "New Client want's to talk about project", $message, $request->name);
+            $sub_service = $request->has('subservice_name') ? $request->subservice_name : '';
+            $service_name = $request->has('servicename') ? $request->servicename : '';
+            if ($service_name != '' && $sub_service != '') {
+                $message = '
+                    Message From <strong>' . $request->name . '</strong>, <br>
+                    I want to talk to you about my project.<br> My Business name is <strong>' . $request->businessname . '</strong><br>My addredd is <strong>' . $request->address . ',' . $request->state . ',' . $request->country . '</strong><br> Email: <strong>' . $request->email . '</strong><br>Phone: <strong>' . $request->phone . '</strong>.<br>Service Name: <strong>' . $service_name . '</strong><br>Sub Service Name:<strong>' . $sub_service . '</strong><br> My Project Details is as follows :<br>' . $request->projectdetails;
+                sendServiceMails('services@webtadka.com', "New Enquiry from " . $service_name, $message, $request->name);
+            } else {
+                $message = '
+                    Message From <strong>' . $request->name . '</strong>, <br>
+                    I want to talk to you about my project.<br> My Business name is <strong>' . $request->businessname . '</strong><br>My addredd is <strong>' . $request->address . ',' . $request->state . ',' . $request->country . '</strong><br> Email: <strong>' . $request->email . '</strong><br>Phone: <strong>' . $request->phone . '</strong>.<br> My Project Details is as follows :<br>' . $request->projectdetails;
+                sendEnquiryMail('team@webtadka.com', "New Client want's to talk about project", $message, $request->name);
+            }
             return $is_success;
         }
         if ($request->has('action') && $request->action == 'client-support') {

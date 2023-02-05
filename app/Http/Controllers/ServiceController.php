@@ -62,6 +62,7 @@ class ServiceController extends Controller
             'aboutus' => aboutUsModel::find(1)->about,
             'about_us_header' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->heading,
             'about_us_description' => HeaderAndDescriptions::where('keyword', 'aboutusheadinganddescription')->first()->description,
+            'service_name' => $servicename,
         ]);
         return view('frontend.pages.services.service_details');
     }

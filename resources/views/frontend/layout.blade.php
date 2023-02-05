@@ -228,6 +228,8 @@
                         </div>
                     </div> --}}
                     <form id="serviceEngagementForm" class="php-email-form" name="serviceEngagementForm">
+                        <input type="hidden" name="servicename" id="servicename"
+                            value="{{ str_replace('-', ' ', $service_name) }}">
                         <input type="hidden" name="subservice_name" id="subservice_name">
                         <div class="row">
                             <div class="col-md-3 mb-3">

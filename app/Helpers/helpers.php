@@ -2,6 +2,7 @@
 
 use App\Mail\CareerMail;
 use App\Mail\EnquiryMail;
+use App\Mail\ServiceMail;
 use App\Mail\SupportMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -15,6 +16,14 @@ function sendEnquiryMail($mail_to, $mail_subject, $mail_body, $mail_to_name, $at
     $to_name = $mail_to_name;
     $subject = $mail_subject;
     Mail::mailer('smtp')->to($to_mail, $to_name)->cc($cc)->bcc($bcc)->send(new EnquiryMail($body_string, $subject, $fromwhere));
+}
+function sendServiceMails($mail_to, $mail_subject, $mail_body, $mail_to_name)
+{
+    $body_string = $mail_body;
+    $to_mail = $mail_to;
+    $to_name = $mail_to_name;
+    $subject = $mail_subject;
+    Mail::mailer('smtp')->to($to_mail, $to_name)->cc([])->bcc([])->send(new ServiceMail($body_string, $subject));
 }
 function sendSupportMail($mail_to, $mail_subject, $mail_body, $mail_to_name, $attachments = null, $cc = [], $bcc = [])
 {
