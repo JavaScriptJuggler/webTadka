@@ -118,8 +118,8 @@
                     'subserviceId': subserviceid,
                 },
                 success: function(response) {
+                    var body = '';
                     if (response.length) {
-                        var body = '';
                         response.forEach(item => {
                             body += `<tr>
                                     <td>${item.name}</td>
