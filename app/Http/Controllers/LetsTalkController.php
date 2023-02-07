@@ -27,6 +27,7 @@ class LetsTalkController extends Controller
             $sub_service = $request->has('subservice_name') ? $request->subservice_name : '';
             $service_name = $request->has('servicename') ? $request->servicename : '';
             if ($service_name != '' && $sub_service != '') {
+                $service_id = Services::where('service_name', $service_name)->first()->id;
                 $is_saved = servicesEnquiry::create([
                     'name' => $request->name,
                     'email' => $request->email,
@@ -36,8 +37,8 @@ class LetsTalkController extends Controller
                     'state' => $request->state,
                     'address' => $request->address,
                     'project_details' => $request->projectdetails,
-                    'service_id' => Services::where('service_name', $service_name)->first()->id,
-                    'subservice_id' => subServicesModel::where('name', $sub_service)->first()->id,
+                    'service_id' => $service_id,
+                    'subservice_id' => subServicesModel::where('name', $sub_service)->where('service_id', $service_id)->first()->id,
                 ])->save();
                 if ($is_saved) {
                     $message = '
