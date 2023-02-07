@@ -15,7 +15,7 @@
             <div class="form-group m-4">
                 <div class="form-label">Services</div>
                 <select name="service" id="services" class="form-control" onchange="getSubServices(this)">
-                    <option>Select Services</option>
+                    <option style="display:none">Select Services</option>
                     @if (count($services) > 0)
                         @foreach ($services as $item)
                             <option value="{{ $item->id }}">{{ $item->service_name }}</option>
