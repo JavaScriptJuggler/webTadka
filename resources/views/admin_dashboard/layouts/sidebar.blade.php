@@ -60,6 +60,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('service-master') }}">
+                <span class="menu-title">Service Master</span>
+                <i class="mdi mdi-robot menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('settings') }}">
                 <span class="menu-title">Settings</span>
                 <i class="mdi mdi-account-settings menu-icon"></i>

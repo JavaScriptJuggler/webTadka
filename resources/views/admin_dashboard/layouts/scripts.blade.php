@@ -22,7 +22,8 @@
 <script src="//cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
 <script src="{{ asset('assets/js/HoldOn.min.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+<script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script>
     function holdOn() {
         HoldOn.open({

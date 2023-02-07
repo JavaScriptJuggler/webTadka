@@ -1,20 +1,17 @@
 <?php
 
 use App\Http\Controllers\aboutUsController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\blogController;
 use App\Http\Controllers\BotmanController;
 use App\Http\Controllers\brandController;
 use App\Http\Controllers\CtaController;
 use App\Http\Controllers\faqController;
-use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\HeadingDescriptionController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LetsTalkController;
 use App\Http\Controllers\portfolioController;
 use App\Http\Controllers\seoAndDigitalMarketingController;
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\settingsController;
 use App\Http\Controllers\subscribeController;
 use App\Http\Controllers\testController;
@@ -104,6 +101,11 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     /* bot route */
     Route::get('/botdata-list', [BotmanController::class, 'showbotmandata'])->name('botdata-list');
     Route::post('/save-bot', [BotmanController::class, 'saveBotData'])->name('save-bot');
+
+    /* service master */
+    Route::get('service-master', [ServicesController::class, 'index'])->name('service-master');
+    Route::post('get-sub-services', [ServicesController::class, 'getSubServices'])->name('get-sub-services');
+    Route::post('get-data', [ServicesController::class, 'getData'])->name('get-data');
 });
 
 Route::get('/get-mails', [testController::class, 'index']);

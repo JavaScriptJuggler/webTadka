@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\LetsTalkModel;
+use App\Models\Services;
+use App\Models\servicesEnquiry;
+use App\Models\subServicesModel;
 use Illuminate\Http\Request;
 
 class LetsTalkController extends Controller
@@ -24,10 +27,24 @@ class LetsTalkController extends Controller
             $sub_service = $request->has('subservice_name') ? $request->subservice_name : '';
             $service_name = $request->has('servicename') ? $request->servicename : '';
             if ($service_name != '' && $sub_service != '') {
-                $message = '
-                    Message From <strong>' . $request->name . '</strong>, <br>
-                    I want to talk to you about my project.<br> My Business name is <strong>' . $request->businessname . '</strong><br>My addredd is <strong>' . $request->address . ',' . $request->state . ',' . $request->country . '</strong><br> Email: <strong>' . $request->email . '</strong><br>Phone: <strong>' . $request->phone . '</strong>.<br>Service Name: <strong>' . $service_name . '</strong><br>Sub Service Name:<strong>' . $sub_service . '</strong><br> My Project Details is as follows :<br>' . $request->projectdetails;
-                sendServiceMails('services@webtadka.com', "New Enquiry from " . $service_name, $message, $request->name);
+                $is_saved = servicesEnquiry::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'businessname' => $request->businessname,
+                    'country' => $request->country,
+                    'state' => $request->state,
+                    'address' => $request->address,
+                    'project_details' => $request->projectdetails,
+                    'service_id' => Services::where('service_name', $service_name)->first()->id,
+                    'subservice_id' => subServicesModel::where('name', $sub_service)->first()->id,
+                ])->save();
+                if ($is_saved) {
+                    $message = '
+                             Message From <strong>' . $request->name . '</strong>, <br>
+                                I want to talk to you about my project.<br> My Business name is <strong>' . $request->businessname . '</strong><br>My addredd is <strong>' . $request->address . ',' . $request->state . ',' . $request->country . '</strong><br> Email: <strong>' . $request->email . '</strong><br>Phone: <strong>' . $request->phone . '</strong>.<br>Service Name: <strong>' . $service_name . '</strong><br>Sub Service Name:<strong>' . $sub_service . '</strong><br> My Project Details is as follows :<br>' . $request->projectdetails;
+                    sendServiceMails('services@webtadka.com', "New Enquiry from " . $service_name, $message, $request->name);
+                }
             } else {
                 $message = '
                     Message From <strong>' . $request->name . '</strong>, <br>
