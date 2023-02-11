@@ -38,4 +38,15 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/HoldOn.min.css') }}">
     {!! htmlScriptTagJsApi([]) !!}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0SY4CSN6X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Y0SY4CSN6X');
+    </script>
 </head>
