@@ -20,5 +20,7 @@ class servicesEnquiry extends Model
         'project_details',
         'service_id',
         'subservice_id',
+        'date',
+        'time',
     ];
 }

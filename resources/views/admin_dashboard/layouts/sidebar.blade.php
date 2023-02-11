@@ -56,13 +56,19 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('get-subscribers') }}">
                 <span class="menu-title">Subscribers</span>
-                <i class="mdi mdi-robot menu-icon"></i>
+                <i class="mdi mdi-human-greeting menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('service-master') }}">
                 <span class="menu-title">Service Master</span>
-                <i class="mdi mdi-robot menu-icon"></i>
+                <i class="mdi mdi-briefcase menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('get-callconnect') }}">
+                <span class="menu-title">Instant Call Connect</span>
+                <i class="mdi mdi-phone-classic menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">

@@ -4,6 +4,7 @@ use App\Http\Controllers\aboutUsController;
 use App\Http\Controllers\blogController;
 use App\Http\Controllers\BotmanController;
 use App\Http\Controllers\brandController;
+use App\Http\Controllers\callConnectController;
 use App\Http\Controllers\CtaController;
 use App\Http\Controllers\faqController;
 use App\Http\Controllers\HeroController;
@@ -89,6 +90,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/save-settings', [settingsController::class, 'saveSettings'])->name('save-settings');
     Route::post('/delete-subscribers', [subscribeController::class, 'deleteSubscribers'])->name('delete-subscribers');
     Route::get('/get-subscribers', [subscribeController::class, 'getSubscribers'])->name('get-subscribers');
+    Route::get('/get-callconnect', [callConnectController::class, 'getCallConnect'])->name('get-callconnect');
+    Route::get('/delete-callconnect', [callConnectController::class, 'deleteCallConnect'])->name('delete-callconnect');
 
     /* blog route */
     Route::get('/blog-list', [blogController::class, 'blogList'])->name('blog-list');
@@ -106,6 +109,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('service-master', [ServicesController::class, 'index'])->name('service-master');
     Route::post('get-sub-services', [ServicesController::class, 'getSubServices'])->name('get-sub-services');
     Route::post('get-data', [ServicesController::class, 'getData'])->name('get-data');
+    Route::post('delete-data', [ServicesController::class, 'deleteData'])->name('delete-data');
 });
 
 Route::get('/get-mails', [testController::class, 'index']);

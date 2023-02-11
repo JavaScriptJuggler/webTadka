@@ -40,6 +40,8 @@ class LetsTalkController extends Controller
                     'project_details' => $request->projectdetails,
                     'service_id' => $service_id,
                     'subservice_id' => subServicesModel::where('name', $sub_service)->where('service_id', $service_id)->first()->id,
+                    'date' => date('d/m/Y'),
+                    'time' => date('h:i a'),
                 ])->save();
                 if ($is_saved) {
                     $message = '
@@ -70,7 +72,7 @@ class LetsTalkController extends Controller
                 'city' => $request->city,
                 'message' => $request->message,
                 'date' => date('d/m/Y'),
-                'time' => date('H:i'),
+                'time' => date('h:i a'),
             ]);
             $message = '
             Message From <strong>' . $request->name . '</strong>, <br>

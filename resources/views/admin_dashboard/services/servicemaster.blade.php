@@ -35,22 +35,27 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-bordered table-hover dataTable dtr-inline" id="service-table" cellspacing="0"
-                        width="100%">
-                        <thead>
-                            <tr>
-                                <th scope="col">name</th>
-                                <th scope="col">email</th>
-                                <th scope="col">phone</th>
-                                <th scope="col">business name</th>
-                                <th scope="col">country</th>
-                                <th scope="col">state</th>
-                                <th scope="col">address</th>
-                                <th scope="col">project details</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablebody"></tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover dataTable dtr-inline" id="service-table"
+                            cellspacing="0" width="100%">
+                            <thead>
+                                <tr class="capitalize">
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Business name</th>
+                                    <th scope="col">Country</th>
+                                    <th scope="col">State</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Project details</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablebody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,7 +97,7 @@
                 success: function(response) {
                     var options = '';
                     if (response.length > 0) {
-                        options+='<option style="display:none">Select Sub Service</option>';
+                        options += '<option style="display:none">Select Sub Service</option>';
                         response.forEach(item => {
                             options += '<option value="' + item.id + '">' + item.name +
                                 '</option>'
@@ -129,9 +134,12 @@
                                     <td>${item.country}</td>
                                     <td>${item.state}</td>
                                     <td>${item.address}</td>
+                                    <td>${item.date}</td>
+                                    <td>${item.time}</td>
                                     <td data-toggle="modal" data-target="#projectdetails" >
                                         <button class='btn btn-danger' onclick='showDetails("${item.project_details}")'>Show Project Details</button>
                                         </td>
+                                    <td><button class="btn btn-danger" onclick="deleteData(${item.id})">Delete</button></td>
                                 </tr>`
                         });
                     }
@@ -142,6 +150,36 @@
 
         const showDetails = (details) => {
             $('.projectDetails').text(details);
+        }
+
+        const deleteData = (id) => {
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this record!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajaxSetup({
+                            headers: {
+                                'accept': 'application/json',
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        })
+                        $.ajax({
+                            type: "post",
+                            url: "/delete-data",
+                            data: {
+                                deleteId: id
+                            },
+                            success: function(response) {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
         }
     </script>
 @endsection

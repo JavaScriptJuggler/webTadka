@@ -33,4 +33,8 @@ class ServicesController extends Controller
     public function getData(Request $request){
         return servicesEnquiry::where('service_id',$request->serviceId)->where('subservice_id',$request->subserviceId)->orderBy('id','desc')->get();
     }
+
+    public function deleteData(Request $request){
+        servicesEnquiry::find($request->deleteId)->delete();
+    }
 }

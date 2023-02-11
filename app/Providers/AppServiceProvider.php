@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (Request::is('get-subscribers'))
+        if (Request::is('get-subscribers') || Request::is('get-callconnect'))
             Paginator::useBootstrap();
         else
             Paginator::defaultView('frontend.pages.blogs.pagination');
