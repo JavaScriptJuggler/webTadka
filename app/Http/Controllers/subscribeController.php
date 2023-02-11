@@ -20,7 +20,7 @@ class subscribeController extends Controller
     {
         view()->share([
             'pageTitle' => 'Subscribers',
-            'subscribers' => subscribeModel::paginate(10),
+            'subscribers' => subscribeModel::orderBy('id','desc')->paginate(10),
         ]);
         return view('admin_dashboard.subscribers.subscribers');
     }
