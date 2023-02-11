@@ -9,6 +9,8 @@
                             <th>Sl.</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Date</th>
+                            <th>Time</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
@@ -18,6 +20,8 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
+                                        <td>{{ $item->date }}</td>
+                                        <td>{{ $item->time }}</td>
                                         <td><button class="btn btn-danger"
                                                 onclick="deleteData({{ $item->id }})">Delete</button>
                                         </td>

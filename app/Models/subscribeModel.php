@@ -12,5 +12,7 @@ class subscribeModel extends Model
     protected $fillable = [
         'name',
         'email',
+        'date',
+        'time',
     ];
 }
