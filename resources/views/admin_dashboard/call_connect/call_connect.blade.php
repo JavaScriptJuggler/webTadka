@@ -30,8 +30,8 @@
                                         <td>
                                             <textarea name="" id="" cols="30" rows="10">{{$item->message}}</textarea>
                                         </td>
-                                        <td><button class="btn btn-danger"
-                                                onclick="deleteData({{ $item->id }})">Delete</button>
+                                        <td>
+                                            <button class="btn btn-danger" onclick="deleteData({{ $item->id }})">Delete</button>
                                         </td>
 
                                     </tr>
@@ -50,6 +50,7 @@
     </div>
     <script>
         const deleteData = (id) => {
+            alert(id);
             swal({
                     title: "Are you sure?",
                     text: "Once deleted, you will not be able to recover this record!",
