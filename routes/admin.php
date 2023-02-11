@@ -91,7 +91,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/delete-subscribers', [subscribeController::class, 'deleteSubscribers'])->name('delete-subscribers');
     Route::get('/get-subscribers', [subscribeController::class, 'getSubscribers'])->name('get-subscribers');
     Route::get('/get-callconnect', [callConnectController::class, 'getCallConnect'])->name('get-callconnect');
-    Route::get('/delete-callconnect', [callConnectController::class, 'deleteCallConnect'])->name('delete-callconnect');
+    Route::post('/delete-callconnect', [callConnectController::class, 'deleteCallConnect'])->name('delete-callconnect');
 
     /* blog route */
     Route::get('/blog-list', [blogController::class, 'blogList'])->name('blog-list');
