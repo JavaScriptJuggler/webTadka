@@ -58,14 +58,14 @@
     };
 
     $(document).ready(function() {
-        <?php
+      /*   <?php
         if(\Request::is('/')){ ?>
         setTimeout(() => {
             botmanChatWidget.open();
         }, 15000);
         <?php
         }
-        ?>
+        ?> */
     });
 
 
