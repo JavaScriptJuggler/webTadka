@@ -65,7 +65,8 @@
     </div>
     <script>
         const showMessage = (message) => {
-            $('.modal-body').text(message);
+            alert(message);
+            $('.modal-body').html(message);
         }
         const deleteData = (id) => {
             swal({
