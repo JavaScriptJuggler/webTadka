@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class LetsTalkController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index']]);
+    }
     public function index(Request $request)
     {
         if ($request->has('action') && $request->action == 'lets-talk') {
@@ -24,6 +28,9 @@ class LetsTalkController extends Controller
                 'address' => $request->address,
                 'project_details' => $request->projectdetails,
                 'subscribed' => $request->subscribe,
+                'date' => date('d/m/Y'),
+                'time' => date('h:i a'),
+
             ])->save();
             $sub_service = $request->has('subservice_name') ? $request->subservice_name : '';
             $service_name = $request->has('servicename') ? $request->servicename : '';
@@ -80,5 +87,17 @@ class LetsTalkController extends Controller
             sendEnquiryMail('team@webtadka.com', "Client want's to connect a call", $message, $request->name);
             return true;
         }
+    }
+
+    public function quotes()
+    {
+        view()->share([
+            'pageTitle'=>'Quotes',
+            'quotes'=>LetsTalkModel::orderBy('id','desc')->paginate(10),
+        ]);
+        return view('admin_dashboard.quotes.quotes');
+    }
+    public function deleteQuotes(Request $request){
+        LetsTalkModel::find($request->deleteId)->delete();
     }
 }

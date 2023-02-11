@@ -19,5 +19,7 @@ class LetsTalkModel extends Model
         'address',
         'project_details',
         'subscribed',
+        'date',
+        'time',
     ];
 }

@@ -47,6 +47,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         return view('admin_dashboard.cms');
     })->name('cms')->middleware(['auth']);
     Route::get('/change-hero-image', [HeroController::class, 'goToHeroPage'])->name('change-hero-image');
+    Route::get('/quotes', [LetsTalkController::class, 'quotes'])->name('quotes');
+    Route::post('/delete-quotes', [LetsTalkController::class, 'deleteQuotes'])->name('delete-quotes');
     Route::post('/upload-hero-image', [HeroController::class, 'uploadHeroImage'])->name('upload-hero-image');
     Route::get('/hero-content-page', [HeroController::class, 'showHeroContentPage'])->name('hero-content-page');
     Route::post('/save-hero-content', [HeroController::class, 'saveHeroContent'])->name('save-hero-content');

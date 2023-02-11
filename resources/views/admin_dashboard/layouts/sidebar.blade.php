@@ -66,6 +66,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('quotes') }}">
+                <span class="menu-title">Quote Master</span>
+                <i class="mdi mdi-briefcase menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('get-callconnect') }}">
                 <span class="menu-title">Instant Call Connect</span>
                 <i class="mdi mdi-phone-classic menu-icon"></i>
