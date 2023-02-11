@@ -137,7 +137,7 @@
                                     <td>${item.date}</td>
                                     <td>${item.time}</td>
                                     <td>
-                                        <textarea name="" id="" cols="30" rows="10">${$item.project_details }</textarea>
+                                        <textarea name="" id="" cols="30" rows="10">${item.project_details }</textarea>
                                     </td>
                                     <td><button class="btn btn-danger" onclick="deleteData(${item.id})">Delete</button></td>
                                 </tr>`
