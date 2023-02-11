@@ -13,8 +13,8 @@
                             <th>City</th>
                             <th>Date</th>
                             <th>Time</th>
-                            <th>Action</th>
                             <th>View Message</th>
+                            <th>Action</th>
                         </thead>
                         <tbody>
                             @if (count($callConnect) > 0)
@@ -27,11 +27,11 @@
                                         <td>{{ $item->city }}</td>
                                         <td>{{ $item->date }}</td>
                                         <td>{{ $item->time }}</td>
-                                        <td><button class="btn btn-danger"
-                                                onclick="deleteData({{ $item->id }})">Delete</button>
-                                        </td>
                                         <td>
                                             <textarea name="" id="" cols="30" rows="10">{{$item->message}}</textarea>
+                                        </td>
+                                        <td><button class="btn btn-danger"
+                                                onclick="deleteData({{ $item->id }})">Delete</button>
                                         </td>
 
                                     </tr>
