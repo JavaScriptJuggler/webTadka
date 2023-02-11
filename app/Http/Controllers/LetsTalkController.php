@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\instantCallConnect;
 use App\Models\LetsTalkModel;
 use App\Models\Services;
 use App\Models\servicesEnquiry;
@@ -62,6 +63,15 @@ class LetsTalkController extends Controller
             return true;
         }
         if ($request->has('action') && $request->action == 'callConnect') {
+            instantCallConnect::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'priority' => $request->priority,
+                'city' => $request->city,
+                'message' => $request->message,
+                'date' => date('d/m/Y'),
+                'time' => date('H:i'),
+            ]);
             $message = '
             Message From <strong>' . $request->name . '</strong>, <br>
             I want to connect a call with you. <br><strong>Phone Number: </strong>' . $request->phone . '<br><strong>Priority: </strong>' . $request->priority . '<br><strong>City: </strong>' . $request->city . '<br><strong>Message: </strong>' . $request->message;
