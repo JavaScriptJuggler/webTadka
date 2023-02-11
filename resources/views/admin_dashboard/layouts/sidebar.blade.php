@@ -68,7 +68,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('quotes') }}">
                 <span class="menu-title">Quote Master</span>
-                <i class="mdi mdi-briefcase menu-icon"></i>
+                <i class="mdi mdi-format-quote-close menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
