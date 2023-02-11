@@ -22,7 +22,6 @@ class callConnectController extends Controller
     }
     public function deleteCallConnect(Request $request)
     {
-        dd($request->deleteId);
         instantCallConnect::find($request->deleteId)->delete();
     }
 }

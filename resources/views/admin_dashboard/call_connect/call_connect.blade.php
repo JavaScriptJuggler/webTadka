@@ -50,7 +50,6 @@
     </div>
     <script>
         const deleteData = (id) => {
-            alert(id);
             swal({
                     title: "Are you sure?",
                     text: "Once deleted, you will not be able to recover this record!",
@@ -68,7 +67,7 @@
                         })
                         $.ajax({
                             type: "post",
-                            url: "/delete-subscribers",
+                            url: "/delete-callconnect",
                             data: {
                                 deleteId: id
                             },
