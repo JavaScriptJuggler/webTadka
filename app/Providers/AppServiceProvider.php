@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,7 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Paginator::defaultView('frontend.pages.blogs.pagination');
+        if (Request::is('get-subscribers'))
+            Paginator::useBootstrap();
+        else
+            Paginator::defaultView('frontend.pages.blogs.pagination');
+
         // Paginator::defaultSimpleView('frontend.pages.blogs.pagination');
     }
 }

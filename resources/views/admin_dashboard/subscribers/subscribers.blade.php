@@ -27,6 +27,11 @@
                             <tr></tr>
                         </tbody>
                     </table>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            {!! $subscribers->links() !!}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
