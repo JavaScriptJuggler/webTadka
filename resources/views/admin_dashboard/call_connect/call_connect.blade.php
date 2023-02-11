@@ -31,8 +31,7 @@
                                                 onclick="deleteData({{ $item->id }})">Delete</button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-danger" data-toggle="modal" data-target="#callconnect" onclick="showMessage('{{ $item->message }}')">Show
-                                                Message</button>
+                                            <textarea name="" id="" cols="30" rows="10">{{$item->message}}</textarea>
                                         </td>
 
                                     </tr>
@@ -49,25 +48,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="callconnect" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Message</h5>
-                </div>
-                <div class="modal-body"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <script>
-        const showMessage = (message) => {
-            alert(message);
-            $('.modal-body').html(message);
-        }
         const deleteData = (id) => {
             swal({
                     title: "Are you sure?",
