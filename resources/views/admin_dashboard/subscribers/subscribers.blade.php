@@ -16,7 +16,7 @@
                                 @foreach ($subscribers as $key => $item)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $item->name }}</td>
+                                        <td width="20%">{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>
                                             <button class="btn btn-danger" onclick="deleteData({{ $item->id }})">Delete</button>
