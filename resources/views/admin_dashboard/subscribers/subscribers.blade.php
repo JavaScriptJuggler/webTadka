@@ -24,7 +24,6 @@
                                     </tr>
                                 @endforeach
                             @endif
-                            <tr></tr>
                         </tbody>
                     </table>
                     <div class="row mt-4">
