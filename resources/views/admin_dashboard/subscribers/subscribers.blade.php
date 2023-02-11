@@ -12,18 +12,7 @@
                             <th>Action</th>
                         </thead>
                         <tbody>
-                            @if (count($subscribers) > 0)
-                                @foreach ($subscribers as $key => $item)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td><button class="btn btn-danger"
-                                                onclick="deleteData({{ $item->id }})">Delete</button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endif
+                            
                         </tbody>
                     </table>
                     <div class="row mt-4">
