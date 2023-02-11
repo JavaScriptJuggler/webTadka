@@ -11,10 +11,10 @@
                             <th>Phone</th>
                             <th>Priority</th>
                             <th>City</th>
-                            <th>Message</th>
                             <th>Date</th>
                             <th>Time</th>
                             <th>Action</th>
+                            <th>View Message</th>
                         </thead>
                         <tbody>
                             @if (count($callConnect) > 0)
@@ -25,12 +25,16 @@
                                         <td>{{ $item->phone }}</td>
                                         <td>{{ $item->priority }}</td>
                                         <td>{{ $item->city }}</td>
-                                        <td>{{ $item->message }}</td>
                                         <td>{{ $item->date }}</td>
                                         <td>{{ $item->time }}</td>
                                         <td><button class="btn btn-danger"
                                                 onclick="deleteData({{ $item->id }})">Delete</button>
                                         </td>
+                                        <td>
+                                            <button class="btn btn-danger" data-toggle="modal" data-target="#callconnect" onclick="showMessage('{{ $item->message }}')">Show
+                                                Message</button>
+                                        </td>
+
                                     </tr>
                                 @endforeach
                             @endif
@@ -45,7 +49,24 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="callconnect" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
+        const showMessage = (message) => {
+            $('.modal-body').text(message);
+        }
         const deleteData = (id) => {
             swal({
                     title: "Are you sure?",
