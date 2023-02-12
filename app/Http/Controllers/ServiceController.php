@@ -33,6 +33,8 @@ class ServiceController extends Controller
             'heroImage' => $heroimage,
             'heroheader' => $heroheader,
             'heroDescription' => $heroDescription,
+            'meta_title'=>$getServicedetails->meta_title,
+            'meta_description'=>$getServicedetails->meta_description,
             'heroContents' => /* !empty($heroContents) ? $heroContents->contents : '' */ '',
             'seo_heading' => HeaderAndDescriptions::where('keyword', 'servicesanddigitalmarketing')->first()->heading,
             'seo_description' => HeaderAndDescriptions::where('keyword', 'servicesanddigitalmarketing')->first()->description,

@@ -78,7 +78,7 @@
                                     <td>
                                         <button class="btn btn-gradient-warning btn-rounded" data-toggle="modal"
                                             data-target="#imageAndContent" data-servicename="{{ $item->service_name }}"
-                                            data-description="{{ $item->description }}" data-serviceid={{ $item->id }}
+                                            data-description="{{ $item->description }}" data-serviceid="{{ $item->id }}" data-meta_title="{{$item->meta_title}}" data-meta_description="{{$item->meta_description}}"
                                             onclick="onClickEdit(this)">Edit</button>
                                         <button class="btn btn-gradient-danger btn-rounded delete-service"
                                             data-deleteid="{{ $item->id }}">Delete</button>
@@ -110,6 +110,14 @@
                         <div class="form-group">
                             <label for="" class="form-label">Description</label>
                             <textarea name="description" id="service_description" rows="5" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="form-label">Meta Title</label>
+                            <input type="text" id="meta_title" name="meta_title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="form-label">Meta description</label>
+                            <input type="text" id="meta_description" name="meta_description" class="form-control">
                         </div>
                     </div>
                 </form>
@@ -221,6 +229,8 @@
             $('#service_name').val($(element).data('servicename'));
             $('#service_description').val($(element).data('description'));
             $('#service_id').val($(element).data('serviceid'));
+            $('#meta_title').val($(element).data('meta_title'));
+            $('#meta_description').val($(element).data('meta_description'));
         }
     </script>
 @endsection

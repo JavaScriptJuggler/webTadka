@@ -71,6 +71,8 @@ class seoAndDigitalMarketingController extends Controller
                 $success = Services::create([
                     'service_name' => $request->service_name,
                     'description' => $request->description,
+                    'meta_title' => $request->meta_title,
+                    'meta_description' => $request->meta_description,
                 ])->save();
                 if ($success)
                     return response()->json(['status' => true,]);
