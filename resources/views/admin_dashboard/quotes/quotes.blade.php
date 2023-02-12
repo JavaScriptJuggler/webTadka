@@ -1,5 +1,13 @@
 @extends('admin_dashboard.layouts.main')
 @section('page_content')
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <i class="mdi mdi-format-quote-close"></i>
+            </span> Quotes Master
+        </h3>
+        <nav aria-label="breadcrumb"></nav>
+    </div>
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
@@ -35,7 +43,7 @@
                                             <td>{{ $item->date }}</td>
                                             <td>{{ $item->time }}</td>
                                             <td>
-                                                <textarea name="" id="" cols="30" rows="10">{{ $item->project_details }}</textarea>
+                                                <textarea name="" id="" cols="30" rows="4">{{ $item->project_details }}</textarea>
                                             </td>
                                             <td>
                                                 <button class="btn btn-danger"

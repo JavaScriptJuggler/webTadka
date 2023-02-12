@@ -1,9 +1,7 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="{{ route('dashboard') }}"><img src="{{ asset('images/logo.svg') }}"
-                alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ route('dashboard') }}"><img
-                src="{{ asset('images/logo-mini.svg') }}" alt="logo" /></a>
+        <a class="navbar-brand brand-logo" href="{{ route('cms') }}">WebTadka</a>
+        <a class="navbar-brand brand-logo-mini" href="{{ route('cms') }}">WebTadka</a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -22,8 +20,8 @@
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="#">
-                        <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
+                    {{-- <a class="dropdown-item" href="#">
+                        <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a> --}}
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

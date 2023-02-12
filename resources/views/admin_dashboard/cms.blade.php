@@ -3,7 +3,7 @@
     <div class="page-header">
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-danger text-white me-2">
-                <i class="mdi mdi-home"></i>
+                <i class="mdi mdi-comment-question-outline"></i>
             </span> Content Management System
         </h3>
         <nav aria-label="breadcrumb">

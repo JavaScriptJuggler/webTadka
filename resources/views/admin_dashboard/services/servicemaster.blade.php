@@ -4,7 +4,7 @@
     <div class="page-header">
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white me-2">
-                <i class="mdi mdi-home"></i>
+                <i class="mdi mdi-briefcase"></i>
             </span> Service Master
         </h3>
         <nav aria-label="breadcrumb">
@@ -137,7 +137,7 @@
                                     <td>${item.date}</td>
                                     <td>${item.time}</td>
                                     <td>
-                                        <textarea name="" id="" cols="30" rows="10">${item.project_details }</textarea>
+                                        <textarea name="" id="" cols="30" rows="4">${item.project_details }</textarea>
                                     </td>
                                     <td><button class="btn btn-danger" onclick="deleteData(${item.id})">Delete</button></td>
                                 </tr>`

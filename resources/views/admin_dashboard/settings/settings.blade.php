@@ -1,5 +1,13 @@
 @extends('admin_dashboard.layouts.main')
 @section('page_content')
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <i class="mdi mdi-account-settings"></i>
+            </span> Settings
+        </h3>
+        <nav aria-label="breadcrumb"></nav>
+    </div>
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
