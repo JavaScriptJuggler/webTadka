@@ -12,6 +12,8 @@ class Services extends Model
     protected $fillable = [
         'service_name',
         'description',
+        'meta_title',
+        'meta_description',
     ];
 
     public function subservices()
