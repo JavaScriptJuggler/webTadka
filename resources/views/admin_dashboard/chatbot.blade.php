@@ -38,12 +38,14 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $item->project }}</td>
                                     <td>
-                                        <p
+                                        <span
                                             style="white-space: nowrap;
                                        width: 200px;
                                        overflow: hidden;
-                                       text-overflow: ellipsis;">
-                                            {{ $item->project_details }}</p>
+                                       text-overflow: ellipsis;
+                                       display:block;
+                                       ">
+                                            {{ $item->project_details }}</span>
                                     </td>
                                     <td>{{ $item->contact_info }}</td>
                                     <td>{{ $item->project_assigned }}</td>
@@ -71,13 +73,15 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <p
+                                        <span
                                             style="white-space: nowrap;
                                    width: 100px;
                                    overflow: hidden;
-                                   text-overflow: ellipsis;">
+                                   text-overflow: ellipsis;
+                                   display:block;
+                                   ">
                                             {{ $item->remark }}
-                                        </p>
+                                        </span>
                                     </td>
                                     <td>
                                         @if ($item->status == 'Ongoing')
