@@ -131,7 +131,8 @@
                                             data-status="{{ $item->status }}"><i class="mdi mdi-table-edit"></i></button>
                                         <button type="button" class="btn btn-sm"
                                             style="background-color: rgb(255, 0, 132);color:white;"><i
-                                                class="mdi mdi-delete"></i></button>
+                                                class="mdi mdi-delete"
+                                                onclick="deleteRecord('{{ $item->id }}')"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -238,6 +239,39 @@
     </div>
     <script src="{{ asset('assets/js/toastr.js') }}"></script>
     <script>
+        const deleteRecord = (id) => {
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this record!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        holdOn();
+                        $.ajaxSetup({
+                            headers: {
+                                'accept': 'application/json',
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        })
+                        $.ajax({
+                            type: "POST",
+                            url: "/delete-task",
+                            data: {
+                                taskid: id,
+                            },
+                            success: function(response) {
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 2000);
+                            }
+                        });
+                    }
+                });
+        }
+
         const viewEditTask = (element) => {
             $('input[name=id]').val($(element).data('id'));
             $('input[name=project]').val($(element).data('project'));

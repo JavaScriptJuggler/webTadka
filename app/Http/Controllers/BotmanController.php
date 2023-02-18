@@ -53,4 +53,11 @@ class BotmanController extends Controller
                 ]);
         }
     }
+
+    public function deleteTaskData(Request $request)
+    {
+        if ($request->taskid != '') {
+            return chatbot::find($request->taskid)->delete();
+        }
+    }
 }

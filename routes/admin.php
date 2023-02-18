@@ -106,6 +106,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     /* bot route */
     Route::get('/botdata-list', [BotmanController::class, 'showbotmandata'])->name('botdata-list');
     Route::post('/save-task', [BotmanController::class, 'savetaskData'])->name('save-task');
+    Route::post('/delete-task', [BotmanController::class, 'deleteTaskData'])->name('delete-task');
 
     /* service master */
     Route::get('service-master', [ServicesController::class, 'index'])->name('service-master');
