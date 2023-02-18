@@ -49,8 +49,8 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('botdata-list') }}">
-                <span class="menu-title">Chat Bot</span>
-                <i class="mdi mdi-robot menu-icon"></i>
+                <span class="menu-title">Task Manager</span>
+                <i class="mdi mdi-alarm-check menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">

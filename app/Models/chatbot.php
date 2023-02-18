@@ -8,9 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class chatbot extends Model
 {
     use HasFactory;
-    protected $table='chatbot';
+    protected $table = 'chatbot';
     protected $fillable = [
-        'question',
-        'answer',
+        'project',
+        'project_details',
+        'contact_info',
+        'project_assigned',
+        'start_date',
+        'end_date',
+        'follow_up',
+        'stage',
+        'remark',
+        'status',
     ];
 }

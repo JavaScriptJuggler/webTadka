@@ -3,58 +3,54 @@
 namespace App\Http\Controllers;
 
 use App\Models\chatbot;
-use BotMan\BotMan\BotMan;
 use Illuminate\Http\Request;
-use BotMan\BotMan\Messages\Incoming\Answer;
 
 class BotmanController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['showbotmandata', 'index']]);
+        $this->middleware('auth');
     }
-    public function index()
-    {
-        $botman = app('botman');
-        $botman->hears('{message}', function ($botman, $message) {
-            $chatbot = chatbot::all();
-            $flag = 0;
-            $botman->typesAndWaits(2);
-            foreach ($chatbot as $key => $value) {
-                if ($message == strtolower($value->question)) {
-                    $botman->reply($value->answer);
-                    $flag = 1;
-                    break;
-                }
-            }
-            if ($flag == 0) {
-                $botman->reply("Sorry, I can't understand this right now, But don't worry, PLEASE GIVE YOUR EMAIL, one of our representative will contact you ASAP... Thank You");
-            }
-        });
-        $botman->listen();
-    }
-
     public function showbotmandata()
     {
-        $chatbotdata = chatbot::all();
+        $chatbotdata = chatbot::orderBy('id', 'desc')->get();
         view()->share([
-            'pageTitle' => 'Chatbot',
+            'pageTitle' => 'Task Manager',
             'botData' => $chatbotdata,
         ]);
         return view('admin_dashboard.chatbot');
     }
 
-    public function saveBotData(Request $request)
+    public function savetaskData(Request $request)
     {
-        chatbot::truncate();
-        if (count($request->question) > 0) {
-            for ($i = 0; $i < count($request->question); $i++) {
-                chatbot::create([
-                    'question' => $request->question[$i],
-                    'answer' => $request->answer[$i],
-                ]);
+        if (!empty($request)) {
+            $dataArray = [
+                'project' => $request->project,
+                'project_details' => $request->project_details,
+                'contact_info' => $request->contactinfo,
+                'project_assigned' => $request->project_assigned,
+                'start_date' => $request->startdate,
+                'end_date' => $request->enddate,
+                'follow_up' => $request->followup,
+                'stage' => $request->stage,
+                'remark' => $request->remarks,
+                'status' => $request->status,
+            ];
+            if ($request->id == '')
+                $is_success =  chatbot::create($dataArray)->save();
+            else {
+                $is_success = chatbot::where('id', $request->id)->update($dataArray);
             }
+            if ($is_success)
+                return response()->json([
+                    'status' => true,
+                    'message' => "Task Created Successfully",
+                ]);
+            else
+                return response()->json([
+                    'status' => false,
+                    'message' => "Something Went Wrong",
+                ]);
         }
-        return response()->json(['status' => true, 'message' => "Chat's inserted successfully"]);
     }
 }
